@@ -1,0 +1,115 @@
+/* ── Global Styles ── */
+/* Nav, footer, and base styles shared across all pages */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #ffffff;
+  --ink: #141410;
+  --muted: #9a9890;
+  --body: #6a6860;
+  --line: #e8e8e8;
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Nav ── */
+nav {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #ffffff;
+  transition: background 0.3s, border-color 0.3s;
+}
+nav.scrolled {
+  background: #f7f7f7;
+  border-bottom: 0.5px solid var(--line);
+}
+.nav-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 28px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-logo {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 14px;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 400;
+  transition: text-decoration 0.2s;
+}
+.nav-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ── Footer ── */
+footer {
+  width: 100%;
+  background: #f7f7f7;
+}
+.footer-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 48px 60px;
+}
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+.footer-link {
+  font-size: 14px;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 400;
+}
+.footer-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.footer-copy {
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* ── Mobile ── */
+@media (max-width: 900px) {
+  .nav-inner { padding: 20px 24px; }
+  .footer-inner { padding: 40px 24px; }
+}
