@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Ara An</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #ffffff;
+      --ink: #1a1a1a;
+      --muted: #999999;
+      --line: #e8e8e8;
+      --accent: #c17b4e;
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      cursor: none;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #cursor {
+      position: fixed;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--ink);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s var(--ease), height 0.2s var(--ease), background 0.2s;
+      top: -20px; left: -20px;
+    }
+    #cursor.small { width: 4px; height: 4px; background: var(--accent); }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 40px;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+    }
+    .nav-logo {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 15px;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.active { color: var(--ink); }
+
+    .page {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 56px 24px 120px;
+    }
+
+    /* Profile */
+    .profile {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 52px;
+    }
+    .profile-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--line);
+      flex-shrink: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+    .profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .profile-info { display: flex; flex-direction: column; gap: 4px; padding-top: 8px; }
+    .profile-name {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+    .profile-title {
+      font-size: 15px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .profile-link {
+      font-size: 15px;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      margin-top: 4px;
+      border: 1px solid var(--line);
+      padding: 4px 8px;
+      border-radius: 4px;
+      width: fit-content;
+    }
+    .profile-link:hover { color: var(--ink); border-color: #bbb; }
+
+    /* Sections */
+    .cv-section { margin-bottom: 40px; }
+    .cv-section-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    .about-text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #555;
+      font-weight: 400;
+    }
+
+    /* Entries */
+    .entry {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 12px;
+      padding: 16px 0;
+      align-items: start;
+    }
+    .entry-date {
+      font-size: 15px;
+      color: var(--muted);
+      font-weight: 400;
+      padding-top: 0;
+      white-space: nowrap;
+    }
+    .entry-title {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+    .entry-title .arrow { font-size: 10px; color: var(--muted); }
+    .entry-sub { font-size: 15px; color: var(--muted); font-weight: 400; }
+    .entry-desc {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #555;
+      font-weight: 400;
+      margin-top: 8px;
+      max-width: 480px;
+    }
+    .entry.parental .entry-title { color: var(--muted); font-style: italic; font-weight: 400; }
+
+    /* Contact */
+    .contact-row {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 12px;
+      padding: 8px 0;
+      align-items: center;
+    }
+    .contact-key { font-size: 15px; color: var(--muted); font-weight: 400; }
+    .contact-val {
+      font-size: 15px;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 400;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.2s;
+    }
+    .contact-val:hover { color: var(--accent); }
+    .contact-val .arrow { font-size: 10px; color: var(--muted); }
+
+    footer {
+      width: 100%;
+      background: #f7f7f7;
+    }
+    .footer-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-back {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 400;
+      transition: color 0.2s;
+      margin: 0 auto;
+    }
+    .footer-back:hover { color: var(--muted); }
+    .footer-back-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: border-color 0.2s;
+    }
+    .footer-back:hover .footer-back-circle { border-color: var(--muted); }
+    .footer-copy { font-size: 15px; color: var(--muted); font-weight: 400; }
+
+    @media (max-width: 600px) {
+      nav { padding: 20px 24px; }
+      .entry { grid-template-columns: 80px 1fr; }
+      .contact-row { grid-template-columns: 80px 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="cursor"></div>
+
+  <nav>
+    <a class="nav-logo" href="index.html">Ara An</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Work</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="page">
+
+    <div class="cv-section">
+      <div class="cv-section-title">Experience</div>
+
+      <div class="entry">
+        <div class="entry-date">2024 — 2026</div>
+        <div class="entry-right">
+          <div class="entry-title">Senior Manager, Product Design at theScore</div>
+          <p class="entry-desc">I managed 7–9 product designers across the Player Account Management (accounts, payments, promotions, and responsible gaming) and Casino teams. During this time, we navigated the ESPN Bet partnership — migrating from Barstool Sportsbook to ESPN Bet in the US while keeping theScore Bet running in Canada. Close collaboration with product, engineering, and design systems was what made the consistency and scalability possible.</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">2022 — 2024</div>
+        <div class="entry-right">
+          <div class="entry-title">Manager, Product Design at theScore</div>
+          <p class="entry-desc">I managed 10–13 product designers across the Sportsbook (theScore Bet and Barstool Sportsbook) and Media teams. We were acquired by PENN Entertainment — navigating the org change while keeping the team focused and motivated was a defining part of my role. I also helped scale the broader UX org to 50+ by building out dedicated teams in research, design systems, and operations.</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">2020 — 2022</div>
+        <div class="entry-right">
+          <div class="entry-title">Senior Product Designer at theScore</div>
+          <p class="entry-desc">I designed and launched theScore Bet web — expanding the product beyond mobile for the first time. I also rebuilt the design system in Figma, componentizing it and continuing to maintain it so both theScore and theScore Bet felt like one product.</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">2019 — 2020</div>
+        <div class="entry-right">
+          <div class="entry-title">Product Designer at theScore</div>
+          <p class="entry-desc">I helped launch theScore Bet — a new sportsbook app built within theScore — on iOS and Android across the US and Canada. A 0-to-1 product launch from concept through to ship.</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">2018 — 2019</div>
+        <div class="entry-right">
+          <div class="entry-title">Product Designer at Kinetic Commerce</div>
+          <p class="entry-desc">I worked on the Associate App, part of Kinetic Commerce's omnichannel retail platform, helping associates deliver better service and drive sales on mobile and tablet.</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">2017 — 2018</div>
+        <div class="entry-right">
+          <div class="entry-title">Product Designer at Nascent Digital</div>
+          <p class="entry-desc">As the product designer on the TELUS Digital Accessories team, I designed an end-to-end e-commerce experience and launched their first cart.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="cv-section">
+      <div class="cv-section-title">Education</div>
+
+      <div class="entry">
+        <div class="entry-date">2016</div>
+        <div class="entry-right">
+          <div class="entry-title">UX Design Immersive at BrainStation</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">2013 — 2014</div>
+        <div class="entry-right">
+          <div class="entry-title">Corporate Communications & PR at Centennial College</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">2009 — 2013</div>
+        <div class="entry-right">
+          <div class="entry-title">Communications at Wilfrid Laurier University</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="cv-section">
+      <div class="cv-section-title">Contact</div>
+
+      <div class="contact-row">
+        <span class="contact-key">Email</span>
+        <a class="contact-val" href="mailto:araleean@gmail.com">araleean@gmail.com</a>
+      </div>
+      <div class="contact-row">
+        <span class="contact-key">LinkedIn</span>
+        <a class="contact-val" href="https://www.linkedin.com/in/araan/" target="_blank">linkedin.com/in/araan</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-bottom">
+        <div></div>
+        <a class="footer-back" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+          <div class="footer-back-circle">↑</div>
+          Back to top
+        </a>
+        <div class="footer-copy">© 2025</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    let mx = 0, my = 0, cx = 0, cy = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    (function loop() {
+      cx += (mx - cx) * 0.12;
+      cy += (my - cy) * 0.12;
+      cursor.style.left = cx + 'px';
+      cursor.style.top = cy + 'px';
+      requestAnimationFrame(loop);
+    })();
+    document.querySelectorAll('a').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('small'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('small'));
+    });
+  </script>
+
+</body>
+</html>
