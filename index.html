@@ -124,7 +124,7 @@
       list-style: none;
     }
     .nav-links a {
-      font-size: 14px;
+      font-size: 15px;
       color: var(--ink);
       text-decoration: none;
       letter-spacing: 0em;
@@ -153,7 +153,7 @@
       gap: 12px;
     }
     .hero-pill {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 400;
       color: var(--ink);
       border: 1px solid var(--line);
@@ -189,7 +189,7 @@
       font-weight: 400;
     }
     .hero-bio {
-      font-size: 14px;
+      font-size: 15px;
       line-height: 1.85;
       color: #6a6860;
       font-weight: 400;
@@ -248,16 +248,26 @@
     .proj-link {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      font-size: 14px;
+      gap: 8px;
+      font-size: 15px;
       color: var(--ink);
+      font-weight: 600;
       text-decoration: none;
-      font-weight: 400;
-      transition: text-decoration 0.2s;
+      transition: color 0.2s;
     }
-    .proj-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .proj-link-text {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .proj-link .arrow {
+      display: inline-block;
+      font-weight: 400;
+      transition: transform 0.2s var(--ease);
+    }
+    .proj-link:hover { color: var(--muted); }
+    .proj-link:hover .arrow { transform: translateX(4px); }
     .proj-desc {
-      font-size: 14px;
+      font-size: 15px;
       line-height: 1.85;
       color: #6a6860;
       font-weight: 400;
@@ -300,7 +310,7 @@
       padding-top: 3px;
     }
     .about-text {
-      font-size: 14px;
+      font-size: 15px;
       line-height: 1.9;
       color: #6a6860;
       max-width: 480px;
@@ -371,7 +381,7 @@
       gap: 8px;
       text-decoration: none;
       color: var(--ink);
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 400;
       transition: color 0.2s;
       margin: 0 auto;
@@ -390,13 +400,13 @@
     }
     .footer-back:hover .footer-back-circle { border-color: var(--muted); }
     .footer-copy {
-      font-size: 14px;
+      font-size: 15px;
       color: var(--muted);
       font-weight: 400;
     }
     .footer-links { display: flex; gap: 24px; }
     .footer-link {
-      font-size: 14px;
+      font-size: 15px;
       color: var(--ink);
       text-decoration: none;
       font-weight: 400;
@@ -431,20 +441,6 @@
 </head>
 <body>
 
-  
-  
-
-  <!-- Nav -->
-  <nav class="reveal" id="nav">
-    <div class="nav-inner">
-      <a class="nav-logo" href="#">Ara An</a>
-      <ul class="nav-links">
-        <li><a href="index.html">Work</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-    </div>
-  </nav>
-
 <div class="page-wrap">
 
   <!-- Hero -->
@@ -460,7 +456,7 @@
         <div class="proj-header">
           <div>
             <div class="proj-title">theScore Bet App</div>
-            <a class="proj-link" href="thescore-bet.html">View Case Study →</a>
+            <a class="proj-link" href="thescore-bet.html"><span class="proj-link-text">View Case Study</span> <span class="arrow">→</span></a>
           </div>
           <p class="proj-desc">Launching a sportsbook for millions of sports fans — from 0 to 1, across iOS, Android, and web.</p>
         </div>
@@ -473,7 +469,7 @@
         <div class="proj-header">
           <div>
             <div class="proj-title">TELUS Accessories</div>
-            <a class="proj-link" href="#">View Case Study →</a>
+            <a class="proj-link" href="#"><span class="proj-link-text">View Case Study</span> <span class="arrow">→</span></a>
           </div>
           <p class="proj-desc">Redesigning TELUS.com as the go-to destination for digital connectivity — homepage to cart.</p>
         </div>
@@ -486,7 +482,7 @@
         <div class="proj-header">
           <div>
             <div class="proj-title">TELUS Cart Experience</div>
-            <a class="proj-link" href="#">View Case Study →</a>
+            <a class="proj-link" href="#"><span class="proj-link-text">View Case Study</span> <span class="arrow">→</span></a>
           </div>
           <p class="proj-desc">Building TELUS's first e-commerce cart — phased across accessories, phones, and plans.</p>
         </div>
