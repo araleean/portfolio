@@ -26,11 +26,9 @@
       color: var(--ink);
       font-family: 'DM Sans', sans-serif;
       font-weight: 400;
-      cursor: none;
       -webkit-font-smoothing: antialiased;
     }
 
-    #cursor {
       position: fixed;
       width: 8px; height: 8px;
       border-radius: 50%;
@@ -41,39 +39,42 @@
       transition: width 0.2s var(--ease), height 0.2s var(--ease), background 0.2s;
       top: -20px; left: -20px;
     }
-    #cursor.small { width: 4px; height: 4px; background: var(--accent); }
 
     nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 24px 40px;
-      border-bottom: 1px solid var(--line);
+      width: 100%;
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(8px);
+      background: #ffffff;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    nav.scrolled { background: #f7f7f7; border-bottom: 0.5px solid var(--line); }
+    .nav-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 28px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     .nav-logo {
       font-family: 'DM Sans', sans-serif;
-      font-size: 16px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
+      font-size: 21px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
       color: var(--ink);
       text-decoration: none;
     }
-    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
     .nav-links a {
-      font-size: 15px;
-      color: var(--muted);
+      font-size: 14px;
+      color: var(--ink);
       text-decoration: none;
       font-weight: 400;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--ink); }
-    .nav-links a.active { color: var(--ink); }
+    .nav-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
 
     .page {
       max-width: 640px;
@@ -112,12 +113,12 @@
       letter-spacing: -0.01em;
     }
     .profile-title {
-      font-size: 15px;
+      font-size: 14px;
       color: var(--muted);
       font-weight: 400;
     }
     .profile-link {
-      font-size: 15px;
+      font-size: 14px;
       color: var(--muted);
       text-decoration: none;
       font-weight: 400;
@@ -136,13 +137,13 @@
     /* Sections */
     .cv-section { margin-bottom: 40px; }
     .cv-section-title {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 500;
       color: var(--ink);
       margin-bottom: 12px;
     }
     .about-text {
-      font-size: 15px;
+      font-size: 14px;
       line-height: 1.7;
       color: #555;
       font-weight: 400;
@@ -157,14 +158,14 @@
       align-items: start;
     }
     .entry-date {
-      font-size: 15px;
+      font-size: 14px;
       color: var(--muted);
       font-weight: 400;
       padding-top: 0;
       white-space: nowrap;
     }
     .entry-title {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 400;
       color: var(--ink);
       margin-bottom: 4px;
@@ -174,9 +175,9 @@
       flex-wrap: wrap;
     }
     .entry-title .arrow { font-size: 10px; color: var(--muted); }
-    .entry-sub { font-size: 15px; color: var(--muted); font-weight: 400; }
+    .entry-sub { font-size: 14px; color: var(--muted); font-weight: 400; }
     .entry-desc {
-      font-size: 15px;
+      font-size: 14px;
       line-height: 1.75;
       color: #555;
       font-weight: 400;
@@ -193,9 +194,9 @@
       padding: 8px 0;
       align-items: center;
     }
-    .contact-key { font-size: 15px; color: var(--muted); font-weight: 400; }
+    .contact-key { font-size: 14px; color: var(--muted); font-weight: 400; }
     .contact-val {
-      font-size: 15px;
+      font-size: 14px;
       color: var(--ink);
       text-decoration: none;
       font-weight: 400;
@@ -204,7 +205,7 @@
       gap: 4px;
       transition: color 0.2s;
     }
-    .contact-val:hover { color: var(--accent); }
+    .contact-val:hover { text-decoration: underline; text-underline-offset: 4px; }
     .contact-val .arrow { font-size: 10px; color: var(--muted); }
 
     footer {
@@ -228,7 +229,7 @@
       gap: 8px;
       text-decoration: none;
       color: var(--ink);
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 400;
       transition: color 0.2s;
       margin: 0 auto;
@@ -246,7 +247,7 @@
       transition: border-color 0.2s;
     }
     .footer-back:hover .footer-back-circle { border-color: var(--muted); }
-    .footer-copy { font-size: 15px; color: var(--muted); font-weight: 400; }
+    .footer-copy { font-size: 14px; color: var(--muted); font-weight: 400; }
 
     @media (max-width: 600px) {
       nav { padding: 20px 24px; }
@@ -257,14 +258,15 @@
 </head>
 <body>
 
-  <div id="cursor"></div>
 
-  <nav>
-    <a class="nav-logo" href="index.html">Ara An</a>
-    <ul class="nav-links">
-      <li><a href="index.html">Work</a></li>
-      <li><a href="about.html" class="active">About</a></li>
-    </ul>
+  <nav id="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">Ara An</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Work</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
   </nav>
 
   <div class="page">
@@ -384,13 +386,13 @@
     (function loop() {
       cx += (mx - cx) * 0.12;
       cy += (my - cy) * 0.12;
-      cursor.style.left = cx + 'px';
-      cursor.style.top = cy + 'px';
       requestAnimationFrame(loop);
     })();
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
     document.querySelectorAll('a').forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('small'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('small'));
     });
   </script>
 
