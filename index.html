@@ -111,7 +111,7 @@
     }
     .nav-logo {
       font-family: 'DM Sans', sans-serif;
-      font-size: 21px;
+      font-size: clamp(16px, 2vw, 21px);
       font-weight: 600;
       color: var(--ink);
       letter-spacing: 0.05em;
@@ -124,7 +124,7 @@
       list-style: none;
     }
     .nav-links a {
-      font-size: 15px;
+      font-size: clamp(15px, 1.5vw, 16px);
       color: var(--ink);
       text-decoration: none;
       letter-spacing: 0em;
@@ -140,7 +140,7 @@
       margin: 0 auto;
     }
     .hero-intro {
-      font-size: clamp(28px, 4vw, 44px);
+      font-size: clamp(24px, 4vw, 38px);
       font-weight: 500;
       line-height: 1.2;
       letter-spacing: 0em;
@@ -153,7 +153,7 @@
       gap: 12px;
     }
     .hero-pill {
-      font-size: 15px;
+      font-size: clamp(15px, 1.5vw, 16px);
       font-weight: 400;
       color: var(--ink);
       border: 1px solid var(--line);
@@ -189,7 +189,7 @@
       font-weight: 400;
     }
     .hero-bio {
-      font-size: 15px;
+      font-size: clamp(15px, 1.5vw, 16px);
       line-height: 1.85;
       color: #6a6860;
       font-weight: 400;
@@ -238,7 +238,7 @@
       align-items: start;
     }
     .proj-title {
-      font-size: 32px;
+      font-size: clamp(22px, 3vw, 32px);
       font-weight: 500;
       letter-spacing: 0em;
       color: var(--ink);
@@ -249,9 +249,9 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 15px;
+      font-size: clamp(15px, 1.5vw, 16px);
       color: var(--ink);
-      font-weight: 600;
+      font-weight: 400;
       text-decoration: none;
       transition: color 0.2s;
     }
@@ -267,7 +267,7 @@
     .proj-link:hover { color: var(--muted); }
     .proj-link:hover .arrow { transform: translateX(4px); }
     .proj-desc {
-      font-size: 15px;
+      font-size: clamp(15px, 1.5vw, 16px);
       line-height: 1.85;
       color: #6a6860;
       font-weight: 400;
@@ -311,7 +311,7 @@
       padding-top: 3px;
     }
     .about-text {
-      font-size: 15px;
+      font-size: clamp(15px, 1.5vw, 16px);
       line-height: 1.9;
       color: #6a6860;
       max-width: 480px;
@@ -360,7 +360,7 @@
       margin-bottom: 16px;
     }
     .footer-email {
-      font-size: 32px;
+      font-size: clamp(22px, 3vw, 32px);
       font-weight: 500;
       color: var(--ink);
       text-decoration: none;
@@ -382,7 +382,7 @@
       gap: 8px;
       text-decoration: none;
       color: var(--ink);
-      font-size: 15px;
+      font-size: clamp(15px, 1.5vw, 16px);
       font-weight: 400;
       transition: color 0.2s;
       margin: 0 auto;
@@ -401,13 +401,13 @@
     }
     .footer-back:hover .footer-back-circle { border-color: var(--muted); }
     .footer-copy {
-      font-size: 15px;
+      font-size: clamp(15px, 1.5vw, 16px);
       color: var(--muted);
       font-weight: 400;
     }
     .footer-links { display: flex; gap: 24px; }
     .footer-link {
-      font-size: 15px;
+      font-size: clamp(15px, 1.5vw, 16px);
       color: var(--ink);
       text-decoration: none;
       font-weight: 400;
@@ -433,7 +433,10 @@
       .hero { padding: 40px 24px; }
       .page-wrap { padding: 0; }
       .projects { padding: 40px 24px; }
-      .proj-header { grid-template-columns: 1fr; gap: 12px; }
+      .proj-header { display: flex; flex-direction: column; gap: 12px; }
+      .proj-title { order: 1; }
+      .proj-desc { order: 2; }
+      .proj-link { order: 3; margin-top: 4px; }
       footer { padding: 20px 24px; }
       .footer-inner { padding: 40px 24px; }
     }
@@ -456,12 +459,11 @@
       <div class="proj proj-2">
         <div class="proj-header">
           <div>
-            <div class="proj-title">ESPN Bet Onboarding</div>
+            <div class="proj-title">Redesigning sign-up for a new era of sports betting</div>
             <a class="proj-link" href="espn-bet-onboarding.html"><span class="proj-link-text">View Case Study</span> <span class="arrow">→</span></a>
           </div>
-          <p class="proj-desc">Redesigning sign-up across all active US states during the Barstool to ESPN Bet rebrand.</p>
-        </div>
-        <div class="proj-img">
+          <p class="proj-desc">When Barstool Sportsbook became ESPN Bet, we had a deadline, a new brand, and a broken onboarding flow. We used the pressure to fix all three.</p>
+        </div><div class="proj-img">
           <img src="images/theScore_Bet.png" alt="ESPN Bet Onboarding">
         </div>
       </div>
@@ -469,12 +471,11 @@
       <div class="proj proj-4">
         <div class="proj-header">
           <div>
-            <div class="proj-title">Quick Deposits</div>
+            <div class="proj-title">Making it easier to deposit — from anywhere in the app</div>
             <a class="proj-link" href="quick-deposits.html"><span class="proj-link-text">View Case Study</span> <span class="arrow">→</span></a>
           </div>
-          <p class="proj-desc">Surfacing deposits closer to the moment of intent — a feature that captured 12% of all app deposits within weeks of launch.</p>
-        </div>
-        <div class="proj-img">
+          <p class="proj-desc">The deposit journey was buried steps away from the moment of intent. We pushed back on "just ship it," ran user testing, and launched a feature that captured 12% of all deposits within weeks.</p>
+        </div><div class="proj-img">
           <img src="images/theScore_Bet.png" alt="Quick Deposits">
         </div>
       </div>
@@ -482,12 +483,11 @@
       <div class="proj proj-1">
         <div class="proj-header">
           <div>
-            <div class="proj-title">theScore Bet App</div>
+            <div class="proj-title">Launching a sportsbook for millions of sports fans</div>
             <a class="proj-link" href="thescore-bet.html"><span class="proj-link-text">View Case Study</span> <span class="arrow">→</span></a>
           </div>
-          <p class="proj-desc">Launching a sportsbook for millions of sports fans — from 0 to 1, across iOS, Android, and web.</p>
-        </div>
-        <div class="proj-img">
+          <p class="proj-desc">theScore had millions of daily users who already trusted the app for sports. We built a sportsbook inside it — from 0 to 1, across iOS, Android, and web.</p>
+        </div><div class="proj-img">
           <img src="images/theScore_Bet.png" alt="theScore Bet App">
         </div>
       </div>
@@ -495,13 +495,25 @@
       <div class="proj proj-3">
         <div class="proj-header">
           <div>
-            <div class="proj-title">TELUS Accessories</div>
+            <div class="proj-title">Transforming an e-commerce experience from the ground up</div>
             <a class="proj-link" href="telus-accessories.html"><span class="proj-link-text">View Case Study</span> <span class="arrow">→</span></a>
           </div>
-          <p class="proj-desc">Redesigning TELUS.com as the go-to destination for digital connectivity — homepage to cart.</p>
+          <p class="proj-desc">Most customers didn't know TELUS sold accessories. We redesigned the entire experience — homepage, category, product, and cart — to change that.</p>
+        </div><div class="proj-img">
+          <img src="images/TELUS_Accessories.png" alt="TELUS Accessories">
+        </div>
+      </div>
+
+      <div class="proj proj-4">
+        <div class="proj-header">
+          <div>
+            <div class="proj-title">Building a referral program for a regulated sportsbook</div>
+            <a class="proj-link" href="refer-a-friend.html"><span class="proj-link-text">View Case Study</span> <span class="arrow">→</span></a>
+          </div>
+          <p class="proj-desc">Referrals are a proven growth lever — but in sports betting, you can't just copy what works in consumer apps. We built one from scratch.</p>
         </div>
         <div class="proj-img">
-          <img src="images/TELUS_Accessories.png" alt="TELUS Accessories">
+          <img src="images/theScore_Bet.png" alt="Refer a Friend">
         </div>
       </div>
 
