@@ -21,7 +21,7 @@ body {
   color: var(--ink);
   font-family: 'DM Sans', sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.85;
   -webkit-font-smoothing: antialiased;
 }
@@ -62,7 +62,7 @@ nav.scrolled {
   list-style: none;
 }
 .nav-links a {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--ink);
   text-decoration: none;
   font-weight: 400;
@@ -93,7 +93,7 @@ footer {
   gap: 24px;
 }
 .footer-link {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--ink);
   text-decoration: none;
   font-weight: 400;
@@ -103,7 +103,7 @@ footer {
   text-underline-offset: 4px;
 }
 .footer-copy {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--muted);
   font-weight: 400;
 }
