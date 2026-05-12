@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ara An — UI/UX Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #ffffff;
+      --white: #f7f7f7;
+      --ink: #141410;
+      --muted: #9a9890;
+      --line: #dedad2;
+      --accent: #c17b4e;
+      --accent-light: rgba(193, 123, 78, 0.08);
+      --card-1: #1b2238;
+      --card-2: #1a2d4a;
+      --card-3: #eae6df;
+      --card-4: #e8ede8;
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Cursor ── */
+    #cursor {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--ink);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s var(--ease), height 0.3s var(--ease), background 0.3s var(--ease), opacity 0.3s;
+      will-change: transform;
+      top: -20px; left: -20px;
+    }
+    #cursor.expanded {
+      width: 72px;
+      height: 72px;
+      background: var(--accent);
+    }
+    #cursor.small {
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+    }
+    #cursor-text {
+      position: fixed;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      opacity: 0;
+      transition: opacity 0.3s;
+      top: -20px; left: -20px;
+    }
+    #cursor.expanded ~ #cursor-text,
+    #cursor-text.visible { opacity: 1; }
+
+    /* ── Page load animation ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s var(--ease) forwards;
+    }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    nav { animation-delay: 0.1s; }
+    .hero { animation-delay: 0.2s; }
+    .work-section { animation-delay: 0.35s; }
+
+    .page-wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    nav {
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #ffffff;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    nav.scrolled {
+      background: #f7f7f7;
+      border-bottom: 0.5px solid var(--line);
+    }
+    .nav-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 28px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 21px;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 15px;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0em;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 60px 60px 60px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .hero-intro {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 32px;
+      max-width: 800px;
+    }
+    .hero-pills {
+      display: flex;
+      gap: 12px;
+    }
+    .hero-pill {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      padding: 8px 20px;
+      border-radius: 40px;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+    .hero-pill:hover { border-color: var(--ink); }
+    .hero-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(72px, 10vw, 120px);
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+    .hero-name em {
+      font-style: normal;
+      color: var(--ink);
+    }
+    .hero-right {
+      padding-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .hero-bio {
+      font-size: 15px;
+      line-height: 1.85;
+      color: #6a6860;
+      font-weight: 400;
+    }
+    .hero-bio a {
+      color: var(--ink);
+      text-decoration: none;
+      transition: text-decoration 0.2s;
+    }
+    .hero-bio a:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    /* ── Work section ── */
+    .work-section { padding: 0; }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 40px;
+    }
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .section-note {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    /* ── Project list ── */
+    .projects { padding: 60px 60px; }
+    .proj { margin-bottom: 80px; }
+    .proj:last-child { margin-bottom: 0; }
+    .proj-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 20px;
+      align-items: start;
+    }
+    .proj-title {
+      font-size: 32px;
+      font-weight: 500;
+      letter-spacing: 0em;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .proj-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 15px;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 400;
+      transition: text-decoration 0.2s;
+    }
+    .proj-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .proj-desc {
+      font-size: 15px;
+      line-height: 1.85;
+      color: #6a6860;
+      font-weight: 400;
+    }
+    .proj-img {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px;
+      min-height: 360px;
+    }
+    .proj-img img {
+      width: 100%;
+      max-width: 800px;
+      object-fit: contain;
+    }
+    .proj-1 .proj-img { background: var(--card-1); }
+    .proj-3 .proj-img { background: var(--card-3); }
+    .proj-4 .proj-img { background: var(--card-4); }
+
+    /* ── About / Contact strip ── */
+    .bottom-strip {
+      margin: 0 60px;
+      padding: 60px 0;
+      border-top: 0.5px solid var(--line);
+      display: grid;
+      grid-template-columns: 180px 1fr 280px;
+      gap: 60px;
+      align-items: start;
+    }
+    .strip-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+      padding-top: 3px;
+    }
+    .about-text {
+      font-size: 15px;
+      line-height: 1.9;
+      color: #6a6860;
+      max-width: 480px;
+    }
+    .contact-rows { display: flex; flex-direction: column; }
+    .contact-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 13px 0;
+      border-bottom: 0.5px solid var(--line);
+    }
+    .contact-row:first-child { border-top: 0.5px solid var(--line); }
+    .contact-key {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .contact-val {
+      font-size: 13px;
+      color: var(--ink);
+      text-decoration: none;
+      transition: color 0.2s;
+      font-weight: 400;
+    }
+    .contact-val:hover { color: var(--ink); }
+
+    /* ── Footer ── */
+    footer {
+      width: 100%;
+      background: #f7f7f7;
+    }
+    .footer-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 60px 48px;
+    }
+    .footer-contact-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+    .footer-email {
+      font-size: 32px;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      display: block;
+      margin-bottom: 48px;
+      transition: color 0.2s;
+    }
+    .footer-email:hover { color: var(--muted); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-back {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 400;
+      transition: color 0.2s;
+      margin: 0 auto;
+    }
+    .footer-back:hover { color: var(--muted); }
+    .footer-back-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: border-color 0.2s;
+    }
+    .footer-back:hover .footer-back-circle { border-color: var(--muted); }
+    .footer-copy {
+      font-size: 15px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .footer-left {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .footer-right {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      nav { padding: 28px 32px; }
+      .hero { grid-template-columns: 1fr; padding: 40px 32px 56px; gap: 32px; }
+      .work-section { padding: 48px 32px 64px; }
+      .projects { grid-template-columns: 1fr; }
+      .bottom-strip { grid-template-columns: 1fr; margin: 0 32px; gap: 36px; }
+      footer { padding: 20px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  
+  
+
+  <!-- Nav -->
+  <nav class="reveal" id="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#">Ara An</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<div class="page-wrap">
+
+  <!-- Hero -->
+  <section class="hero reveal">
+    <p class="hero-intro">I'm Ara — a product designer who has launched sportsbooks, scaled design teams, and sweated every detail in between.</p>
+  </section>
+
+  <!-- Work -->
+  <section class="work-section reveal" id="work">
+    <div class="projects">
+
+      <div class="proj proj-1">
+        <div class="proj-header">
+          <div>
+            <div class="proj-title">theScore Bet App</div>
+            <a class="proj-link" href="thescore-bet.html">View Case Study →</a>
+          </div>
+          <p class="proj-desc">Launching a sportsbook for millions of sports fans — from 0 to 1, across iOS, Android, and web.</p>
+        </div>
+        <div class="proj-img">
+          <img src="images/theScore_Bet.png" alt="theScore Bet App">
+        </div>
+      </div>
+
+      <div class="proj proj-3">
+        <div class="proj-header">
+          <div>
+            <div class="proj-title">TELUS Accessories</div>
+            <a class="proj-link" href="#">View Case Study →</a>
+          </div>
+          <p class="proj-desc">Redesigning TELUS.com as the go-to destination for digital connectivity — homepage to cart.</p>
+        </div>
+        <div class="proj-img">
+          <img src="images/TELUS_Accessories.png" alt="TELUS Accessories">
+        </div>
+      </div>
+
+      <div class="proj proj-4">
+        <div class="proj-header">
+          <div>
+            <div class="proj-title">TELUS Cart Experience</div>
+            <a class="proj-link" href="#">View Case Study →</a>
+          </div>
+          <p class="proj-desc">Building TELUS's first e-commerce cart — phased across accessories, phones, and plans.</p>
+        </div>
+        <div class="proj-img">
+          <img src="images/TELUS_Cart.png" alt="TELUS Cart Experience">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div><!-- end page-wrap -->
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-bottom">
+        <div></div>
+        <a class="footer-back" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+          <div class="footer-back-circle">↑</div>
+          Back to top
+        </a>
+        <div class="footer-copy">© 2025</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Custom cursor ──
+    const cursor = document.getElementById('cursor');
+    const cursorText = document.getElementById('cursor-text');
+    // ── Sticky nav border on scroll ──
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // ── Scroll reveal ──
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.proj').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
