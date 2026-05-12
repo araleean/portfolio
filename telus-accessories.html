@@ -25,7 +25,7 @@
       color: var(--ink);
       font-family: 'DM Sans', sans-serif;
       font-weight: 400;
-      font-size: 15px;
+      font-size: clamp(15px, 1.5vw, 16px);
       line-height: 1.85;
       -webkit-font-smoothing: antialiased;
     }
@@ -49,7 +49,7 @@
       align-items: center;
     }
     .nav-logo {
-      font-size: 21px;
+      font-size: clamp(16px, 2vw, 21px);
       font-weight: 600;
       letter-spacing: 0.05em;
       text-transform: uppercase;
@@ -58,7 +58,7 @@
     }
     .nav-links { display: flex; gap: 36px; list-style: none; }
     .nav-links a {
-      font-size: 15px;
+      font-size: clamp(15px, 1.5vw, 16px);
       color: var(--ink);
       text-decoration: none;
       font-weight: 400;
@@ -66,7 +66,7 @@
     }
     .nav-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
     .nav-back {
-      font-size: 15px;
+      font-size: clamp(15px, 1.5vw, 16px);
       color: var(--muted);
       text-decoration: none;
       font-weight: 400;
@@ -96,14 +96,14 @@
       margin-bottom: 16px;
     }
     .cs-title {
-      font-size: clamp(40px, 6vw, 64px);
+      font-size: clamp(32px, 5vw, 56px);
       font-weight: 500;
       letter-spacing: 0.02em;
       line-height: 0.95;
       margin-bottom: 20px;
     }
     .cs-subtitle {
-      font-size: 15px;
+      font-size: clamp(15px, 1.5vw, 16px);
       line-height: 1.85;
       color: var(--body);
       max-width: 480px;
@@ -117,7 +117,7 @@
       color: var(--muted);
       font-weight: 400;
     }
-    .meta-val { font-size: 15px; color: var(--ink); font-weight: 400; }
+    .meta-val { font-size: clamp(15px, 1.5vw, 16px); color: var(--ink); font-weight: 400; }
 
     /* ── Hero image ── */
     .cs-hero {
@@ -151,7 +151,7 @@
       top: 100px;
     }
     .cs-content { display: flex; flex-direction: column; gap: 20px; }
-    .cs-content p { font-size: 15px; line-height: 1.85; color: var(--body); }
+    .cs-content p { font-size: clamp(15px, 1.5vw, 16px); line-height: 1.85; color: var(--body); }
     .cs-content p strong { color: var(--ink); font-weight: 500; }
     .cs-content h3 {
       font-size: 20px;
@@ -162,9 +162,16 @@
     }
 
     /* ── Image sections ── */
-    .img-section {
+        .img-section {
       padding: 56px 0;
       border-bottom: 0.5px solid var(--line);
+    }
+    .img-section-header {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 56px;
+      align-items: start;
+      margin-bottom: 32px;
     }
     .img-section-label {
       font-size: 10px;
@@ -172,14 +179,12 @@
       text-transform: uppercase;
       color: var(--muted);
       font-weight: 400;
-      margin-bottom: 12px;
+      padding-top: 4px;
     }
     .img-section-desc {
-      font-size: 15px;
+      font-size: clamp(15px, 1.5vw, 16px);
       line-height: 1.85;
       color: var(--body);
-      max-width: 560px;
-      margin-bottom: 32px;
     }
     .img-grid-2 {
       display: grid;
@@ -211,14 +216,14 @@
     }
     .stat { background: #f7f7f7; padding: 36px 28px; }
     .stat-num {
-      font-size: 48px;
+      font-size: clamp(36px, 5vw, 48px);
       font-weight: 500;
       letter-spacing: -0.03em;
       color: var(--ink);
       line-height: 1;
       margin-bottom: 10px;
     }
-    .stat-label { font-size: 15px; color: var(--muted); line-height: 1.5; font-weight: 400; }
+    .stat-label { font-size: clamp(15px, 1.5vw, 16px); color: var(--muted); line-height: 1.5; font-weight: 400; }
 
     /* ── Next project ── */
     .next-project {
@@ -247,7 +252,7 @@
       justify-content: space-between;
       align-items: center;
     }
-    .footer-copy { font-size: 15px; color: var(--muted); font-weight: 400; }
+    .footer-copy { font-size: clamp(15px, 1.5vw, 16px); color: var(--muted); font-weight: 400; }
 
     /* ── Reveal ── */
     .reveal {
@@ -335,8 +340,11 @@
   <!-- Homepage section -->
   <div class="page-wrap">
     <div class="img-section reveal">
-      <div class="img-section-label">Homepage</div>
-      <p class="img-section-desc">The homepage gave customers a glimpse into the latest products and deals available at TELUS. We created a sticky navigation with full icons to represent each product category, and editorial content to drive discovery.</p>
+      
+      <div class="img-section-header">
+        <div class="img-section-label">Homepage</div>
+        <p class="img-section-desc">The homepage gave customers a glimpse into the latest products and deals available at TELUS. We created a sticky navigation with full icons to represent each product category, and editorial content to drive discovery.</p>
+      </div>
       <div class="img-grid-2">
         <img src="images/telus-homepage1.png" alt="TELUS Homepage">
         <img src="images/telus-homepage2.png" alt="TELUS Homepage 2">
@@ -345,8 +353,11 @@
 
     <!-- Product Detail -->
     <div class="img-section reveal">
-      <div class="img-section-label">Product Detail</div>
-      <p class="img-section-desc">Product detail pages were designed with custom components that could be added or removed based on how much product information and imagery was available — flexible enough to work across a wide range of accessories.</p>
+      
+      <div class="img-section-header">
+        <div class="img-section-label">Product Detail</div>
+        <p class="img-section-desc">Product detail pages were designed with custom components that could be added or removed based on how much product information and imagery was available — flexible enough to work across a wide range of accessories.</p>
+      </div>
       <div class="img-grid-3">
         <img src="images/telus-productdetail1.png" alt="Product Detail 1">
         <img src="images/telus-productdetail2.png" alt="Product Detail 2">
@@ -356,8 +367,11 @@
 
     <!-- Category -->
     <div class="img-section reveal">
-      <div class="img-section-label">Category</div>
-      <p class="img-section-desc">Category pages focused on the lifestyle aspect of the products — rich imagery, mini descriptions, and product information to help customers find the right accessory for them.</p>
+      
+      <div class="img-section-header">
+        <div class="img-section-label">Category</div>
+        <p class="img-section-desc">Category pages focused on the lifestyle aspect of the products — rich imagery, mini descriptions, and product information to help customers find the right accessory for them.</p>
+      </div>
       <div class="img-grid-3">
         <img src="images/telus-category1.png" alt="Category 1">
         <img src="images/telus-category2.png" alt="Category 2">
@@ -367,8 +381,11 @@
 
     <!-- Campaign -->
     <div class="img-section reveal">
-      <div class="img-section-label">Campaign</div>
-      <p class="img-section-desc">Seasonal campaign pages gave us the opportunity to tell a fuller narrative around the products — helping customers find the best accessory for any moment in their life.</p>
+      
+      <div class="img-section-header">
+        <div class="img-section-label">Campaign</div>
+        <p class="img-section-desc">Seasonal campaign pages gave us the opportunity to tell a fuller narrative around the products — helping customers find the best accessory for any moment in their life.</p>
+      </div>
       <div class="img-grid-2">
         <img src="images/telus-campaign1.png" alt="Campaign 1">
         <img src="images/telus-campaign2.png" alt="Campaign 2">
