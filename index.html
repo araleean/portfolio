@@ -440,12 +440,12 @@
       flex-shrink: 0;
       width: 180px;
       background: #1a1a1a;
-      border-radius: 32px;
-      padding: 8px;
+      border-radius: 20px;
+      padding: 4px;
       box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1);
     }
     .phone-screen {
-      border-radius: 26px;
+      border-radius: 14px;
       overflow: hidden;
       width: 100%;
       aspect-ratio: 9/19.5;
@@ -485,6 +485,90 @@
         width: 80px;
       }
     }
+    .browser-wrap {
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+      border: 0.5px solid rgba(0,0,0,0.08);
+    }
+    .browser-bar {
+      background: #f0f0f0;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+    }
+    .browser-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .browser-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ddd;
+      display: block;
+    }
+    .browser-dots span:nth-child(1) { background: #ff5f57; }
+    .browser-dots span:nth-child(2) { background: #febc2e; }
+    .browser-dots span:nth-child(3) { background: #28c840; }
+    .browser-screen {
+      width: 100%;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      background: #fff;
+    }
+    .browser-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+    .macbook { display: none; }
+    .macbook-screen-wrap {
+      background: #2a2a2a;
+      border-radius: 10px 10px 0 0;
+      padding: 8px 8px 0;
+    }
+    .macbook-camera {
+      width: 5px;
+      height: 5px;
+      background: #444;
+      border-radius: 50%;
+      margin: 0 auto 5px;
+    }
+    .macbook-screen {
+      border-radius: 3px;
+      overflow: hidden;
+      width: 100%;
+      aspect-ratio: 16/10;
+      background: #111;
+    }
+    .macbook-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+    .macbook-base {
+      background: #333;
+      height: 10px;
+      border-radius: 0 0 4px 4px;
+      position: relative;
+    }
+    .macbook-base::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 35%;
+      height: 4px;
+      background: #2a2a2a;
+      border-radius: 0 0 4px 4px;
+    }
   </style>
   <link rel="stylesheet" href="global.css">
 </head>
@@ -510,12 +594,8 @@
           </div>
           <p class="proj-desc">The sign-up flow was too long and losing users along the way. We redesigned it to reduce friction — and saw a 25% lift in completion.</p>
         </div>
-        <div class="proj-img" style="padding: 48px 40px; display: flex; justify-content: center; flex-direction: column; align-items: center;">
-          <div class="phone-carousel" id="espn-carousel">
-            <div class="phone-mockup"><div class="phone-screen"><img src="images/espn-new-1.png" alt="ESPN Bet Login"></div></div>
-            <div class="phone-mockup"><div class="phone-screen"><img src="images/espn-new-2.png" alt="ESPN Bet Sign Up"></div></div>
-            <div class="phone-mockup"><div class="phone-screen"><img src="images/espn-new-3.png" alt="ESPN Bet Welcome"></div></div>
-          </div>
+        <div class="proj-img" style="padding: 0; overflow: hidden; border-radius: 12px;">
+          <img src="images/espn-index.png" alt="ESPN Bet Sign Up" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
       </div>
 
@@ -567,8 +647,17 @@
             <a class="proj-link" href="telus-accessories.html"><span class="proj-link-text">View Case Study</span> <span class="arrow">→</span></a>
           </div>
           <p class="proj-desc">Most customers didn't know TELUS sold accessories. We redesigned the entire experience — homepage, category, product, and cart — to change that.</p>
-        </div><div class="proj-img">
-          <img src="images/TELUS_Accessories.png" alt="TELUS Accessories">
+        </div><div class="proj-img" style="padding: 40px;">
+          <div class="browser-wrap">
+            <div class="browser-bar">
+              <div class="browser-dots">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="browser-screen">
+              <img src="images/TELUS_Accessories.png" alt="TELUS Accessories">
+            </div>
+          </div>
         </div>
       </div>
 
