@@ -39,7 +39,7 @@
       background: #ffffff;
       transition: background 0.3s, border-color 0.3s;
     }
-    nav.scrolled { background: #f7f7f7; border-bottom: 0.5px solid var(--line); }
+    nav.scrolled { background: #f7f7f7; }
     .nav-inner {
       max-width: 1000px;
       margin: 0 auto;
@@ -85,7 +85,6 @@
       grid-template-columns: 1fr 240px;
       gap: 60px;
       align-items: end;
-      border-bottom: 0.5px solid var(--line);
     }
     .cs-eyebrow {
       font-size: 11px;
@@ -133,7 +132,6 @@
     /* ── Sections ── */
     .cs-section {
       padding: 64px 0;
-      border-bottom: 0.5px solid var(--line);
       display: grid;
       grid-template-columns: 180px 1fr;
       gap: 56px;
@@ -164,7 +162,6 @@
     /* ── Image sections ── */
         .img-section {
       padding: 56px 0;
-      border-bottom: 0.5px solid var(--line);
     }
     .img-section-header {
       display: grid;
@@ -208,22 +205,10 @@
     }
 
     /* ── Stats ── */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      margin-top: 8px;
-    }
-    .stat { background: #f7f7f7; padding: 36px 28px; }
-    .stat-num {
-      font-size: clamp(36px, 5vw, 48px);
-      font-weight: 500;
-      letter-spacing: -0.03em;
-      color: var(--ink);
-      line-height: 1;
-      margin-bottom: 10px;
-    }
-    .stat-label { font-size: clamp(15px, 1.5vw, 16px); color: var(--muted); line-height: 1.5; font-weight: 400; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 8px; }
+    .stat { background: #f7f7f7; padding: 36px 32px; border-radius: 32px; }
+    .stat-num { font-size: clamp(32px, 4vw, 40px); font-weight: 500; letter-spacing: 0em; color: var(--ink); line-height: 1; margin-bottom: 10px; }
+    .stat-label { font-size: clamp(15px, 1.5vw, 16px); color: var(--body); line-height: 1.85; font-weight: 400; }
 
     /* ── Next project ── */
     .next-project {
@@ -232,7 +217,6 @@
       justify-content: space-between;
       align-items: center;
       text-decoration: none;
-      border-top: 0.5px solid var(--line);
       transition: background 0.2s;
     }
     .next-project:hover { background: #f7f7f7; margin: 0 -60px; padding: 72px 60px; }
@@ -272,7 +256,7 @@
       .cs-label { position: static; }
       .img-grid-2 { grid-template-columns: 1fr; }
       .img-grid-3 { grid-template-columns: 1fr; }
-      .stats { grid-template-columns: 1fr; }
+      .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 8px; }
       .nav-inner { padding: 24px 32px; }
       .cs-hero { padding: 40px 24px; }
       footer { padding: 32px; }
@@ -421,13 +405,6 @@
 
   <div class="page-wrap">
     <!-- Next project -->
-    <a class="next-project reveal" href="telus-cart.html">
-      <div>
-        <div class="next-label">Next project</div>
-        <div class="next-title">TELUS Cart Experience</div>
-      </div>
-      <div class="next-arrow">→</div>
-    </a>
   </div>
 
   <script>

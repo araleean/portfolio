@@ -40,7 +40,6 @@
       background: #ffffff;
       transition: background 0.3s, border-color 0.3s;
     }
-    nav.scrolled { background: #f7f7f7; border-bottom: 0.5px solid var(--line); }
     .nav-inner {
       max-width: 1000px;
       margin: 0 auto;
@@ -77,22 +76,52 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 64px 60px;
-      min-height: 360px;
+      padding: 56px 60px;
+      overflow: hidden;
     }
     .cs-hero img { max-width: 800px; width: 100%; object-fit: contain; }
-    .img-placeholder {
-      width: 100%;
-      aspect-ratio: 16/8;
-      background: var(--dark);
-      border-radius: 8px;
+    /* ── iPhone mockups ── */
+    .phone-row {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255,255,255,0.2);
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      gap: 20px;
+      align-items: flex-start;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+    .phone {
+      flex-shrink: 0;
+      width: 200px;
+      background: #1a1a1a;
+      border-radius: 36px;
+      padding: 10px;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.2), inset 0 0 0 1px rgba(255,255,255,0.1);
+      position: relative;
+    }
+    .phone::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 6px;
+      background: #2a2a2a;
+      border-radius: 10px;
+      z-index: 2;
+    }
+    .phone-screen {
+      border-radius: 28px;
+      overflow: hidden;
+      width: 100%;
+      aspect-ratio: 9/19.5;
+      background: #000;
+    }
+    .phone-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
     }
     .img-placeholder.light {
       background: #f7f7f7;
@@ -120,7 +149,6 @@
       grid-template-columns: 1fr 240px;
       gap: 60px;
       align-items: end;
-      border-bottom: 0.5px solid var(--line);
     }
     .cs-eyebrow {
       font-size: 11px;
@@ -157,7 +185,6 @@
     /* ── Sections ── */
     .cs-section {
       padding: 64px 0;
-      border-bottom: 0.5px solid var(--line);
       display: grid;
       grid-template-columns: 180px 1fr;
       gap: 56px;
@@ -180,7 +207,6 @@
     /* ── Image sections ── */
         .img-section {
       padding: 56px 0;
-      border-bottom: 0.5px solid var(--line);
     }
     .img-section-header {
       display: grid;
@@ -207,17 +233,10 @@
     .img-grid-2 img, .img-grid-3 img { width: 100%; object-fit: contain; border-radius: 4px; display: block; }
 
     /* ── Stats ── */
-    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 8px; }
-    .stat { background: #f7f7f7; padding: 36px 28px; }
-    .stat-num {
-      font-size: clamp(36px, 5vw, 48px);
-      font-weight: 500;
-      letter-spacing: -0.03em;
-      color: var(--ink);
-      line-height: 1;
-      margin-bottom: 10px;
-    }
-    .stat-label { font-size: clamp(15px, 1.5vw, 16px); color: var(--muted); line-height: 1.5; font-weight: 400; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 8px; }
+    .stat { background: #f7f7f7; padding: 36px 32px; border-radius: 32px; }
+    .stat-num { font-size: clamp(32px, 4vw, 40px); font-weight: 500; letter-spacing: 0em; color: var(--ink); line-height: 1; margin-bottom: 10px; }
+    .stat-label { font-size: clamp(15px, 1.5vw, 16px); color: var(--body); line-height: 1.85; font-weight: 400; }
 
     /* ── Next project ── */
     .next-project {
@@ -226,7 +245,6 @@
       justify-content: space-between;
       align-items: center;
       text-decoration: none;
-      border-top: 0.5px solid var(--line);
       transition: background 0.2s;
     }
     .next-project:hover { background: #f7f7f7; margin: 0 -60px; padding: 72px 60px; }
@@ -262,7 +280,7 @@
       .cs-header { grid-template-columns: 1fr; gap: 32px; padding: 48px 0 40px; }
       .cs-section { grid-template-columns: 1fr; gap: 20px; padding: 48px 0; }
       .cs-label { position: static; }
-      .stats { grid-template-columns: 1fr; }
+      .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 8px; }
       .img-grid-2, .img-grid-3 { grid-template-columns: 1fr; }
       .nav-inner { padding: 24px 32px; }
     }
@@ -272,16 +290,29 @@
 <body>
 
   <div class="cs-hero">
-    <div class="cs-hero-placeholder">Add hero screenshot</div>
+    <div class="phone-row" style="justify-content:center;">
+      <div class="phone">
+        <div class="phone-screen"><img src="images/espn-login.png" alt="ESPN Bet Login"></div>
+      </div>
+      <div class="phone">
+        <div class="phone-screen"><img src="images/espn-signup-1.png" alt="ESPN Bet Sign Up"></div>
+      </div>
+      <div class="phone">
+        <div class="phone-screen"><img src="images/espn-signup-2.png" alt="ESPN Bet Sign Up Step 2"></div>
+      </div>
+      <div class="phone">
+        <div class="phone-screen"><img src="images/espn-signup-3.png" alt="ESPN Bet Verify Identity"></div>
+      </div>
+    </div>
   </div>
 
   <div class="page-wrap">
 
     <div class="cs-header reveal">
       <div>
-        <div class="cs-eyebrow">ESPN Bet · US Markets</div>
+        <div class="cs-eyebrow">ESPN Bet</div>
         <h1 class="cs-title">Redesigning<br>Sign-Up</h1>
-        <p class="cs-subtitle">When Barstool Sportsbook became ESPN Bet, we used the rebrand as an opportunity to rethink onboarding from the ground up — across all active US states.</p>
+        <p class="cs-subtitle">The sign-up flow had friction points that were costing us users. We had an opportunity to fix them.</p>
       </div>
       <div class="cs-meta">
         <div class="meta-item">
@@ -289,12 +320,16 @@
           <span class="meta-val">Senior Product Design Manager</span>
         </div>
         <div class="meta-item">
+          <span class="meta-label">Team</span>
+          <span class="meta-val">Product Designer, Product Manager, User Researcher, Design Systems, Engineers</span>
+        </div>
+        <div class="meta-item">
           <span class="meta-label">Timeline</span>
-          <span class="meta-val">2 quarters</span>
+          <span class="meta-val">3 months</span>
         </div>
         <div class="meta-item">
           <span class="meta-label">Platform</span>
-          <span class="meta-val">iOS, Android, Web</span>
+          <span class="meta-val">iOS, Android</span>
         </div>
       </div>
     </div>
@@ -302,7 +337,8 @@
     <div class="cs-section reveal">
       <div class="cs-label">The Problem</div>
       <div class="cs-content">
-        <p>The existing sign-up flow had too many steps and too much drop-off. Rather than treating the rebrand as a reskin, we used it as a chance to fix what we knew wasn't working — with research, cross-functional alignment, and a design system built to scale across brands and regions.</p>
+        <p>The ESPN Bet sign-up flow was lengthy — too many steps, too much friction, and measurable drop-off as a result. Users were abandoning the flow before completing registration, which meant lost players before they ever placed a bet.</p>
+        <p>There was a clear opportunity to streamline the experience without cutting corners on compliance. In a regulated space, every step exists for a reason — the challenge was finding where we could reduce friction without compromising what we were legally required to collect.</p>
       </div>
     </div>
 
@@ -316,52 +352,48 @@
         <div class="img-section-label">Sign-Up Flow</div>
         <p class="img-section-desc">Simplified, state-adaptive onboarding with smarter KYC sequencing — ID upload moved to withdrawal, email verification deferred post sign-up.</p>
       </div>
-      <div class="img-placeholder">Add sign-up flow screenshots</div>
-    </div>
-
-    <div class="img-section reveal">
-      
-      <div class="img-section-header">
-        <div class="img-section-label">Design System — Brand Switching</div>
-        <p class="img-section-desc">A colour token system built with the design systems team allowed the UI to switch from Barstool to ESPN Bet without rebuilding components from scratch.</p>
+      <div class="phone-row">
+        <div class="phone">
+          <div class="phone-screen"><img src="images/espn-signup-4.png" alt="ESPN Bet Sign Up 4"></div>
+        </div>
+        <div class="phone">
+          <div class="phone-screen"><img src="images/espn-signup-5.png" alt="ESPN Bet Sign Up 5"></div>
+        </div>
+        <div class="phone">
+          <div class="phone-screen"><img src="images/espn-signup-6.png" alt="ESPN Bet Sign Up 6"></div>
+        </div>
+        <div class="phone">
+          <div class="phone-screen"><img src="images/espn-signup-7.png" alt="ESPN Bet Sign Up 7"></div>
+        </div>
       </div>
-      <div class="img-placeholder light">Add design system / token screenshots</div>
     </div>
 
     <div class="cs-section reveal">
       <div class="cs-label">Outcome</div>
       <div class="cs-content">
-        <p>Launched simultaneously across all active US states at rebrand. [Add metrics when available.]</p>
+        <p>Launched as an MVP in Arizona in April 2025, with a full rollout across all states and brands planned for Q3 2025 — timed for football season.</p>
       </div>
     </div>
-
   </div>
 
   <div style="max-width:1000px;margin:0 auto;padding:0 60px;">
     <div class="stats reveal">
       <div class="stat">
-        <div class="stat-num">All</div>
-        <div class="stat-label">Active US states launched simultaneously at rebrand</div>
+        <div class="stat-num">+25%</div>
+        <div class="stat-label">Lift in sign-up completion — reduced friction led to more users completing onboarding</div>
       </div>
       <div class="stat">
-        <div class="stat-num">[X]</div>
-        <div class="stat-label">Add metric</div>
+        <div class="stat-num">+10%</div>
+        <div class="stat-label">Estimated Gross Gaming Revenue uplift — translating to ~$3.8M annually</div>
       </div>
       <div class="stat">
-        <div class="stat-num">[X]</div>
-        <div class="stat-label">Add metric</div>
+        <div class="stat-num">Q3</div>
+        <div class="stat-label">Full rollout across all states and brands, timed to maximize acquisition during peak betting season</div>
       </div>
     </div>
   </div>
 
   <div class="page-wrap">
-    <a class="next-project reveal" href="quick-deposits.html">
-      <div>
-        <div class="next-label">Next project</div>
-        <div class="next-title">Quick Deposits</div>
-      </div>
-      <div class="next-arrow">→</div>
-    </a>
   </div>
 
   <script>
