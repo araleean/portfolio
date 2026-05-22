@@ -48,12 +48,12 @@ nav.scrolled {
   align-items: center;
 }
 .nav-logo {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 21px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
+  font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--ink);
+  color: #121212;
   text-decoration: none;
 }
 .nav-links {
@@ -62,7 +62,8 @@ nav.scrolled {
   list-style: none;
 }
 .nav-links a {
-  font-size: clamp(15px, 1.5vw, 16px);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
   color: var(--ink);
   text-decoration: none;
   font-weight: 400;
