@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>theScore Bet — Ara An</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="global.css">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --ink: #121212;
+      --muted: #9a9890;
+      --body: #4D4D4D;
+      --line: #e8e8e8;
+      --dark: #1b2238;
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cs-hero {
+      width: 100%;
+      max-width: 1000px;
+      background: var(--dark);
+      overflow: hidden;
+      max-height: 480px;
+    }
+
+    .page-wrap {
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+    .cs-hero img {
+      width: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+
+    /* ── Header ── */
+    .cs-header {
+      padding: 56px 0 48px;
+    }
+
+    .cs-title {
+      font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .cs-subtitle {
+      font-size: 15px;
+      color: #4D4D4D;
+      font-style: italic;
+      font-weight: 400;
+      margin-bottom: 64px;
+      line-height: 1.5;
+    }
+
+    /* ── Summary block ── */
+    .cs-summary {
+      display: grid;
+      grid-template-columns: 160px 1fr 1fr;
+      gap: 0 40px;
+    }
+
+    .summary-col { display: flex; flex-direction: column; gap: 28px; }
+    .summary-item { display: flex; flex-direction: column; }
+
+    .summary-item {}
+    .summary-label {
+      font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .summary-val {
+      font-size: 15px;
+      color: #4D4D4D;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    /* ── Divider ── */
+    .cs-divider {
+      border: none;
+      border-top: 0.5px solid var(--line);
+      margin: 56px 0;
+    }
+
+    /* ── Two-col sections ── */
+    .cs-section {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 0 40px;
+      padding: 48px 0;
+      border-top: 0.5px solid var(--line);
+    }
+    .cs-section:last-child { border-bottom: none; }
+
+    .cs-section-label {
+      font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink);
+      padding-top: 4px;
+      position: sticky;
+      top: 80px;
+      align-self: start;
+    }
+
+    .cs-section-content { display: flex; flex-direction: column; gap: 0; }
+
+    .cs-section-content p {
+      font-size: 15px;
+      line-height: 1.5;
+      color: #4D4D4D;
+      margin-bottom: 0;
+    }
+    .cs-section-content p + p { margin-top: 12px; }
+    .cs-section-content p:last-child { margin-bottom: 0; }
+    .cs-section-content p strong { color: var(--ink); font-weight: 500; }
+
+    .cs-section-content h4 {
+      font-size: 15px;
+      font-weight: 500;
+      color: #121212;
+      margin: 24px 0 4px;
+      padding: 0;
+    }
+    .cs-section-content h4:first-child { margin-top: 0; }
+
+    /* Reset browser defaults */
+    .cs-section-content h4,
+    .cs-section-content p {
+      -webkit-margin-before: 0;
+      -webkit-margin-after: 0;
+    }
+
+    /* ── Stats ── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0 40px;
+      margin-top: 8px;
+    }
+    .stat-num {
+      font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 8px;
+      letter-spacing: 0.04em;
+    }
+    .stat-label {
+      font-size: 15px;
+      color: #4D4D4D;
+      line-height: 1.5;
+    }
+
+    /* ── Images ── */
+    .cs-img {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+      margin: 40px 0;
+    }
+
+    .img-placeholder {
+      width: 100%;
+      aspect-ratio: 16/8;
+      background: var(--dark);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.2);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin: 40px 0;
+    }
+    .img-placeholder.light {
+      background: #f0ede8;
+      color: var(--muted);
+    }
+
+    /* ── Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    html { overflow-x: hidden; }
+
+    @media (max-width: 768px) {
+      .page-wrap { padding: 0 16px !important; }
+      .cs-summary { grid-template-columns: 1fr; gap: 20px; }
+      .cs-section { grid-template-columns: 1fr; gap: 16px; padding: 36px 0; }
+      .cs-section-label { position: static; }
+      .stats { grid-template-columns: 1fr; gap: 24px; }
+      .hero-bleed { margin-left: 0; margin-right: 0; }
+      .hero-bleed .img-placeholder { border-radius: 0; margin-top: 0 !important; margin-bottom: 32px !important; aspect-ratio: 16/8; }
+      .cs-img { width: 100%; max-width: 100%; margin-left: 0; margin-right: 0; border-radius: 0; }
+      .cs-hero img { width: 100%; }
+    }
+    body.vp-mobile {
+      max-width: 375px;
+      margin: 0 auto;
+      box-shadow: 0 0 0 1px var(--line), 0 24px 60px rgba(0,0,0,0.18);
+      min-height: 100vh;
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+    body.vp-mobile .page-wrap { padding: 0 16px !important; }
+    body.vp-mobile .cs-summary { grid-template-columns: 1fr; gap: 20px; }
+    body.vp-mobile .cs-section { grid-template-columns: 1fr; gap: 16px; padding: 36px 0; }
+    body.vp-mobile .cs-section-label { position: static; }
+    body.vp-mobile .stats { grid-template-columns: 1fr; gap: 24px; }
+    body.vp-mobile .hero-bleed { margin-left: 0; margin-right: 0; }
+    body.vp-mobile .hero-bleed .img-placeholder { border-radius: 0; margin-top: 0 !important; margin-bottom: 32px !important; aspect-ratio: 16/8; }
+    body.vp-mobile .cs-img { width: 100%; max-width: 100%; margin-left: 0; margin-right: 0; border-radius: 0; }
+    body.vp-mobile .cs-hero img { border-radius: 0; }
+    html:has(body.vp-mobile) { background: #ebe6db; }
+
+    /* Viewport toggle control */
+    .vp-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      gap: 0;
+      background: var(--text);
+      color: var(--bg);
+      border-radius: 999px;
+      padding: 4px;
+      font-family: monospace;
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+      user-select: none;
+    }
+    .vp-toggle button {
+      appearance: none;
+      background: transparent;
+      color: inherit;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font: inherit;
+      letter-spacing: inherit;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .vp-toggle button:hover { background: rgba(255,255,255,0.08); }
+    .vp-toggle button.on { background: var(--bg); color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <div class="cs-hero">
+    <img src="images/theScore_Bet.png" alt="theScore Bet" style="width: 375px">
+  </div>
+
+  <div class="page-wrap" style="padding: 0px; margin: 0px 16px">
+
+    <!-- Hero placeholder image -->
+    <div class="reveal hero-bleed">
+      <div class="img-placeholder" style="padding: 40px 0px 56px">Hero Image — replace with app screens</div>
+    </div>
+
+    <!-- Header -->
+    <div class="cs-header reveal" style="padding: 2px 0px 40px">
+      <h1 class="cs-title" style="line-height: 1; letter-spacing: 2.1px; padding: 0px; margin: 32px 0px 0px">Launching theScore Bet</h1>
+      <p class="cs-subtitle" style="font-size: 16px; padding: 0px; margin: 0px 0px 40px">Introducing sports betting from your favourite sports app.</p>
+
+      <div class="cs-summary">
+        <div class="summary-col" style="gap: 24px; padding: 0px 0px 8px">
+          <div class="summary-item">
+            <div class="summary-label" style="padding: 0px 0px 4px">Role</div>
+            <div class="summary-val">Product Designer</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-label" style="padding: 0px 0px 4px">Date</div>
+            <div class="summary-val">2019</div>
+          </div>
+        </div>
+        <div class="summary-col">
+          <div class="summary-item">
+            <div class="summary-label">Challenge</div>
+            <div class="summary-val">Sports betting was a new venture for theScore — we needed to design a sportsbook that felt native to an app millions of fans already trusted, while meeting strict regulatory requirements across multiple regions.</div>
+          </div>
+        </div>
+        <div class="summary-col">
+          <div class="summary-item">
+            <div class="summary-label">Solution</div>
+            <div class="summary-val">A fully integrated sportsbook built on theScore's existing design language — cohesive across brands, simple enough for new bettors, and compliant in every market we launched.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- The Opportunity -->
+    <div class="cs-section reveal" style="padding: 40px 0px">
+      <div class="cs-section-label" style="padding: 0px">The Opportunity</div>
+      <div class="cs-section-content">
+        <p>theScore is one of the top mobile sports apps with millions of daily users in North America. The integration of sports betting was a goal for the company, and a want from our users.</p>
+        <p>In an industry where user experience is an afterthought, the team was focused on <strong>delivering the best betting experience for bettors</strong>. We leveraged the design look and feel from theScore to achieve cohesion between brands and maintain familiarity for existing users.</p>
+        <p>In September 2019, we launched theScore Bet in our first operating state (New Jersey) and in Canada (Ontario only) in April 2022.</p>
+      </div>
+    </div>
+
+    <!-- Wireframes -->
+    <div class="reveal">
+      <img class="cs-img" src="images/TSB_Launch_-_Wireframes.png" alt="theScore Bet wireframes" style="padding: 40px 0px; margin: 0px; width: 100%;">
+    </div>
+
+    <!-- How I Worked -->
+    <div class="cs-section reveal" style="padding: 40px 0px; border-top: none">
+      <div class="cs-section-label" style="padding: 0px; letter-spacing: 1.2px">How I Worked</div>
+      <div class="cs-section-content" style="justify-content: flex-start; align-items: stretch">
+        <h4 style="padding: 0px 0px 4px">Getting Creative with Research</h4>
+        <p style="padding: 0px 0px 24px">With limited access to external users due to the sensitivity of the project, we leaned on internal bettors and domain experts to pressure-test our assumptions. It wasn't a perfect setup — but it kept us grounded in real betting behaviour rather than designing in a vacuum.</p>
+
+        <h4 style="padding: 0px 0px 4px">Joining Mid-flight</h4>
+        <p style="padding: 0px 0px 24px">Most of the strategy and early decisions were already in motion when I joined. That meant getting up to speed fast, identifying where design could still move the needle, and finding the highest-leverage moments to push quality forward — even within constraints that were already set.</p>
+
+        <h4 style="padding: 0px 0px 4px">Designing in Parallel with Build</h4>
+        <p style="padding: 0px">The timeline was tight and engineering was already in motion alongside us. Major design polish had to happen post-launch, which meant being ruthless about prioritization — focusing on what would matter most at launch, and building a backlog for everything else.</p>
+      </div>
+    </div>
+
+    <!-- Design Principles -->
+    <div class="cs-section reveal" style="padding: 40px 0px">
+      <div class="cs-section-label" style="padding: 0px">Design Principles</div>
+      <div class="cs-section-content">
+        <h4 style="padding: 0px 0px 4px">Unify the Design</h4>
+        <p style="padding: 0px 0px 24px">We respected our existing design look and feel from theScore app to strive for one cohesive brand and experience to build brand recognition and harmony within our ecosystem.</p>
+
+        <h4 style="padding: 0px 0px 4px">Keep it Simple</h4>
+        <p style="padding: 0px 0px 24px">Sports betting can be complicated. We distilled the experience so that users can efficiently achieve their task and provide a hand when needed.</p>
+
+        <h4 style="padding: 0px 0px 4px">Be Transparent</h4>
+        <p style="padding: 0px">We focused on making users feel secure and in control by being transparent, especially when it comes to personal information, being upfront and setting expectations.</p>
+      </div>
+    </div>
+
+    <!-- Final Designs -->
+    <div class="reveal">
+      <img class="cs-img" src="images/TSB_Launch_-_Hi_Fi.png" alt="theScore Bet final high-fidelity screens" style="padding: 40px 0px; margin: 0px; width: 100%;">
+    </div>
+
+    <!-- The Outcome -->
+    <div class="cs-section reveal" style="padding: 40px 0px; border-top: none">
+      <div class="cs-section-label" style="padding: 0px">The Outcome</div>
+      <div class="cs-section-content">
+        <p style="padding: 0px 0px 24px">theScore Bet launched in New Jersey in Fall 2019 and expanded to Canada (Ontario) in April 2022.</p>
+
+        <h4 style="padding: 0px 0px 4px">32K Sign Ups</h4>
+        <p style="padding: 0px 0px 24px">Sign ups within the first 24 hours of our launch in Ontario.</p>
+
+        <h4 style="padding: 0px 0px 4px">4.7 Stars on the App Store</h4>
+        <p style="padding: 0px 0px 24px">"Overall, the ScoreBet is a very easy and user friendly app to use."</p>
+
+        <h4 style="padding: 0px 0px 4px">4.4 Stars on the Play Store</h4>
+        <p style="padding: 0px 0px 24px">"I can't say enough how much I'm loving this app and I got 4 sports bet apps total."</p>
+      </div>
+    </div>
+
+    <!-- Learnings -->
+    <div class="cs-section reveal" style="padding: 40px 0px 40px">
+      <div class="cs-section-label" style="padding: 0px">Learnings</div>
+      <div class="cs-section-content">
+        <h4 style="padding: 0px 0px 4px">Tech Restrictions</h4>
+        <p style="padding: 0px 0px 24px">Sometimes the ideal experience or designs weren't possible due to technical constraints. Not only do we work with our internal devs, but we also work with an external team that powers our odds, and then another that provides game data. For the launch, it was crucial that we worked closely with our engineers to land on solutions that were feasible on all sides.</p>
+
+        <h4 style="padding: 0px 0px 4px">Edge Cases</h4>
+        <p style="padding: 0px 0px 24px">There were a ton of edge cases we had to plan for — it felt like our edge cases needed edge cases, especially when it came to geolocation. What happens if I'm placing a bet in a moving vehicle while crossing the New Jersey state line? Or what happens if I'm in the middle of betting and the odds change? We had to think through every possible scenario. And then do it again for every new state launch.</p>
+
+        <h4 style="padding: 0px 0px 4px">Strict Regulations</h4>
+        <p style="padding: 0px 0px 24px">Since the gaming industry was new to all of us, we worked closely with the legal team to understand the constraints. A lot of the times, they couldn't give us a firm answer right away. As a design team, we needed to be flexible and pivot quickly if needed.</p>
+
+        <h4 style="padding: 0px 0px 4px">Responsible Gambling</h4>
+        <p style="padding: 0px 0px 24px">We always want to ensure we're prioritizing the user's safety. As much as gambling can be fun, it can also be addictive. We wanted to be thoughtful with our design choices, so we balanced the business and user needs throughout.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+  <script src="password.js"></script>
+  <script src="components.js"></script>
+
+</body>
+</html>
