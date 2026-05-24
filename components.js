@@ -21,7 +21,7 @@ const FOOTER_HTML = `
           <a class="footer-link" href="mailto:araleean@gmail.com">araleean@gmail.com</a>
           <a class="footer-link" href="https://www.linkedin.com/in/araan/" target="_blank">LinkedIn</a>
         </div>
-        <div class="footer-copy">© 2025</div>
+        <div class="footer-copy">© 2026</div>
       </div>
     </div>
   </footer>
@@ -33,8 +33,22 @@ document.body.insertAdjacentHTML('afterbegin', NAV_HTML);
 // Inject footer at end of body
 document.body.insertAdjacentHTML('beforeend', FOOTER_HTML);
 
-// Sticky nav scroll behavior
+// Nav behaviour — hide on scroll down, show on scroll up
 const nav = document.getElementById('nav');
+let lastScrollY = window.scrollY;
+
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 40);
+  const currentScrollY = window.scrollY;
+
+  // Scrolled state
+  nav.classList.toggle('scrolled', currentScrollY > 40);
+
+  // Hide/show
+  if (currentScrollY > lastScrollY && currentScrollY > 80) {
+    nav.classList.add('nav-hidden');
+  } else {
+    nav.classList.remove('nav-hidden');
+  }
+
+  lastScrollY = currentScrollY;
 });

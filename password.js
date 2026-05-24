@@ -1,7 +1,7 @@
 // ── Case Study Password Protection ──
 // Password is checked once per session, then stored
 
-const PASSWORD = 'toronto';
+const PASSWORD = 'icecream';
 const SESSION_KEY = 'portfolio_unlocked';
 
 function isUnlocked() {

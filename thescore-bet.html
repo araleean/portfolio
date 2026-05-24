@@ -34,26 +34,22 @@
 
     .cs-hero {
       width: 100%;
-      max-width: 1000px;
       background: var(--dark);
-      overflow: hidden;
-      max-height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 64px 60px;
+      min-height: 320px;
+    }
+    .cs-hero img { max-width: 800px; width: 100%; object-fit: contain; }
+    .cs-hero-placeholder {
+      max-width: 800px; width: 100%; aspect-ratio: 16/7;
+      border: 1px dashed rgba(255,255,255,0.15); border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.2); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
     }
 
-    .page-wrap {
-      width: 100%;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 60px;
-    }
-    .cs-hero img {
-      width: 100%;
-      object-fit: cover;
-      object-position: top;
-      display: block;
-    }
-
-    /* ── Header ── */
+    .page-wrap { max-width: 1000px; margin: 0 auto; padding: 0 60px; }
     .cs-header {
       padding: 56px 0 48px;
     }
@@ -290,15 +286,10 @@
 
   <!-- Hero -->
   <div class="cs-hero">
-    <img src="images/theScore_Bet.png" alt="theScore Bet" style="width: 375px">
+    <div class="cs-hero-placeholder">Add hero screenshot</div>
   </div>
 
-  <div class="page-wrap" style="padding: 0px; margin: 0px 16px">
-
-    <!-- Hero placeholder image -->
-    <div class="reveal hero-bleed">
-      <div class="img-placeholder" style="padding: 40px 0px 56px">Hero Image — replace with app screens</div>
-    </div>
+  <div class="page-wrap">
 
     <!-- Header -->
     <div class="cs-header reveal" style="padding: 2px 0px 40px">
@@ -338,12 +329,8 @@
         <p>theScore is one of the top mobile sports apps with millions of daily users in North America. The integration of sports betting was a goal for the company, and a want from our users.</p>
         <p>In an industry where user experience is an afterthought, the team was focused on <strong>delivering the best betting experience for bettors</strong>. We leveraged the design look and feel from theScore to achieve cohesion between brands and maintain familiarity for existing users.</p>
         <p>In September 2019, we launched theScore Bet in our first operating state (New Jersey) and in Canada (Ontario only) in April 2022.</p>
+        <img class="cs-img" src="images/TSB_Launch_-_Wireframes.png" alt="theScore Bet wireframes" style="margin: 32px 0 0; width: 100%;">
       </div>
-    </div>
-
-    <!-- Wireframes -->
-    <div class="reveal">
-      <img class="cs-img" src="images/TSB_Launch_-_Wireframes.png" alt="theScore Bet wireframes" style="padding: 40px 0px; margin: 0px; width: 100%;">
     </div>
 
     <!-- How I Worked -->
@@ -361,7 +348,6 @@
       </div>
     </div>
 
-    <!-- Design Principles -->
     <div class="cs-section reveal" style="padding: 40px 0px">
       <div class="cs-section-label" style="padding: 0px">Design Principles</div>
       <div class="cs-section-content">
@@ -373,12 +359,8 @@
 
         <h4 style="padding: 0px 0px 4px">Be Transparent</h4>
         <p style="padding: 0px">We focused on making users feel secure and in control by being transparent, especially when it comes to personal information, being upfront and setting expectations.</p>
+        <img class="cs-img" src="images/TSB_Launch_-_Hi_Fi.png" alt="theScore Bet final high-fidelity screens" style="margin: 32px 0 0; width: 100%;">
       </div>
-    </div>
-
-    <!-- Final Designs -->
-    <div class="reveal">
-      <img class="cs-img" src="images/TSB_Launch_-_Hi_Fi.png" alt="theScore Bet final high-fidelity screens" style="padding: 40px 0px; margin: 0px; width: 100%;">
     </div>
 
     <!-- The Outcome -->

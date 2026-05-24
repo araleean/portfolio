@@ -7,9 +7,9 @@
 
 :root {
   --bg: #ffffff;
-  --ink: #141410;
+  --ink: #121212;
   --muted: #9a9890;
-  --body: #6a6860;
+  --body: #4D4D4D;
   --line: #e8e8e8;
   --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -33,11 +33,14 @@ nav {
   top: 0;
   z-index: 100;
   background: #ffffff;
-  transition: background 0.3s, border-color 0.3s;
+  transition: background 0.3s, border-color 0.3s, transform 0.3s var(--ease);
 }
 nav.scrolled {
   background: #f7f7f7;
   border-bottom: 0.5px solid var(--line);
+}
+nav.nav-hidden {
+  transform: translateY(-100%);
 }
 .nav-inner {
   max-width: 1000px;
@@ -64,12 +67,13 @@ nav.scrolled {
 .nav-links a {
   font-family: 'DM Sans', sans-serif;
   font-size: 15px;
-  color: var(--ink);
+  color: #4D4D4D;
   text-decoration: none;
   font-weight: 400;
   transition: text-decoration 0.2s;
 }
 .nav-links a:hover {
+  color: #121212;
   text-decoration: underline;
   text-underline-offset: 4px;
 }
@@ -77,12 +81,13 @@ nav.scrolled {
 /* ── Footer ── */
 footer {
   width: 100%;
-  background: #f7f7f7;
+  background: #ffffff;
+  border-top: 0.5px solid var(--line);
 }
 .footer-inner {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 48px 60px;
+  padding: 32px 60px;
 }
 .footer-bottom {
   display: flex;
@@ -94,8 +99,8 @@ footer {
   gap: 24px;
 }
 .footer-link {
-  font-size: clamp(15px, 1.5vw, 16px);
-  color: var(--ink);
+  font-size: 15px;
+  color: #4D4D4D;
   text-decoration: none;
   font-weight: 400;
 }
@@ -104,8 +109,8 @@ footer {
   text-underline-offset: 4px;
 }
 .footer-copy {
-  font-size: clamp(15px, 1.5vw, 16px);
-  color: var(--muted);
+  font-size: 15px;
+  color: #A4A4A4;
   font-weight: 400;
 }
 

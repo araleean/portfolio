@@ -10,22 +10,22 @@
   <link rel="stylesheet" href="global.css">
   <style>
     :root {
-      --bg: #ffffff;
-      --ink: #141410;
+      --ink: #121212;
       --muted: #9a9890;
-      --body: #6a6860;
+      --body: #4D4D4D;
       --line: #e8e8e8;
       --dark: #1b2238;
       --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
+    html { overflow-x: hidden; }
     body {
-      background: var(--bg);
+      background: #ffffff;
       color: var(--ink);
       font-family: 'DM Sans', sans-serif;
       font-weight: 400;
-      font-size: clamp(15px, 1.5vw, 16px);
-      line-height: 1.85;
+      font-size: 15px;
+      line-height: 1.5;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -33,162 +33,79 @@
 
     /* ── Hero ── */
     .cs-hero {
-      width: 100%;
-      background: var(--dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 64px 60px;
-      min-height: 360px;
+      width: 100%; background: var(--dark);
+      display: flex; align-items: center; justify-content: center;
+      padding: 64px 60px; min-height: 320px;
     }
     .cs-hero-placeholder {
-      max-width: 800px;
-      width: 100%;
-      aspect-ratio: 16/7;
-      border: 1px dashed rgba(255,255,255,0.15);
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255,255,255,0.2);
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      max-width: 800px; width: 100%; aspect-ratio: 16/7;
+      border: 1px dashed rgba(255,255,255,0.15); border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.2); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
     }
-    .cs-hero img { max-width: 800px; width: 100%; object-fit: contain; }
 
     /* ── Header ── */
-    .cs-header {
-      padding: 64px 0 48px;
-      display: grid;
-      grid-template-columns: 1fr 240px;
-      gap: 60px;
-      align-items: end;
-    }
-    .cs-eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 400;
-      margin-bottom: 16px;
-    }
+    .cs-header { padding: 2px 0px 40px; border-bottom: 0.5px solid var(--line); }
     .cs-title {
-      font-size: clamp(32px, 5vw, 56px);
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      line-height: 0.95;
-      margin-bottom: 20px;
+      font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
+      font-size: clamp(32px, 5vw, 52px); font-weight: 700;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      line-height: 1; color: var(--ink); margin: 32px 0px 0px;
     }
     .cs-subtitle {
-      font-size: clamp(15px, 1.5vw, 16px);
-      line-height: 1.85;
-      color: var(--body);
-      max-width: 480px;
+      font-size: 15px; color: var(--body); font-style: italic;
+      font-weight: 400; margin: 0px 0px 40px; line-height: 1.5;
     }
-    .cs-meta { display: flex; flex-direction: column; gap: 20px; padding-bottom: 4px; }
-    .meta-item { display: flex; flex-direction: column; gap: 3px; }
-    .meta-label {
-      font-size: 10px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 400;
+    .cs-summary { display: grid; grid-template-columns: 160px 1fr 1fr; gap: 0 40px; }
+    .summary-col { display: flex; flex-direction: column; gap: 28px; }
+    .summary-item { display: flex; flex-direction: column; }
+    .summary-label {
+      font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
+      font-size: 20px; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--ink); margin-bottom: 4px;
     }
-    .meta-val { font-size: clamp(15px, 1.5vw, 16px); color: var(--ink); font-weight: 400; }
+    .summary-val { font-size: 15px; color: var(--body); font-weight: 400; line-height: 1.5; }
 
     /* ── Sections ── */
     .cs-section {
-      padding: 64px 0;
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 56px;
-      align-items: start;
+      display: grid; grid-template-columns: 160px 1fr; gap: 0 40px;
+      padding: 48px 0; border-bottom: 0.5px solid var(--line);
     }
-    .cs-label {
-      font-size: 10px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 400;
-      padding-top: 4px;
-      position: sticky;
-      top: 100px;
+    .cs-section:last-child { border-bottom: none; }
+    .cs-section-label {
+      font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
+      font-size: 20px; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--ink);
+      padding-top: 4px; position: sticky; top: 80px; align-self: start;
     }
-    .cs-content { display: flex; flex-direction: column; gap: 20px; }
-    .cs-content p { font-size: clamp(15px, 1.5vw, 16px); line-height: 1.85; color: var(--body); }
-    .cs-content p strong { color: var(--ink); font-weight: 500; }
+    .cs-section-content { display: flex; flex-direction: column; }
+    .cs-section-content p { font-size: 15px; line-height: 1.5; color: var(--body); margin-bottom: 0; }
+    .cs-section-content p + p { margin-top: 12px; }
+    .cs-section-content p strong { color: var(--ink); font-weight: 500; }
+    .cs-section-content h4 {
+      font-size: 15px; font-weight: 500; color: var(--ink);
+      margin: 24px 0 4px; padding: 0;
+      -webkit-margin-before: 0; -webkit-margin-after: 0;
+    }
+    .cs-section-content h4:first-child { margin-top: 0; }
 
-    /* ── Image sections ── */
-    .img-section {
-      padding: 56px 0;
-    }
-    .img-section-header {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 56px;
-      align-items: start;
-      margin-bottom: 32px;
-    }
-    .img-section-label {
-      font-size: 10px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 400;
-      padding-top: 4px;
-    }
-    .img-section-desc {
-      font-size: clamp(15px, 1.5vw, 16px);
-      line-height: 1.85;
-      color: var(--body);
-    }
+    /* ── Images ── */
     .img-placeholder {
-      width: 100%;
-      aspect-ratio: 16/8;
-      background: var(--dark);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255,255,255,0.2);
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      width: 100%; aspect-ratio: 16/8; background: var(--dark); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.2); font-size: 11px; letter-spacing: 0.1em;
+      text-transform: uppercase; margin: 32px 0;
     }
-    .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .img-grid-2 img { width: 100%; object-fit: contain; border-radius: 4px; display: block; }
-
-    /* ── Next project ── */
-    .next-project {
-      padding: 72px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-    .next-project:hover { background: #f7f7f7; margin: 0 -60px; padding: 72px 60px; }
-    .next-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
-    .next-title { font-size: clamp(22px, 3vw, 32px); font-weight: 500; letter-spacing: -0.02em; color: var(--ink); }
-    .next-arrow { font-size: 28px; color: var(--line); transition: color 0.2s, transform 0.3s; }
-    .next-project:hover .next-arrow { color: var(--ink); transform: translateX(8px); }
 
     /* ── Reveal ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
-    }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    @media (max-width: 900px) {
-      .page-wrap { padding: 0 24px; }
-      .cs-header { grid-template-columns: 1fr; gap: 32px; padding: 48px 0 40px; }
-      .cs-section { grid-template-columns: 1fr; gap: 20px; padding: 48px 0; }
-      .cs-label { position: static; }
-      .img-grid-2 { grid-template-columns: 1fr; }
-      .cs-hero { padding: 40px 24px; }
+    @media (max-width: 768px) {
+      .page-wrap { padding: 0 16px; }
+      .cs-summary { grid-template-columns: 1fr; gap: 20px; }
+      .cs-section { grid-template-columns: 1fr; gap: 16px; padding: 36px 0; }
+      .cs-section-label { position: static; }
     }
   </style>
 </head>
@@ -201,68 +118,74 @@
   <div class="page-wrap">
 
     <div class="cs-header reveal">
-      <div>
-        <div class="cs-eyebrow">theScore Bet · Feature</div>
-        <h1 class="cs-title">Refer<br>a Friend</h1>
-        <p class="cs-subtitle">Referral programs are a proven growth lever — but in sports betting, you can't just copy what works in consumer apps. We built one from scratch, with regulation and trust at the centre.</p>
-      </div>
-      <div class="cs-meta">
-        <div class="meta-item">
-          <span class="meta-label">Role</span>
-          <span class="meta-val">Senior Product Design Manager</span>
+      <h1 class="cs-title">Refer a Friend</h1>
+      <p class="cs-subtitle">Referral programs are a proven growth lever — but in sports betting, you can't just copy what works in consumer apps.</p>
+      <div class="cs-summary">
+        <div class="summary-col">
+          <div class="summary-item">
+            <div class="summary-label">Role</div>
+            <div class="summary-val">Senior Product Design Manager</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-label">Platform</div>
+            <div class="summary-val">iOS, Android</div>
+          </div>
         </div>
-        <div class="meta-item">
-          <span class="meta-label">Platform</span>
-          <span class="meta-val">iOS, Android</span>
+        <div class="summary-col">
+          <div class="summary-item">
+            <div class="summary-label">Challenge</div>
+            <div class="summary-val">theScore Bet had no referral program. Building one meant navigating tight regulatory constraints that govern promotions in gambling — varying by state and province.</div>
+          </div>
+        </div>
+        <div class="summary-col">
+          <div class="summary-item">
+            <div class="summary-label">Solution</div>
+            <div class="summary-val">A referral flow built from scratch — native to the app, rewarding to users, and compliant across all markets. Validated with user testing before committing to build.</div>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="cs-section reveal">
-      <div class="cs-label">The Opportunity</div>
-      <div class="cs-content">
+      <div class="cs-section-label">The Opportunity</div>
+      <div class="cs-section-content">
         <p>theScore Bet didn't have a referral program. From a business and growth perspective, it was an obvious gap — referrals are one of the highest-converting acquisition channels, and sports betting is inherently social. Fans watch together, talk about bets, and share tips.</p>
         <p>The challenge was building something that felt <strong>native to the app and rewarding to users</strong>, while staying within the tight regulatory constraints that govern promotions in gambling — which vary by state and province.</p>
       </div>
     </div>
 
     <div class="cs-section reveal">
-      <div class="cs-label">How I Set It Up</div>
-      <div class="cs-content">
+      <div class="cs-section-label">How I Set It Up</div>
+      <div class="cs-section-content">
         <p>I worked with the designer to structure a process that got the right people aligned before any concepts were explored. We ran cross-functional workshops with product, legal, marketing, and engineering to map the full referral journey — from the moment a user decides to share, to when their friend makes their first deposit.</p>
         <p>We then ran user testing on early concepts to validate the mechanic before committing to build. In a regulated space, getting the framing and language right matters as much as the design.</p>
       </div>
     </div>
 
-  </div>
-
-  <div class="page-wrap">
-
-    <div class="img-section reveal">
-      <div class="img-section-header">
-        <div class="img-section-label">The Design</div>
-        <p class="img-section-desc">A referral flow that felt rewarding without feeling predatory — clear on the offer, transparent on the terms, and easy to share.</p>
+    <div class="cs-section reveal">
+      <div class="cs-section-label">The Design</div>
+      <div class="cs-section-content">
+        <p>A referral flow that felt rewarding without feeling predatory — clear on the offer, transparent on the terms, and easy to share.</p>
+        <div class="img-placeholder">Add design screenshots</div>
       </div>
-      <div class="img-placeholder">Add design screenshots</div>
     </div>
 
     <div class="cs-section reveal">
-      <div class="cs-label">Outcome</div>
-      <div class="cs-content">
-        <p>Launched across iOS and Android ahead of my parental leave. Results were still early at the time of writing.</p>
+      <div class="cs-section-label">The Outcome</div>
+      <div class="cs-section-content">
+        <p style="padding: 0px 0px 24px">Launched across iOS and Android ahead of my parental leave. Results were still early at the time of writing.</p>
       </div>
     </div>
 
   </div>
 
-  <script src="password.js"></script>
-  <script src="components.js"></script>
   <script>
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
-
+  <script src="password.js"></script>
+  <script src="components.js"></script>
 </body>
 </html>
