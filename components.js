@@ -1,3 +1,6 @@
+// ── Page fade in ──
+document.addEventListener('DOMContentLoaded', () => document.body.classList.add('loaded'));
+
 // ── Shared Nav & Footer ──
 // Edit this file to update nav/footer across all pages
 

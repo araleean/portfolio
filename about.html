@@ -7,34 +7,137 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="global.css">
   <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
     :root {
-      --ink: #121212;
+      --bg: #ffffff;
+      --ink: #252525;
       --muted: #9a9890;
       --body: #4D4D4D;
       --line: #e8e8e8;
       --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --sidebar-width: 280px;
+      --gap: 60px;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    html { scroll-behavior: smooth; overflow-x: hidden; }
 
     body {
+      background: var(--bg);
+      color: var(--ink);
       font-family: 'DM Sans', sans-serif;
       font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      opacity: 0;
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    }
+    body.loaded { opacity: 1; transform: translateY(0); }
+    body { transform: translateY(12px); }
+
+    /* ── Layout ── */
+    .layout {
+      display: flex;
+      min-height: 100vh;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      width: var(--sidebar-width);
+      flex-shrink: 0;
+      position: fixed;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 56px 0 48px;
+      background: var(--bg);
+      z-index: 10;
+    }
+
+    .sidebar-top { display: flex; flex-direction: column; gap: 24px; }
+
+    .sidebar-logo {
+      font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .sidebar-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .sidebar-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+    }
+
+    .sidebar-intro {
       font-size: 15px;
       line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-      color: var(--ink);
-      background: #ffffff;
+      color: var(--body);
+      font-weight: 400;
+      max-width: 230px;
+      margin-top: -12px;
     }
 
-    .page {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 56px 60px 120px;
+    .sidebar-divider {
+      border: none;
+      border-top: 0.5px solid var(--line);
+      margin: 4px 0;
     }
 
-    /* Sections */
-    .cv-section { margin-bottom: 56px; }
+    .sidebar-links {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .sidebar-links a {
+      font-size: 14px;
+      color: #4D4D4D;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      display: block;
+      padding: 2px 0;
+      transition: color 0.2s;
+      font-weight: 500;
+    }
+    .sidebar-links a:hover { color: #252525; }
+
+    .sidebar-bottom { display: flex; flex-direction: column; gap: 6px; }
+    .sidebar-copy { font-size: 13px; color: #A4A4A4; letter-spacing: 0.04em; margin-top: 8px; }
+
+    /* ── Main ── */
+    .main {
+      margin-left: calc(var(--sidebar-width) + var(--gap) - 4px);
+      flex: 1;
+      padding: 56px 0 80px;
+      max-width: 660px;
+    }
+
+    /* ── CV Sections ── */
+    .cv-section { margin-bottom: 48px; }
+
     .cv-section-title {
       font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
       font-size: 20px;
@@ -42,18 +145,17 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--ink);
-      margin-bottom: 0;
+      margin-bottom: 20px;
     }
 
-    /* Entries */
     .entry {
       display: grid;
-      grid-template-columns: 160px 1fr;
-      gap: 0 40px;
+      grid-template-columns: 100px 1fr;
+      gap: 0 32px;
       padding: 12px 0;
       align-items: start;
     }
-    .entry:first-of-type { margin-top: 20px; }
+
     .entry-date {
       font-size: 15px;
       color: var(--muted);
@@ -61,12 +163,14 @@
       white-space: nowrap;
       padding-top: 2px;
     }
+
     .entry-title {
       font-size: 15px;
       font-weight: 500;
       color: var(--ink);
       margin-bottom: 4px;
     }
+
     .entry-desc {
       font-size: 15px;
       line-height: 1.5;
@@ -78,17 +182,12 @@
     /* Contact */
     .contact-row {
       display: grid;
-      grid-template-columns: 160px 1fr;
-      gap: 0 40px;
+      grid-template-columns: 100px 1fr;
+      gap: 0 32px;
       padding: 10px 0;
       align-items: center;
     }
-    .contact-row:first-of-type { margin-top: 20px; }
-    .contact-key {
-      font-size: 15px;
-      color: var(--muted);
-      font-weight: 400;
-    }
+    .contact-key { font-size: 15px; color: var(--muted); font-weight: 400; }
     .contact-val {
       font-size: 15px;
       color: var(--ink);
@@ -96,28 +195,67 @@
       font-weight: 400;
       transition: color 0.2s;
     }
-    .contact-val:hover {
-      text-decoration: underline;
-      text-underline-offset: 4px;
-    }
+    .contact-val:hover { text-decoration: underline; text-underline-offset: 4px; }
 
-    @media (max-width: 900px) {
-      .page { padding: 40px 24px 80px; }
-      .entry { grid-template-columns: 80px 1fr; gap: 32px; }
-      .contact-row { grid-template-columns: 80px 1fr; gap: 32px; }
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      .layout { padding: 0 24px; flex-direction: column; }
+      .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 40px 0 28px;
+      }
+      .sidebar-intro { max-width: 100%; margin-top: 0; }
+      .sidebar-copy { display: none; }
+      .main { margin-left: 0; padding: 32px 0 60px; max-width: 100%; }
+      .entry { grid-template-columns: 80px 1fr; gap: 16px; }
+      .contact-row { grid-template-columns: 80px 1fr; gap: 16px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="page">
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <a class="sidebar-logo" href="index.html">Ara An</a>
+
+      <div class="sidebar-avatar">
+        <img src="ara-profile-1.png" alt="Ara An">
+      </div>
+
+      <p class="sidebar-intro">
+        Product design leader based in Toronto. I've launched products, scaled teams and sweat the details in between.<br><br>
+        Previously at theScore Bet, Kinetic Commerce and Nascent Digital.
+      </p>
+
+      <hr class="sidebar-divider">
+
+      <div class="sidebar-links">
+        <a href="index.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="mailto:araleean@gmail.com">Contact</a>
+        <a href="https://www.linkedin.com/in/araan/" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="sidebar-bottom">
+
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
 
     <div class="cv-section">
       <div class="cv-section-title">Experience</div>
 
       <div class="entry">
         <div class="entry-date">2024 — 2026</div>
-        <div class="entry-right">
+        <div>
           <div class="entry-title">Senior Manager, Product Design at theScore</div>
           <p class="entry-desc">I managed 7–9 product designers across the Player Account Management (accounts, payments, promotions, and responsible gaming) and Casino teams. During this time, we navigated the ESPN Bet partnership — migrating from Barstool Sportsbook to ESPN Bet in the US while keeping theScore Bet running in Canada. Close collaboration with product, engineering, and design systems was what made the consistency and scalability possible.</p>
         </div>
@@ -125,7 +263,7 @@
 
       <div class="entry">
         <div class="entry-date">2022 — 2024</div>
-        <div class="entry-right">
+        <div>
           <div class="entry-title">Manager, Product Design at theScore</div>
           <p class="entry-desc">I managed 10–13 product designers across the Sportsbook (theScore Bet and Barstool Sportsbook) and Media teams. We were acquired by PENN Entertainment — navigating the org change while keeping the team focused and motivated was a defining part of my role. I also helped scale the broader UX org to 50+ by building out dedicated teams in research, design systems, and operations.</p>
         </div>
@@ -133,7 +271,7 @@
 
       <div class="entry">
         <div class="entry-date">2020 — 2022</div>
-        <div class="entry-right">
+        <div>
           <div class="entry-title">Senior Product Designer at theScore</div>
           <p class="entry-desc">I designed and launched theScore Bet web — expanding the product beyond mobile for the first time. I also rebuilt the design system in Figma, componentizing it and continuing to maintain it so both theScore and theScore Bet felt like one product.</p>
         </div>
@@ -141,7 +279,7 @@
 
       <div class="entry">
         <div class="entry-date">2019 — 2020</div>
-        <div class="entry-right">
+        <div>
           <div class="entry-title">Product Designer at theScore</div>
           <p class="entry-desc">I helped launch theScore Bet — a new sportsbook app built within theScore — on iOS and Android across the US and Canada. A 0-to-1 product launch from concept through to ship.</p>
         </div>
@@ -149,7 +287,7 @@
 
       <div class="entry">
         <div class="entry-date">2018 — 2019</div>
-        <div class="entry-right">
+        <div>
           <div class="entry-title">Product Designer at Kinetic Commerce</div>
           <p class="entry-desc">I worked on the Associate App, part of Kinetic Commerce's omnichannel retail platform, helping associates deliver better service and drive sales on mobile and tablet.</p>
         </div>
@@ -157,7 +295,7 @@
 
       <div class="entry">
         <div class="entry-date">2017 — 2018</div>
-        <div class="entry-right">
+        <div>
           <div class="entry-title">Product Designer at Nascent Digital</div>
           <p class="entry-desc">As the product designer on the TELUS Digital Accessories team, I designed an end-to-end e-commerce experience and launched their first cart.</p>
         </div>
@@ -169,21 +307,21 @@
 
       <div class="entry">
         <div class="entry-date">2016</div>
-        <div class="entry-right">
+        <div>
           <div class="entry-title">UX Design Bootcamp at BrainStation</div>
         </div>
       </div>
 
       <div class="entry">
         <div class="entry-date">2013 — 2014</div>
-        <div class="entry-right">
+        <div>
           <div class="entry-title">Corporate Communications & PR at Centennial College</div>
         </div>
       </div>
 
       <div class="entry">
         <div class="entry-date">2009 — 2013</div>
-        <div class="entry-right">
+        <div>
           <div class="entry-title">Communications at Wilfrid Laurier University</div>
         </div>
       </div>
@@ -201,9 +339,24 @@
       </div>
     </div>
 
-  </div>
+  </main>
 
-  <script src="components.js"></script>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => document.body.classList.add('loaded'));
+</script>
+<script>
+  // Position sidebar to match centered layout
+  function positionSidebar() {
+    const layout = document.querySelector('.layout');
+    const sidebar = document.querySelector('.sidebar');
+    const rect = layout.getBoundingClientRect();
+    sidebar.style.left = rect.left + 'px';
+  }
+  positionSidebar();
+  window.addEventListener('resize', positionSidebar);
+</script>
 
 </body>
 </html>

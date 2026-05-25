@@ -11,7 +11,7 @@
   <style>
     :root {
       --bg: #ffffff;
-      --ink: #121212;
+      --ink: #252525;
       --muted: #9a9890;
       --body: #4D4D4D;
       --line: #e8e8e8;
@@ -27,6 +27,8 @@
       font-size: 15px;
       line-height: 1.75;
       -webkit-font-smoothing: antialiased;
+      opacity: 0;
+      transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -146,7 +148,7 @@
     .cs-section-content h4 {
       font-size: 15px;
       font-weight: 500;
-      color: #121212;
+      color: #252525;
       margin: 24px 0 4px;
       padding: 0;
     }
