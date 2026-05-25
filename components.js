@@ -10,7 +10,6 @@ const NAV_HTML = `
       <a class="nav-logo" href="/index.html">Ara An</a>
       <ul class="nav-links">
         <li><a href="/index.html">Work</a></li>
-        <li><a href="/about.html">About</a></li>
         <li><a href="mailto:araleean@gmail.com">Contact</a></li>
         <li><a href="https://www.linkedin.com/in/araan/" target="_blank">LinkedIn</a></li>
       </ul>
@@ -35,7 +34,7 @@ const FOOTER_HTML = `
 // Inject nav before body content
 document.body.insertAdjacentHTML('afterbegin', NAV_HTML);
 
-// Nav behaviour — sticky always, hide/show only on mobile
+// Nav behaviour — hide on scroll down, show on scroll up
 const nav = document.getElementById('nav');
 let lastScrollY = window.scrollY;
 
@@ -45,13 +44,9 @@ window.addEventListener('scroll', () => {
   // Scrolled state
   nav.classList.toggle('scrolled', currentScrollY > 40);
 
-  // Hide/show on mobile only
-  if (window.innerWidth <= 768) {
-    if (currentScrollY > lastScrollY && currentScrollY > 80) {
-      nav.classList.add('nav-hidden');
-    } else {
-      nav.classList.remove('nav-hidden');
-    }
+  // Hide/show
+  if (currentScrollY > lastScrollY && currentScrollY > 80) {
+    nav.classList.add('nav-hidden');
   } else {
     nav.classList.remove('nav-hidden');
   }
