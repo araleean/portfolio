@@ -55,7 +55,7 @@ nav.nav-hidden {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 60px;
-  height: 48px;
+  height: 56px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -71,7 +71,7 @@ nav.nav-hidden {
 }
 .nav-links {
   display: flex;
-  gap: 36px;
+  gap: 24px;
   list-style: none;
 }
 .nav-links a {
