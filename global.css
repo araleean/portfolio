@@ -31,17 +31,18 @@ body {
   -webkit-font-smoothing: antialiased;
   opacity: 0;
   transition: opacity 0.7s var(--ease);
+  padding-top: 56px;
 }
 body.loaded { opacity: 1; }
 
 /* ── Nav ── */
 nav {
   width: 100%;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 100;
   background: #ffffff;
-  transition: background 0.3s, border-color 0.3s, transform 0.3s var(--ease);
+  transition: background 0.3s, border-color 0.3s;
 }
 nav.scrolled {
   background: rgba(255, 255, 255, 0.95);
