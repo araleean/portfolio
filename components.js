@@ -11,6 +11,8 @@ const NAV_HTML = `
       <ul class="nav-links">
         <li><a href="/index.html">Work</a></li>
         <li><a href="/about.html">About</a></li>
+        <li><a href="mailto:araleean@gmail.com">Contact</a></li>
+        <li><a href="https://www.linkedin.com/in/araan/" target="_blank">LinkedIn</a></li>
       </ul>
     </div>
   </nav>
@@ -32,9 +34,6 @@ const FOOTER_HTML = `
 
 // Inject nav before body content
 document.body.insertAdjacentHTML('afterbegin', NAV_HTML);
-
-// Inject footer at end of body
-document.body.insertAdjacentHTML('beforeend', FOOTER_HTML);
 
 // Nav behaviour — hide on scroll down, show on scroll up
 const nav = document.getElementById('nav');
