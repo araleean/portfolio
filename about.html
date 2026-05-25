@@ -110,19 +110,18 @@
     .sidebar-links {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
     }
     .sidebar-links a {
       font-size: 14px;
       color: #4D4D4D;
-      text-decoration: underline;
-      text-underline-offset: 4px;
+      text-decoration: none;
       display: block;
       padding: 2px 0;
       transition: color 0.2s;
       font-weight: 500;
     }
-    .sidebar-links a:hover { color: #252525; }
+    .sidebar-links a:hover { color: #252525; text-decoration: underline; text-underline-offset: 4px; }
 
     .sidebar-bottom { display: flex; flex-direction: column; gap: 6px; }
     .sidebar-copy { font-size: 13px; color: #A4A4A4; letter-spacing: 0.04em; margin-top: 8px; }
@@ -210,7 +209,7 @@
       .sidebar-intro { max-width: 100%; margin-top: 0; }
       .sidebar-copy { display: none; }
       .main { margin-left: 0; padding: 32px 0 60px; max-width: 100%; }
-      .entry { grid-template-columns: 80px 1fr; gap: 16px; }
+      .entry { grid-template-columns: 80px 1fr; gap: 24px; }
       .contact-row { grid-template-columns: 80px 1fr; gap: 16px; }
     }
   </style>

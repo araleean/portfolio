@@ -133,19 +133,18 @@
     .sidebar-links {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
     }
     .sidebar-links a {
       font-size: 14px;
       color: #4D4D4D;
-      text-decoration: underline;
-      text-underline-offset: 4px;
+      text-decoration: none;
       display: block;
       padding: 2px 0;
       transition: color 0.2s;
       font-weight: 500;
     }
-    .sidebar-links a:hover { color: #252525; }
+    .sidebar-links a:hover { color: #252525; text-decoration: underline; text-underline-offset: 4px; }
 
     .sidebar-bottom {
       display: flex;
@@ -183,7 +182,7 @@
       border-bottom: 0.5px solid var(--line);
       opacity: 0;
       transform: translateY(16px);
-      transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+      transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
     }
     .proj:first-child { border-top: none; }
     .proj:last-child { border-bottom: none; }
@@ -221,26 +220,22 @@
       line-height: 1.5;
       color: #4D4D4D;
       font-weight: 400;
-      margin-bottom: 12px;
+      margin-bottom: 4px;
     }
 
     .proj-cta {
-      font-size: 14px;
+      font-size: 15px;
       color: #4D4D4D;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      text-decoration: underline;
-      text-underline-offset: 4px;
+      font-weight: 400 !important;
+      display: inline-block;
+      text-decoration: none;
       transition: color 0.2s;
     }
-    .proj-inner:hover .proj-cta { color: #252525; text-decoration: underline; text-underline-offset: 4px; }
-    .proj-cta .arrow {
-      display: inline-block;
-      transition: transform 0.2s var(--ease);
+    .proj-inner:hover .proj-cta {
+      color: #252525;
+      text-decoration: underline;
+      text-underline-offset: 4px;
     }
-    .proj-inner:hover .proj-cta .arrow { transform: translateX(4px); }
 
     /* ── Project image card ── */
     .proj-img {
