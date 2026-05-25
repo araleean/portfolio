@@ -36,10 +36,10 @@
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
       opacity: 0;
-      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+      transition: opacity 0.7s var(--ease);
     }
-    body.loaded { opacity: 1; transform: translateY(0); }
-    body { transform: translateY(12px); }
+    body.loaded { opacity: 1; }
+    
 
     /* ── Layout ── */
     .layout {
@@ -136,7 +136,8 @@
     }
 
     /* ── CV Sections ── */
-    .cv-section { margin-bottom: 48px; }
+    .cv-section { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 0.5px solid var(--line); }
+    .cv-section:last-child { border-bottom: none; padding-bottom: 0; }
 
     .cv-section-title {
       font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
@@ -229,7 +230,7 @@
 
       <p class="sidebar-intro">
         Product design leader based in Toronto. I've launched products, scaled teams and sweat the details in between.<br><br>
-        Previously at theScore Bet, Kinetic Commerce and Nascent Digital.
+        Previously at theScore, Kinetic Commerce and Nascent Digital.
       </p>
 
       <hr class="sidebar-divider">
