@@ -126,4 +126,5 @@ footer {
 @media (max-width: 900px) {
   .nav-inner { padding: 20px 24px; }
   .footer-inner { padding: 40px 24px; }
+  body { font-size: 14px; }
 }
