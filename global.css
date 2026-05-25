@@ -48,11 +48,9 @@ nav.scrolled {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
-nav.nav-hidden {
-  transform: translateY(-100%);
-}
+
 .nav-inner {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 60px;
   height: 56px;
@@ -76,11 +74,11 @@ nav.nav-hidden {
 }
 .nav-links a {
   font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   color: #4D4D4D;
   text-decoration: none;
   font-weight: 400;
-  transition: color 0.2s;
+  transition: text-decoration 0.2s;
 }
 .nav-links a:hover {
   color: #252525;
