@@ -15,6 +15,7 @@
       --muted: #9a9890;
       --body: #6a6860;
       --line: #e8e8e8;
+      --accent: #B85C38;
       --accent: #c17b4e;
       --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
       --sidebar-width: 280px;
@@ -55,12 +56,12 @@
       width: var(--sidebar-width);
       flex-shrink: 0;
       position: fixed;
-      top: 0;
-      height: 100vh;
+      top: 56px;
+      height: calc(100vh - 56px);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 56px 0 48px;
+      padding: 40px 0 48px;
       background: var(--bg);
       z-index: 10;
     }
@@ -96,6 +97,9 @@
       display: block;
     }
 
+    .sidebar-intro a { color: inherit; text-decoration: none; }
+    .sidebar-intro a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
     .sidebar-intro {
       font-size: 15px;
       line-height: 1.5;
@@ -112,7 +116,7 @@
       list-style: none;
     }
     .sidebar-nav a {
-      font-size: 14px;
+      font-size: 15px;
       color: var(--muted);
       text-decoration: none;
       font-weight: 400;
@@ -131,19 +135,18 @@
     .sidebar-links {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
     }
     .sidebar-links a {
-      font-size: 14px;
+      font-size: 15px;
       color: #4D4D4D;
-      text-decoration: underline;
-      text-underline-offset: 4px;
+      text-decoration: none;
       display: block;
       padding: 2px 0;
+      font-weight: 400;
       transition: color 0.2s;
-      font-weight: 500;
     }
-    .sidebar-links a:hover { color: #252525; }
+    .sidebar-links a:hover { color: #252525; text-decoration: underline; text-underline-offset: 4px; }
 
     .sidebar-bottom {
       display: flex;
@@ -171,7 +174,7 @@
     .main {
       margin-left: calc(var(--sidebar-width) + var(--gap) - 12px);
       flex: 1;
-      padding: 56px 0 80px;
+      padding: 40px 0 80px;
       max-width: 660px;
     }
 
@@ -181,7 +184,7 @@
       border-bottom: 0.5px solid var(--line);
       opacity: 0;
       transform: translateY(16px);
-      transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+      transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
     }
     .proj:first-child { border-top: none; }
     .proj:last-child { border-bottom: none; }
@@ -219,26 +222,25 @@
       line-height: 1.5;
       color: #4D4D4D;
       font-weight: 400;
-      margin-bottom: 12px;
+      margin-bottom: 4px;
     }
 
     .proj-cta {
-      font-size: 14px;
-      color: #4D4D4D;
+      font-size: 13px;
+      color: #252525;
       font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      text-decoration: underline;
-      text-underline-offset: 4px;
-      transition: color 0.2s;
-    }
-    .proj-inner:hover .proj-cta { color: #252525; text-decoration: underline; text-underline-offset: 4px; }
-    .proj-cta .arrow {
       display: inline-block;
-      transition: transform 0.2s var(--ease);
+      border: 1px solid #252525;
+      border-radius: 999px;
+      padding: 8px 16px;
+      margin-top: 16px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
     }
-    .proj-inner:hover .proj-cta .arrow { transform: translateX(4px); }
+    .proj-inner:hover .proj-cta {
+      background: #252525;
+      color: #ffffff;
+    }
 
     /* ── Project image card ── */
     .proj-img {
@@ -345,7 +347,10 @@
         border-bottom: none;
       }
       .sidebar-top { gap: 16px; }
-      .sidebar-intro { max-width: 100%; margin-top: 0; }
+      .sidebar-intro a { color: inherit; text-decoration: none; }
+    .sidebar-intro a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    .sidebar-intro { max-width: 100%; margin-top: 0; }
       .sidebar-divider { display: none; }
       .sidebar-copy { display: none; }
 
@@ -389,7 +394,7 @@
 
       <p class="sidebar-intro">
         Product design leader based in Toronto. I've launched products, scaled teams and sweat the details in between.<br><br>
-        Previously at theScore, Kinetic Commerce and Nascent Digital.
+        Previously at <a href="https://www.thescore.bet/" target="_blank" style="color:inherit;">theScore</a>, <a href="https://kineticecommerce.com/" target="_blank" style="color:inherit;">Kinetic Commerce</a> and <a href="https://www.nascentdigital.com/" target="_blank" style="color:inherit;">Nascent Digital</a>.
       </p>
 
 
@@ -410,7 +415,7 @@
           <div class="proj-eyebrow">theScore Bet & ESPN Bet</div>
           <div class="proj-title">Redesigning sign-up for a new era of sports betting</div>
           <p class="proj-desc">The sign-up flow was too long and losing users along the way. We redesigned it to reduce friction — and saw a 25% lift in completion.</p>
-          <span class="proj-cta">See More</span>
+          <span class="proj-cta">View Project</span>
         </div>
         <div class="proj-img dark-alt">
           <div class="phone-row">
@@ -435,7 +440,7 @@
           <div class="proj-eyebrow">theScore Bet</div>
           <div class="proj-title">Making it easier to deposit — from anywhere in the app</div>
           <p class="proj-desc">The deposit journey was buried steps away from the moment of intent. We pushed back on "just ship it," ran user testing, and launched a feature that captured 12% of all deposits within weeks.</p>
-          <span class="proj-cta">See More</span>
+          <span class="proj-cta">View Project</span>
         </div>
         <div class="proj-img dark">
           <div class="proj-placeholder">Coming soon</div>
@@ -450,7 +455,7 @@
           <div class="proj-eyebrow">theScore Bet</div>
           <div class="proj-title">Building a referral program for a regulated sportsbook</div>
           <p class="proj-desc">Referrals are a proven growth lever — but in sports betting, you can't just copy what works in consumer apps. We built one from scratch.</p>
-          <span class="proj-cta">See More</span>
+          <span class="proj-cta">View Project</span>
         </div>
         <div class="proj-img dark">
           <div class="proj-placeholder">Coming soon</div>
@@ -465,7 +470,7 @@
           <div class="proj-eyebrow">theScore Bet</div>
           <div class="proj-title">Launching a sportsbook for millions of sports fans</div>
           <p class="proj-desc">theScore had millions of daily users who already trusted the app for sports. We built a sportsbook inside it — from 0 to 1, across iOS, Android, and web.</p>
-          <span class="proj-cta">See More</span>
+          <span class="proj-cta">View Project</span>
         </div>
         <div class="proj-img dark">
           <div class="proj-placeholder">Coming soon</div>
@@ -480,7 +485,7 @@
           <div class="proj-eyebrow">TELUS Digital</div>
           <div class="proj-title">Transforming an e-commerce experience from the ground up</div>
           <p class="proj-desc">Most customers didn't know TELUS sold accessories. We redesigned the entire experience — homepage, category, product, and cart — to change that.</p>
-          <span class="proj-cta">See More</span>
+          <span class="proj-cta">View Project</span>
         </div>
         <div class="proj-img" style="background:#f0ede8;">
           <div class="browser">
@@ -503,14 +508,15 @@
 
 <script src="components.js"></script>
 <script>
-  // Position sidebar to match centered layout
   function positionSidebar() {
     const layout = document.querySelector('.layout');
     const sidebar = document.querySelector('.sidebar');
+    if (!layout || !sidebar) return;
     const rect = layout.getBoundingClientRect();
     sidebar.style.left = rect.left + 'px';
   }
   positionSidebar();
+  setTimeout(positionSidebar, 50);
   window.addEventListener('resize', positionSidebar);
 
   const observer = new IntersectionObserver(entries => {
