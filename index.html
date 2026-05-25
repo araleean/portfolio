@@ -57,6 +57,7 @@
       flex-shrink: 0;
       position: fixed;
       top: 56px;
+      left: max(60px, calc((100vw - 1100px) / 2 + 60px));
       height: calc(100vh - 56px);
       display: flex;
       flex-direction: column;
@@ -508,17 +509,6 @@
 
 <script src="components.js"></script>
 <script>
-  function positionSidebar() {
-    const layout = document.querySelector('.layout');
-    const sidebar = document.querySelector('.sidebar');
-    if (!layout || !sidebar) return;
-    const rect = layout.getBoundingClientRect();
-    sidebar.style.left = rect.left + 'px';
-  }
-  positionSidebar();
-  setTimeout(positionSidebar, 50);
-  window.addEventListener('resize', positionSidebar);
-
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.08 });
