@@ -12,6 +12,12 @@ function unlock() {
   sessionStorage.setItem(SESSION_KEY, 'true');
 }
 
+// Block scroll immediately if locked
+if (!isUnlocked()) {
+  document.documentElement.style.overflow = 'hidden';
+  document.documentElement.scrollTop = 0;
+}
+
 function showPasswordPrompt() {
   // Create overlay
   const overlay = document.createElement('div');
@@ -103,7 +109,8 @@ function showPasswordPrompt() {
   function attempt() {
     if (input.value.toLowerCase().trim() === PASSWORD) {
       unlock();
-      overlay.style.opacity = '0';
+      document.documentElement.style.overflow = '';
+      document.documentElement.scrollTop = 0;
       overlay.style.transition = 'opacity 0.3s';
       setTimeout(() => {
         overlay.remove();
