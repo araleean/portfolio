@@ -338,13 +338,20 @@
         width: 100%;
         height: auto;
         padding: 24px 24px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
       }
-      .sidebar-intro { max-width: 100%; margin-top: 0; }
-      .main { margin-left: 0; padding: 24px 0 60px; }
+      .sidebar-top { align-items: center; }
+      .sidebar-intro { max-width: 100%; margin-top: 0; font-size: 14px; }
+      .main { margin-left: 0; padding: 24px 0 60px; font-size: 14px; }
       .proj { padding: 32px 0; }
       .proj-inner { grid-template-columns: 1fr; gap: 20px; }
       .proj-img { order: -1; aspect-ratio: 16/9; }
-      .proj-title { font-size: 17px; }
+      .proj-title { font-size: 16px; }
+      .proj-desc { font-size: 14px; }
+      .proj-eyebrow { font-size: 11px; }
     }
     @media (max-width: 480px) {
       .layout { padding: 0 20px; }
@@ -354,23 +361,18 @@
 </head>
 <body>
 
-</div>
-
 <aside class="sidebar">
-    <div class="sidebar-top">
-      <div class="sidebar-avatar">
-        <img src="ara-profile-1.png" alt="Ara An">
-      </div>
-
-      <a class="sidebar-logo" href="index.html">Ara An</a>
-
-      <p class="sidebar-intro">
-        Product design leader based in Toronto. I've launched products, scaled teams and sweat the details in between.<br><br>
-        Previously at <a href="https://www.thescore.bet/" target="_blank" style="color:inherit;">theScore</a>, <a href="https://kineticecommerce.com/" target="_blank" style="color:inherit;">Kinetic Commerce</a> and <a href="https://www.nascentdigital.com/" target="_blank" style="color:inherit;">Nascent Digital</a>.
-      </p>
+  <div class="sidebar-top">
+    <div class="sidebar-avatar">
+      <img src="ara-profile-1.png" alt="Ara An">
     </div>
-    <div class="sidebar-bottom"></div>
-  </aside>
+    <p class="sidebar-intro">
+      Product design leader based in Toronto. I've launched products, scaled teams and sweat the details in between.<br><br>
+      Previously at <a href="https://www.thescore.bet/" target="_blank" style="color:inherit;">theScore</a>, <a href="https://kineticecommerce.com/" target="_blank" style="color:inherit;">Kinetic Commerce</a> and <a href="https://www.nascentdigital.com/" target="_blank" style="color:inherit;">Nascent Digital</a>.
+    </p>
+  </div>
+  <div class="sidebar-bottom"></div>
+</aside>
 
 <div class="layout">
 
