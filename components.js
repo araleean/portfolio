@@ -12,7 +12,7 @@ const NAV_HTML = `
         <li><a href="/index.html">Work</a></li>
         <li><a href="/about.html">About</a></li>
         <li><a href="mailto:araleean@gmail.com">Contact</a></li>
-        <li><a href="https://www.linkedin.com/in/araan/" target="_blank">LinkedIn</a></li>
+        <li><a href="https://www.linkedin.com/in/araan/" target="_blank">LinkedIn ↗</a></li>
       </ul>
     </div>
   </nav>

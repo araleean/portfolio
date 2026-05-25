@@ -98,8 +98,11 @@
       display: block;
     }
 
+    .sidebar-intro a { color: inherit; text-decoration: none; }
+    .sidebar-intro a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
     .sidebar-intro {
-      font-size: 15px;
+      font-size: 14px;
       line-height: 1.5;
       color: #4D4D4D;
       font-weight: 400;
@@ -141,8 +144,8 @@
       text-decoration: none;
       display: block;
       padding: 2px 0;
+      font-weight: 400;
       transition: color 0.2s;
-      font-weight: 500;
     }
     .sidebar-links a:hover { color: #252525; text-decoration: underline; text-underline-offset: 4px; }
 
@@ -152,7 +155,7 @@
       gap: 6px;
     }
     .sidebar-bottom a {
-      font-size: 15px;
+      font-size: 14px;
       color: #4D4D4D;
       text-decoration: none;
       display: block;
@@ -216,7 +219,7 @@
     }
 
     .proj-desc {
-      font-size: 15px;
+      font-size: 14px;
       line-height: 1.5;
       color: #4D4D4D;
       font-weight: 400;
@@ -224,17 +227,20 @@
     }
 
     .proj-cta {
-      font-size: 15px;
-      color: #4D4D4D;
-      font-weight: 400 !important;
+      font-size: 13px;
+      color: #252525;
+      font-weight: 500;
       display: inline-block;
+      border: 1px solid #252525;
+      border-radius: 999px;
+      padding: 6px 16px;
+      margin-top: 16px;
       text-decoration: none;
-      transition: color 0.2s;
+      transition: background 0.2s, color 0.2s;
     }
     .proj-inner:hover .proj-cta {
-      color: #252525;
-      text-decoration: underline;
-      text-underline-offset: 4px;
+      background: #252525;
+      color: #ffffff;
     }
 
     /* ── Project image card ── */
@@ -342,7 +348,10 @@
         border-bottom: none;
       }
       .sidebar-top { gap: 16px; }
-      .sidebar-intro { max-width: 100%; margin-top: 0; }
+      .sidebar-intro a { color: inherit; text-decoration: none; }
+    .sidebar-intro a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    .sidebar-intro { max-width: 100%; margin-top: 0; }
       .sidebar-divider { display: none; }
       .sidebar-copy { display: none; }
 
@@ -386,7 +395,7 @@
 
       <p class="sidebar-intro">
         Product design leader based in Toronto. I've launched products, scaled teams and sweat the details in between.<br><br>
-        Previously at theScore, Kinetic Commerce and Nascent Digital.
+        Previously at <a href="https://www.thescore.bet/" target="_blank" style="color:inherit;">theScore</a>, <a href="https://kineticecommerce.com/" target="_blank" style="color:inherit;">Kinetic Commerce</a> and <a href="https://www.nascentdigital.com/" target="_blank" style="color:inherit;">Nascent Digital</a>.
       </p>
 
       <hr class="sidebar-divider">
@@ -414,7 +423,7 @@
           <div class="proj-eyebrow">theScore Bet & ESPN Bet</div>
           <div class="proj-title">Redesigning sign-up for a new era of sports betting</div>
           <p class="proj-desc">The sign-up flow was too long and losing users along the way. We redesigned it to reduce friction — and saw a 25% lift in completion.</p>
-          <span class="proj-cta">See More</span>
+          <span class="proj-cta">View Project</span>
         </div>
         <div class="proj-img dark-alt">
           <div class="phone-row">
@@ -439,7 +448,7 @@
           <div class="proj-eyebrow">theScore Bet</div>
           <div class="proj-title">Making it easier to deposit — from anywhere in the app</div>
           <p class="proj-desc">The deposit journey was buried steps away from the moment of intent. We pushed back on "just ship it," ran user testing, and launched a feature that captured 12% of all deposits within weeks.</p>
-          <span class="proj-cta">See More</span>
+          <span class="proj-cta">View Project</span>
         </div>
         <div class="proj-img dark">
           <div class="proj-placeholder">Coming soon</div>
@@ -454,7 +463,7 @@
           <div class="proj-eyebrow">theScore Bet</div>
           <div class="proj-title">Building a referral program for a regulated sportsbook</div>
           <p class="proj-desc">Referrals are a proven growth lever — but in sports betting, you can't just copy what works in consumer apps. We built one from scratch.</p>
-          <span class="proj-cta">See More</span>
+          <span class="proj-cta">View Project</span>
         </div>
         <div class="proj-img dark">
           <div class="proj-placeholder">Coming soon</div>
@@ -469,7 +478,7 @@
           <div class="proj-eyebrow">theScore Bet</div>
           <div class="proj-title">Launching a sportsbook for millions of sports fans</div>
           <p class="proj-desc">theScore had millions of daily users who already trusted the app for sports. We built a sportsbook inside it — from 0 to 1, across iOS, Android, and web.</p>
-          <span class="proj-cta">See More</span>
+          <span class="proj-cta">View Project</span>
         </div>
         <div class="proj-img dark">
           <div class="proj-placeholder">Coming soon</div>
@@ -484,7 +493,7 @@
           <div class="proj-eyebrow">TELUS Digital</div>
           <div class="proj-title">Transforming an e-commerce experience from the ground up</div>
           <p class="proj-desc">Most customers didn't know TELUS sold accessories. We redesigned the entire experience — homepage, category, product, and cart — to change that.</p>
-          <span class="proj-cta">See More</span>
+          <span class="proj-cta">View Project</span>
         </div>
         <div class="proj-img" style="background:#f0ede8;">
           <div class="browser">
