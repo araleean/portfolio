@@ -18,16 +18,10 @@
       --body: #4D4D4D;
       --line: #e8e8e8;
       --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      --sidebar-width: 280px;
-      --gap: 60px;
+      --max-width: 680px;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    html { scroll-behavior: smooth; overflow-x: hidden; }
+    html { scroll-behavior: smooth; }
 
     body {
       background: var(--bg);
@@ -35,111 +29,62 @@
       font-family: 'DM Sans', sans-serif;
       font-weight: 400;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
       opacity: 0;
-      transition: opacity 0.7s var(--ease);
+      transition: opacity 0.6s var(--ease);
     }
     body.loaded { opacity: 1; }
-    
 
-    /* ── Layout ── */
-    .layout {
-      display: flex;
-      min-height: 100vh;
-      max-width: 1100px;
+
+
+    /* ── Page ── */
+    .page {
+      max-width: var(--max-width);
       margin: 0 auto;
-      padding: 0 60px;
+      padding: 56px 32px 80px;
     }
 
-    /* ── Sidebar ── */
-    .sidebar {
-      width: var(--sidebar-width);
-      flex-shrink: 0;
-      position: fixed;
-      top: 0;
-      height: 100vh;
+    /* ── Profile header ── */
+    .profile {
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 56px 0 48px;
-      background: var(--bg);
-      z-index: 10;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 48px;
     }
-
-    .sidebar-top { display: flex; flex-direction: column; gap: 24px; }
-
-    .sidebar-logo {
-      font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--ink);
-      text-decoration: none;
-    }
-
-    .sidebar-avatar {
-      width: 120px;
-      height: 120px;
+    .profile-avatar {
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
       overflow: hidden;
       flex-shrink: 0;
     }
-    .sidebar-avatar img {
+    .profile-avatar img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center 20%;
-      display: block;
     }
-
-    .sidebar-intro a { color: inherit; text-decoration: none; }
-    .sidebar-intro a:hover { text-decoration: underline; text-underline-offset: 3px; }
-
-    .sidebar-intro {
+    .profile-name {
+      font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ink);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .profile-desc {
       font-size: 15px;
-      line-height: 1.5;
       color: var(--body);
-      font-weight: 400;
-      max-width: 230px;
-      margin-top: -12px;
-    }
-
-    .sidebar-divider {
-      border: none;
-      border-top: 0.5px solid var(--line);
-      margin: 4px 0;
-    }
-
-    .sidebar-links {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .sidebar-links a {
-      font-size: 15px;
-      color: #4D4D4D;
-      text-decoration: none;
-      display: block;
-      padding: 2px 0;
-      transition: color 0.2s;
-      font-weight: 400;
-    }
-    .sidebar-links a:hover { color: #252525; text-decoration: underline; text-underline-offset: 4px; }
-
-    .sidebar-bottom { display: flex; flex-direction: column; gap: 6px; }
-    .sidebar-copy { font-size: 13px; color: #A4A4A4; letter-spacing: 0.04em; margin-top: 8px; }
-
-    /* ── Main ── */
-    .main {
-      margin-left: calc(var(--sidebar-width) + var(--gap) - 4px);
-      flex: 1;
-      padding: 56px 0 80px;
-      max-width: 660px;
+      line-height: 1.5;
     }
 
     /* ── CV Sections ── */
-    .cv-section { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 0.5px solid var(--line); }
+    .cv-section {
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 0.5px solid var(--line);
+    }
     .cv-section:last-child { border-bottom: none; padding-bottom: 0; }
 
     .cv-section-title {
@@ -154,46 +99,44 @@
 
     .entry {
       display: grid;
-      grid-template-columns: 100px 1fr;
+      grid-template-columns: 90px 1fr;
       gap: 0 32px;
       padding: 12px 0;
-      align-items: start;
+      align-items: baseline;
     }
 
     .entry-date {
-      font-size: 15px;
+      font-size: 14px;
       color: var(--muted);
       font-weight: 400;
       white-space: nowrap;
-      padding-top: 2px;
     }
 
     .entry-title {
       font-size: 15px;
       font-weight: 500;
       color: var(--ink);
-      margin-bottom: 4px;
+      margin-bottom: 5px;
     }
 
     .entry-desc {
-      font-size: 15px;
-      line-height: 1.5;
+      font-size: 14px;
+      line-height: 1.6;
       color: var(--body);
       font-weight: 400;
-      margin-top: 4px;
     }
 
     /* Contact */
     .contact-row {
       display: grid;
-      grid-template-columns: 100px 1fr;
+      grid-template-columns: 90px 1fr;
       gap: 0 32px;
       padding: 10px 0;
-      align-items: center;
+      align-items: baseline;
     }
-    .contact-key { font-size: 15px; color: var(--muted); font-weight: 400; }
+    .contact-key { font-size: 14px; color: var(--muted); font-weight: 400; }
     .contact-val {
-      font-size: 15px;
+      font-size: 14px;
       color: var(--ink);
       text-decoration: none;
       font-weight: 400;
@@ -202,61 +145,35 @@
     .contact-val:hover { text-decoration: underline; text-underline-offset: 4px; }
 
     /* ── Mobile ── */
-    @media (max-width: 768px) {
-      .layout { padding: 0 24px; flex-direction: column; }
-      .sidebar {
-        position: static;
-        width: 100%;
-        height: auto;
-        padding: 40px 0 28px;
-      }
-      .sidebar-intro a { color: inherit; text-decoration: none; }
-    .sidebar-intro a:hover { text-decoration: underline; text-underline-offset: 3px; }
-
-    .sidebar-intro { max-width: 100%; margin-top: 0; }
-      .sidebar-copy { display: none; }
-      .main { margin-left: 0; padding: 32px 0 60px; max-width: 100%; }
-      .entry { grid-template-columns: 80px 1fr; gap: 24px; }
-      .contact-row { grid-template-columns: 80px 1fr; gap: 16px; }
+    @media (max-width: 600px) {
+      .nav-inner { padding: 0 20px; }
+      .page { padding: 40px 20px 60px; }
+      .profile { gap: 16px; }
+      .profile-avatar { width: 56px; height: 56px; }
+      .entry { grid-template-columns: 72px 1fr; gap: 0 20px; }
+      .contact-row { grid-template-columns: 72px 1fr; gap: 0 20px; }
     }
   </style>
 </head>
 <body>
 
-<div class="layout">
 
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="sidebar-top">
-      <div class="sidebar-avatar">
+
+  <!-- Page -->
+  <div class="page">
+
+    <!-- Profile -->
+    <div class="profile">
+      <div class="profile-avatar">
         <img src="ara-profile-1.png" alt="Ara An">
       </div>
-
-      <a class="sidebar-logo" href="index.html">Ara An</a>
-
-      <p class="sidebar-intro">
-        Product design leader based in Toronto. I've launched products, scaled teams and sweat the details in between.<br><br>
-        Previously at <a href="https://www.thescore.bet/" target="_blank" style="color:inherit;">theScore</a>, <a href="https://kineticecommerce.com/" target="_blank" style="color:inherit;">Kinetic Commerce</a> and <a href="https://www.nascentdigital.com/" target="_blank" style="color:inherit;">Nascent Digital</a>.
-      </p>
-
-      <hr class="sidebar-divider">
-
-      <div class="sidebar-links">
-        <a href="index.html">Work</a>
-        <a href="about.html">About</a>
-        <a href="mailto:araleean@gmail.com">Contact</a>
-        <a href="https://www.linkedin.com/in/araan/" target="_blank">LinkedIn</a>
+      <div>
+        <div class="profile-name">Ara An</div>
+        <p class="profile-desc">Product design leader based in Toronto.</p>
       </div>
     </div>
 
-    <div class="sidebar-bottom">
-
-    </div>
-  </aside>
-
-  <!-- Main -->
-  <main class="main">
-
+    <!-- Experience -->
     <div class="cv-section">
       <div class="cv-section-title">Experience</div>
 
@@ -264,7 +181,7 @@
         <div class="entry-date">2024 — 2026</div>
         <div>
           <div class="entry-title">Senior Manager, Product Design at theScore</div>
-          <p class="entry-desc">I managed 7–9 product designers across the Player Account Management (accounts, payments, promotions, and responsible gaming) and Casino teams. During this time, we navigated the ESPN Bet partnership — migrating from Barstool Sportsbook to ESPN Bet in the US while keeping theScore Bet running in Canada. Close collaboration with product, engineering, and design systems was what made the consistency and scalability possible.</p>
+          <p class="entry-desc">I managed 6–8 product designers across the Core Accounts and Casino teams. I helped navigate the team through the ESPN Bet partnership.</p>
         </div>
       </div>
 
@@ -272,7 +189,7 @@
         <div class="entry-date">2022 — 2024</div>
         <div>
           <div class="entry-title">Manager, Product Design at theScore</div>
-          <p class="entry-desc">I managed 10–13 product designers across the Sportsbook (theScore Bet and Barstool Sportsbook) and Media teams. We were acquired by PENN Entertainment — navigating the org change while keeping the team focused and motivated was a defining part of my role. I also helped scale the broader UX org to 50+ by building out dedicated teams in research, design systems, and operations.</p>
+          <p class="entry-desc">I managed 11–13 product designers across the Sportsbook and Media teams through the PENN Entertainment acquisition. I helped scale the UX org to 50+ across product design, research, design systems and operations.</p>
         </div>
       </div>
 
@@ -280,7 +197,7 @@
         <div class="entry-date">2020 — 2022</div>
         <div>
           <div class="entry-title">Senior Product Designer at theScore</div>
-          <p class="entry-desc">I designed and launched theScore Bet web — expanding the product beyond mobile for the first time. I also rebuilt the design system in Figma, componentizing it and continuing to maintain it so both theScore and theScore Bet felt like one product.</p>
+          <p class="entry-desc">I launched theScore Bet web, expanding the sportsbook from mobile to desktop. I rebuilt the Figma design system to unify components across theScore and theScore Bet.</p>
         </div>
       </div>
 
@@ -288,7 +205,7 @@
         <div class="entry-date">2019 — 2020</div>
         <div>
           <div class="entry-title">Product Designer at theScore</div>
-          <p class="entry-desc">I helped launch theScore Bet — a new sportsbook app built within theScore — on iOS and Android across the US and Canada. A 0-to-1 product launch from concept through to ship.</p>
+          <p class="entry-desc">I launched theScore Bet, a sportsbook app built with theScore brand, on iOS and Android across the US and Canada.</p>
         </div>
       </div>
 
@@ -296,7 +213,7 @@
         <div class="entry-date">2018 — 2019</div>
         <div>
           <div class="entry-title">Product Designer at Kinetic Commerce</div>
-          <p class="entry-desc">I worked on the Associate App, part of Kinetic Commerce's omnichannel retail platform, helping associates deliver better service and drive sales on mobile and tablet.</p>
+          <p class="entry-desc">I worked on the Associate App, part of Kinetic Commerce's omnichannel retail platform, helping associates deliver better service and drive sales.</p>
         </div>
       </div>
 
@@ -304,11 +221,12 @@
         <div class="entry-date">2017 — 2018</div>
         <div>
           <div class="entry-title">Product Designer at Nascent Digital</div>
-          <p class="entry-desc">As the product designer on the TELUS Digital Accessories team, I designed an end-to-end e-commerce experience and launched their first cart.</p>
+          <p class="entry-desc">I worked on the accessories e-commerce experience and launched the first cart with the TELUS Digital team.</p>
         </div>
       </div>
     </div>
 
+    <!-- Education -->
     <div class="cv-section">
       <div class="cv-section-title">Education</div>
 
@@ -334,6 +252,7 @@
       </div>
     </div>
 
+    <!-- Contact -->
     <div class="cv-section">
       <div class="cv-section-title">Contact</div>
       <div class="contact-row">
@@ -346,23 +265,10 @@
       </div>
     </div>
 
-  </main>
-
-</div>
+  </div>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => document.body.classList.add('loaded'));
-</script>
-<script>
-  // Position sidebar to match centered layout
-  function positionSidebar() {
-    const layout = document.querySelector('.layout');
-    const sidebar = document.querySelector('.sidebar');
-    const rect = layout.getBoundingClientRect();
-    sidebar.style.left = rect.left + 'px';
-  }
-  positionSidebar();
-  window.addEventListener('resize', positionSidebar);
 </script>
 
 </body>
