@@ -30,9 +30,9 @@ body {
   line-height: 1.85;
   -webkit-font-smoothing: antialiased;
   opacity: 0;
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  transition: opacity 0.7s var(--ease);
 }
-body.loaded { opacity: 1; transform: translateY(0); }
+body.loaded { opacity: 1; }
 
 /* ── Nav ── */
 nav {
@@ -44,9 +44,7 @@ nav {
   transition: background 0.3s, border-color 0.3s, transform 0.3s var(--ease);
 }
 nav.scrolled {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .nav-inner {
