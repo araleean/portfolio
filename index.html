@@ -58,27 +58,11 @@
       height: calc(100vh - 56px);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      gap: 24px;
       padding: 64px 0 48px;
       background: var(--bg);
       z-index: 9;
       overflow-y: auto;
-    }
-
-    .sidebar-top {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .sidebar-logo {
-      font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #252525;
-      text-decoration: none;
     }
 
     .sidebar-avatar {
@@ -96,40 +80,15 @@
       display: block;
     }
 
-    .sidebar-intro a { color: inherit; text-decoration: none; }
-    .sidebar-intro a:hover { text-decoration: underline; text-underline-offset: 3px; }
-
     .sidebar-intro {
       font-size: 14px;
       line-height: 1.5;
       color: #4D4D4D;
       font-weight: 400;
       max-width: 230px;
-      margin-top: 0;
     }
-
-    .sidebar-nav {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      list-style: none;
-    }
-    .sidebar-nav a {
-      font-size: 15px;
-      color: var(--muted);
-      text-decoration: none;
-      font-weight: 400;
-      padding: 4px 0;
-      display: inline-block;
-      transition: color 0.2s;
-    }
-    .sidebar-nav a:hover { color: var(--ink); }
-
-    .sidebar-divider {
-      border: none;
-      border-top: 0.5px solid var(--line);
-      margin: 4px 0;
-    }
+    .sidebar-intro a { color: inherit; text-decoration: none; }
+    .sidebar-intro a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
     .sidebar-links {
       display: flex;
@@ -137,17 +96,42 @@
       gap: 12px;
       align-items: center;
     }
-    .sidebar-links a {
+    .sidebar-links a img,
+    .sidebar-links button img {
+      filter: brightness(0);
+      opacity: 0.8;
+      display: block;
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+    .sidebar-links a:hover img,
+    .sidebar-links button:hover img { opacity: 1; }
+    .email-copy {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
       display: inline-flex;
-      opacity: 0.7;
+      position: relative;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .copy-tooltip {
+      position: absolute;
+      bottom: 32px;
+      left: 0;
+      background: var(--ink);
+      color: #fff;
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
       transition: opacity 0.2s;
     }
-    .sidebar-links a:hover { opacity: 1; }
-
-    .sidebar-bottom {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+    .copy-tooltip.show { opacity: 1; }
     }
     .sidebar-bottom a {
       font-size: 15px;
@@ -343,8 +327,7 @@
         text-align: center;
         overflow-y: visible;
       }
-      .sidebar-top { align-items: center; }
-      .sidebar-intro { max-width: 320px; }
+      .sidebar-intro { max-width: 300px; }
       .sidebar-links { flex-direction: row; gap: 16px; }
       .main { margin-left: 0; padding: 24px 0 60px; font-size: 14px; }
       .proj { padding: 32px 0; }
@@ -365,20 +348,20 @@
 <div class="layout">
 
 <aside class="sidebar">
-  <div class="sidebar-top">
-    <div class="sidebar-avatar">
-      <img src="ara-profile-1.png" alt="Ara An">
-    </div>
-    <p class="sidebar-intro">
-      I'm a product design leader based in Toronto. I've launched products, scaled teams and sweat the details in between.<br><br>
-      Previously at <a href="https://www.thescore.bet/" target="_blank" style="color:inherit;">theScore</a>, <a href="https://kineticecommerce.com/" target="_blank" style="color:inherit;">Kinetic Commerce</a> and <a href="https://www.nascentdigital.com/" target="_blank" style="color:inherit;">Nascent Digital</a>.
-    </p>
-    <div class="sidebar-links">
-      <a href="mailto:araleean@gmail.com"><img src="email.png" alt="Email" width="24" height="24"></a>
-      <a href="https://www.linkedin.com/in/araan/" target="_blank"><img src="linkedin.png" alt="LinkedIn" width="24" height="24"></a>
-    </div>
+  <div class="sidebar-avatar">
+    <img src="ara-profile-1.png" alt="Ara An">
   </div>
-  <div class="sidebar-bottom"></div>
+  <p class="sidebar-intro">
+    I'm a product design leader based in Toronto. I've launched products, scaled teams and sweat the details in between.<br><br>
+    Previously at <a href="https://www.thescore.bet/" target="_blank" style="color:inherit;">theScore</a>, <a href="https://kineticecommerce.com/" target="_blank" style="color:inherit;">Kinetic Commerce</a> and <a href="https://www.nascentdigital.com/" target="_blank" style="color:inherit;">Nascent Digital</a>.
+  </p>
+  <div class="sidebar-links">
+    <a href="https://www.linkedin.com/in/araan/" target="_blank"><img src="linkedin.png" alt="LinkedIn" width="24" height="24"></a>
+    <button class="email-copy" onclick="copyEmail()" title="Copy email">
+      <img src="email.png" alt="Email" width="24" height="24">
+      <span class="copy-tooltip" id="copy-tooltip">Copied!</span>
+    </button>
+  </div>
 </aside>
 
   <!-- Main -->
@@ -459,21 +442,12 @@
       <a class="proj-inner" href="telus-accessories.html">
         <div>
           <div class="proj-eyebrow">TELUS Digital</div>
-          <div class="proj-title">Transforming an e-commerce experience from the ground up</div>
-          <p class="proj-desc">Most customers didn't know TELUS sold accessories. We redesigned the entire experience — homepage, category, product, and cart — to change that.</p>
+          <div class="proj-title">Transforming the e-commerce experience</div>
+          <p class="proj-desc">We redesigned the accessories website and mirrored the in-store experience to help customers discover and buy with confidence.</p>
           <span class="proj-cta">View Project</span>
         </div>
         <div class="proj-img" style="background:#f0ede8;">
-          <div class="browser">
-            <div class="browser-bar">
-              <span class="browser-dot" style="background:#ff5f57;"></span>
-              <span class="browser-dot" style="background:#febc2e;"></span>
-              <span class="browser-dot" style="background:#28c840;"></span>
-            </div>
-            <div class="browser-screen">
-              <img src="images/TELUS_Accessories.png" alt="TELUS Accessories">
-            </div>
-          </div>
+          <img src="images/telus-accessories-thumbnail.png" alt="TELUS Accessories" style="width:100%;height:100%;object-fit:cover;">
         </div>
       </a>
     </div>
@@ -482,6 +456,29 @@
 
 </div>
 
+<script>
+  function showTooltip(id) {
+    const tooltip = document.getElementById(id);
+    tooltip.classList.add('show');
+    setTimeout(() => tooltip.classList.remove('show'), 2000);
+  }
+
+  function copyEmail() {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText('araleean@gmail.com').then(() => showTooltip('copy-tooltip'));
+    } else {
+      const el = document.createElement('textarea');
+      el.value = 'araleean@gmail.com';
+      el.style.position = 'fixed';
+      el.style.opacity = '0';
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      showTooltip('copy-tooltip');
+    }
+  }
+</script>
 <script src="components.js"></script>
 <script>
   const observer = new IntersectionObserver(entries => {
