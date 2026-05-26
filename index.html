@@ -157,6 +157,8 @@
       position: relative;
       opacity: 0.7;
       transition: opacity 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
     }
     .email-copy:hover { opacity: 1; }
     .copy-tooltip {
@@ -519,12 +521,26 @@
 </div>
 
 <script>
+  function showTooltip(id) {
+    const tooltip = document.getElementById(id);
+    tooltip.classList.add('show');
+    setTimeout(() => tooltip.classList.remove('show'), 2000);
+  }
+
   function copyEmail() {
-    navigator.clipboard.writeText('araleean@gmail.com').then(() => {
-      const tooltip = document.getElementById('copy-tooltip');
-      tooltip.classList.add('show');
-      setTimeout(() => tooltip.classList.remove('show'), 2000);
-    });
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText('araleean@gmail.com').then(() => showTooltip('copy-tooltip'));
+    } else {
+      const el = document.createElement('textarea');
+      el.value = 'araleean@gmail.com';
+      el.style.position = 'fixed';
+      el.style.opacity = '0';
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      showTooltip('copy-tooltip');
+    }
   }
 </script>
 <script src="components.js"></script>
