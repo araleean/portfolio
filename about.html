@@ -74,12 +74,33 @@
       gap: 12px;
       align-items: center;
     }
-    .sidebar-links a {
+    .email-copy {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
       display: inline-flex;
+      position: relative;
       opacity: 0.7;
       transition: opacity 0.2s;
     }
-    .sidebar-links a:hover { opacity: 1; }
+    .email-copy:hover { opacity: 1; }
+    .copy-tooltip {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--ink);
+      color: #fff;
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .copy-tooltip.show { opacity: 1; }
 
     /* ── Main ── */
     .main {
@@ -189,7 +210,10 @@
       Previously at <a href="https://www.thescore.bet/" target="_blank">theScore</a>, <a href="https://kineticecommerce.com/" target="_blank">Kinetic Commerce</a> and <a href="https://www.nascentdigital.com/" target="_blank">Nascent Digital</a>.
     </p>
     <div class="sidebar-links">
-      <a href="mailto:araleean@gmail.com"><img src="email.png" alt="Email" width="24" height="24"></a>
+      <button class="email-copy" onclick="copyEmail()" title="Copy email">
+        <img src="email.png" alt="Email" width="24" height="24">
+        <span class="copy-tooltip" id="copy-tooltip">Copied!</span>
+      </button>
       <a href="https://www.linkedin.com/in/araan/" target="_blank"><img src="linkedin.png" alt="LinkedIn" width="24" height="24"></a>
     </div>
   </aside>
@@ -292,6 +316,15 @@
 
 </div>
 
+<script>
+  function copyEmail() {
+    navigator.clipboard.writeText('araleean@gmail.com').then(() => {
+      const tooltip = document.getElementById('copy-tooltip');
+      tooltip.classList.add('show');
+      setTimeout(() => tooltip.classList.remove('show'), 2000);
+    });
+  }
+</script>
 <script src="components.js"></script>
 
 </body>
