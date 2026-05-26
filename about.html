@@ -130,7 +130,7 @@
 
     /* ── Entry ── */
     .entry {
-      padding: 12px 0;
+      padding: 8px 0;
     }
 
     .entry-header {
@@ -192,6 +192,7 @@
       align-items: center;
       gap: 12px;
       position: relative;
+      font-family: 'DM Sans', sans-serif;
     }
     .contact-copy span {
       font-size: 14px;
@@ -362,20 +363,31 @@
 </div>
 
 <script>
-  function copyEmail() {
-    navigator.clipboard.writeText('araleean@gmail.com').then(() => {
-      const tooltip = document.getElementById('copy-tooltip');
-      tooltip.classList.add('show');
-      setTimeout(() => tooltip.classList.remove('show'), 2000);
-    });
+  function showTooltip(id) {
+    const tooltip = document.getElementById(id);
+    tooltip.classList.add('show');
+    setTimeout(() => tooltip.classList.remove('show'), 2000);
   }
-  function copyEmailContact() {
-    navigator.clipboard.writeText('araleean@gmail.com').then(() => {
-      const tooltip = document.getElementById('copy-tooltip-contact');
-      tooltip.classList.add('show');
-      setTimeout(() => tooltip.classList.remove('show'), 2000);
-    });
+
+  function copyText(text, tooltipId) {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(() => showTooltip(tooltipId));
+    } else {
+      // Fallback for file:// or http
+      const el = document.createElement('textarea');
+      el.value = text;
+      el.style.position = 'fixed';
+      el.style.opacity = '0';
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      showTooltip(tooltipId);
+    }
   }
+
+  function copyEmail() { copyText('araleean@gmail.com', 'copy-tooltip'); }
+  function copyEmailContact() { copyText('araleean@gmail.com', 'copy-tooltip-contact'); }
 </script>
 <script src="components.js"></script>
 
