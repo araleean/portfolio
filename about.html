@@ -70,14 +70,14 @@
     .sidebar-links a img,
     .sidebar-links button img {
       filter: brightness(0);
-      opacity: 0.5;
+      opacity: 0.8;
       display: block;
       width: 24px;
       height: 24px;
       object-fit: contain;
     }
     .sidebar-links a:hover img,
-    .sidebar-links button:hover img { opacity: 0.9; }
+    .sidebar-links button:hover img { opacity: 1; }
 
     .email-copy {
       background: none;
@@ -167,13 +167,15 @@
       align-items: center;
       gap: 12px;
       padding: 8px 0;
+      position: relative;
     }
+    .contact-row:hover .contact-val { text-decoration: underline; text-underline-offset: 4px; }
     .contact-row img {
       width: 20px;
       height: 20px;
       object-fit: contain;
       filter: brightness(0);
-      opacity: 0.5;
+      opacity: 0.8;
       flex-shrink: 0;
     }
     .contact-val {
@@ -196,15 +198,25 @@
       -webkit-appearance: none;
       appearance: none;
     }
+    .contact-copy img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+      filter: brightness(0);
+      opacity: 0.8;
+      flex-shrink: 0;
+    }
     .contact-copy span {
       font-size: 14px;
       color: var(--ink);
       font-weight: 400;
+      text-decoration: none;
     }
+    .contact-copy:hover span { text-decoration: underline; text-underline-offset: 4px; }
     .contact-copy-tooltip {
       position: absolute;
       left: 0;
-      bottom: 28px;
+      top: -28px;
       background: var(--ink);
       color: #fff;
       font-size: 12px;
@@ -346,12 +358,10 @@
     <div class="cv-section">
       <div class="cv-section-title">Contact</div>
 
-      <div class="contact-row">
-        <button class="contact-copy" onclick="copyEmailContact()">
-          <img src="email.png" alt="Email">
-          <span>araleean@gmail.com</span>
-          <span class="contact-copy-tooltip" id="copy-tooltip-contact">Copied!</span>
-        </button>
+      <div class="contact-row" style="cursor:pointer;" onclick="copyEmailContact()">
+        <img src="email.png" alt="Email">
+        <span class="contact-val">araleean@gmail.com</span>
+        <span class="contact-copy-tooltip" id="copy-tooltip-contact">Copied!</span>
       </div>
 
       <div class="contact-row">
