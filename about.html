@@ -12,7 +12,6 @@
       --gap: 60px;
     }
 
-    /* ── Layout ── */
     .layout {
       display: flex;
       max-width: 1100px;
@@ -30,11 +29,11 @@
       height: calc(100vh - 56px);
       display: flex;
       flex-direction: column;
+      gap: 24px;
       padding: 64px 0 48px;
       background: var(--bg);
       z-index: 9;
       overflow-y: auto;
-      gap: 24px;
     }
 
     .sidebar-avatar {
@@ -62,12 +61,6 @@
     .sidebar-intro a { color: inherit; text-decoration: none; }
     .sidebar-intro a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
-    .sidebar-divider {
-      border: none;
-      border-top: 0.5px solid var(--line);
-      margin: 0;
-    }
-
     .sidebar-links {
       display: flex;
       flex-direction: row;
@@ -85,6 +78,7 @@
     }
     .sidebar-links a:hover img,
     .sidebar-links button:hover img { opacity: 0.9; }
+
     .email-copy {
       background: none;
       border: none;
@@ -92,16 +86,11 @@
       cursor: pointer;
       display: inline-flex;
       position: relative;
-      opacity: 0.7;
-      transition: opacity 0.2s;
     }
-    .email-copy:hover { opacity: 1; }
     .copy-tooltip {
       position: absolute;
       bottom: 32px;
       left: 0;
-
-
       background: var(--ink);
       color: #fff;
       font-size: 12px;
@@ -139,12 +128,23 @@
       margin-bottom: 20px;
     }
 
+    /* ── Entry ── */
     .entry {
-      display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 0 32px;
       padding: 12px 0;
+    }
+
+    .entry-header {
+      display: flex;
       align-items: baseline;
+      gap: 16px;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
+    }
+
+    .entry-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
     }
 
     .entry-date {
@@ -154,13 +154,6 @@
       white-space: nowrap;
     }
 
-    .entry-title {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--ink);
-      margin-bottom: 5px;
-    }
-
     .entry-desc {
       font-size: 14px;
       line-height: 1.6;
@@ -168,15 +161,21 @@
       font-weight: 400;
     }
 
-    /* Contact */
+    /* ── Contact ── */
     .contact-row {
-      display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 0 32px;
-      padding: 10px 0;
-      align-items: baseline;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
     }
-    .contact-key { font-size: 14px; color: var(--muted); font-weight: 400; }
+    .contact-row img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+      filter: brightness(0);
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
     .contact-val {
       font-size: 14px;
       color: var(--ink);
@@ -184,6 +183,36 @@
       font-weight: 400;
     }
     .contact-val:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .contact-copy {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+    }
+    .contact-copy span {
+      font-size: 14px;
+      color: var(--ink);
+      font-weight: 400;
+    }
+    .contact-copy-tooltip {
+      position: absolute;
+      left: 0;
+      bottom: 28px;
+      background: var(--ink);
+      color: #fff;
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .contact-copy-tooltip.show { opacity: 1; }
 
     /* ── Mobile ── */
     @media (max-width: 768px) {
@@ -201,8 +230,7 @@
       }
       .sidebar-intro { max-width: 300px; }
       .main { margin-left: 0; padding: 24px 0 60px; }
-      .entry { grid-template-columns: 72px 1fr; gap: 0 20px; }
-      .contact-row { grid-template-columns: 72px 1fr; gap: 0 20px; }
+      .entry-header { flex-wrap: wrap; }
     }
     @media (max-width: 480px) {
       .layout { padding: 0 20px; }
@@ -237,51 +265,51 @@
       <div class="cv-section-title">Experience</div>
 
       <div class="entry">
-        <div class="entry-date">2024 — 2026</div>
-        <div>
-          <div class="entry-title">Senior Manager, Product Design at theScore</div>
-          <p class="entry-desc">I managed 6–8 product designers across the Core Accounts and Casino teams. I helped navigate the team through the ESPN Bet partnership.</p>
+        <div class="entry-header">
+          <div class="entry-title">theScore / Senior Manager, Product Design</div>
+          <div class="entry-date">2024 – 2026</div>
         </div>
+        <p class="entry-desc">I managed 6–8 product designers across the Core Accounts and Casino teams. I helped navigate the team through the ESPN Bet partnership.</p>
       </div>
 
       <div class="entry">
-        <div class="entry-date">2022 — 2024</div>
-        <div>
-          <div class="entry-title">Manager, Product Design at theScore</div>
-          <p class="entry-desc">I managed 11–13 product designers across the Sportsbook and Media teams through the PENN Entertainment acquisition. I helped scale the UX org to 50+ across product design, research, design systems and operations.</p>
+        <div class="entry-header">
+          <div class="entry-title">theScore / Manager, Product Design</div>
+          <div class="entry-date">2022 – 2024</div>
         </div>
+        <p class="entry-desc">I managed 11–13 product designers across the Sportsbook and Media teams through the PENN Entertainment acquisition. I helped scale the UX org to 50+ across product design, research, design systems and operations.</p>
       </div>
 
       <div class="entry">
-        <div class="entry-date">2020 — 2022</div>
-        <div>
-          <div class="entry-title">Senior Product Designer at theScore</div>
-          <p class="entry-desc">I launched theScore Bet web, expanding the sportsbook from mobile to desktop. I rebuilt the Figma design system to unify components across theScore and theScore Bet.</p>
+        <div class="entry-header">
+          <div class="entry-title">theScore / Senior Product Designer</div>
+          <div class="entry-date">2020 – 2022</div>
         </div>
+        <p class="entry-desc">I launched theScore Bet web, expanding the sportsbook from mobile to desktop. I rebuilt the Figma design system to unify components across theScore and theScore Bet.</p>
       </div>
 
       <div class="entry">
-        <div class="entry-date">2019 — 2020</div>
-        <div>
-          <div class="entry-title">Product Designer at theScore</div>
-          <p class="entry-desc">I launched theScore Bet, a sportsbook app built with theScore brand, on iOS and Android across the US and Canada.</p>
+        <div class="entry-header">
+          <div class="entry-title">theScore / Product Designer</div>
+          <div class="entry-date">2019 – 2020</div>
         </div>
+        <p class="entry-desc">I launched theScore Bet, a sportsbook app built with theScore brand, on iOS and Android across the US and Canada.</p>
       </div>
 
       <div class="entry">
-        <div class="entry-date">2018 — 2019</div>
-        <div>
-          <div class="entry-title">Product Designer at Kinetic Commerce</div>
-          <p class="entry-desc">I worked on the Associate App, part of Kinetic Commerce's omnichannel retail platform, helping associates deliver better service and drive sales.</p>
+        <div class="entry-header">
+          <div class="entry-title">Kinetic Commerce / Product Designer</div>
+          <div class="entry-date">2018 – 2019</div>
         </div>
+        <p class="entry-desc">I worked on the Associate App, part of Kinetic Commerce's omnichannel retail platform, helping associates deliver better service and drive sales.</p>
       </div>
 
       <div class="entry">
-        <div class="entry-date">2017 — 2018</div>
-        <div>
-          <div class="entry-title">Product Designer at Nascent Digital</div>
-          <p class="entry-desc">I worked on the accessories e-commerce experience and launched the first cart with the TELUS Digital team.</p>
+        <div class="entry-header">
+          <div class="entry-title">Nascent Digital / Product Designer</div>
+          <div class="entry-date">2017 – 2018</div>
         </div>
+        <p class="entry-desc">I worked on the accessories e-commerce experience and launched the first cart with the TELUS Digital team.</p>
       </div>
     </div>
 
@@ -290,23 +318,23 @@
       <div class="cv-section-title">Education</div>
 
       <div class="entry">
-        <div class="entry-date">2016</div>
-        <div>
-          <div class="entry-title">UX Design Bootcamp at BrainStation</div>
+        <div class="entry-header">
+          <div class="entry-title">Brainstation / UX Design Bootcamp</div>
+          <div class="entry-date">2016</div>
         </div>
       </div>
 
       <div class="entry">
-        <div class="entry-date">2013 — 2014</div>
-        <div>
-          <div class="entry-title">Corporate Communications & PR at Centennial College</div>
+        <div class="entry-header">
+          <div class="entry-title">Centennial College / Corporate Communications & PR</div>
+          <div class="entry-date">2013 – 2014</div>
         </div>
       </div>
 
       <div class="entry">
-        <div class="entry-date">2009 — 2013</div>
-        <div>
-          <div class="entry-title">Communications at Wilfrid Laurier University</div>
+        <div class="entry-header">
+          <div class="entry-title">Wilfrid Laurier University / Communications</div>
+          <div class="entry-date">2009 – 2013</div>
         </div>
       </div>
     </div>
@@ -314,12 +342,17 @@
     <!-- Contact -->
     <div class="cv-section">
       <div class="cv-section-title">Contact</div>
+
       <div class="contact-row">
-        <span class="contact-key">Email</span>
-        <a class="contact-val" href="mailto:araleean@gmail.com">araleean@gmail.com</a>
+        <button class="contact-copy" onclick="copyEmailContact()">
+          <img src="email.png" alt="Email">
+          <span>araleean@gmail.com</span>
+          <span class="contact-copy-tooltip" id="copy-tooltip-contact">Copied!</span>
+        </button>
       </div>
+
       <div class="contact-row">
-        <span class="contact-key">LinkedIn</span>
+        <img src="linkedin.png" alt="LinkedIn">
         <a class="contact-val" href="https://www.linkedin.com/in/araan/" target="_blank">linkedin.com/in/araan</a>
       </div>
     </div>
@@ -332,6 +365,13 @@
   function copyEmail() {
     navigator.clipboard.writeText('araleean@gmail.com').then(() => {
       const tooltip = document.getElementById('copy-tooltip');
+      tooltip.classList.add('show');
+      setTimeout(() => tooltip.classList.remove('show'), 2000);
+    });
+  }
+  function copyEmailContact() {
+    navigator.clipboard.writeText('araleean@gmail.com').then(() => {
+      const tooltip = document.getElementById('copy-tooltip-contact');
       tooltip.classList.add('show');
       setTimeout(() => tooltip.classList.remove('show'), 2000);
     });
