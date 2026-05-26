@@ -8,52 +8,87 @@
   <link rel="stylesheet" href="global.css">
   <style>
     :root {
-      --max-width: 680px;
+      --sidebar-width: 280px;
+      --gap: 60px;
     }
 
-
-
-    /* ── Page ── */
-    .page {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 56px 32px 80px;
-    }
-
-    /* ── Profile header ── */
-    .profile {
+    /* ── Layout ── */
+    .layout {
       display: flex;
-      align-items: center;
-      gap: 24px;
-      margin-bottom: 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 60px;
     }
-    .profile-avatar {
-      width: 72px;
-      height: 72px;
+
+    /* ── Sidebar ── */
+    .sidebar {
+      width: var(--sidebar-width);
+      flex-shrink: 0;
+      position: fixed !important;
+      top: 56px;
+      left: max(60px, calc((100vw - 1100px) / 2 + 60px));
+      height: calc(100vh - 56px);
+      display: flex;
+      flex-direction: column;
+      padding: 64px 0 48px;
+      background: var(--bg);
+      z-index: 9;
+      overflow-y: auto;
+      gap: 32px;
+    }
+
+    .sidebar-avatar {
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       overflow: hidden;
       flex-shrink: 0;
     }
-    .profile-avatar img {
+    .sidebar-avatar img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center 20%;
+      display: block;
     }
-    .profile-name {
-      font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--ink);
-      line-height: 1.1;
-      margin-bottom: 4px;
-    }
-    .profile-desc {
-      font-size: 15px;
-      color: var(--body);
+
+    .sidebar-intro {
+      font-size: 14px;
       line-height: 1.5;
+      color: #4D4D4D;
+      font-weight: 400;
+      max-width: 230px;
+    }
+    .sidebar-intro a { color: inherit; text-decoration: none; }
+    .sidebar-intro a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    .sidebar-divider {
+      border: none;
+      border-top: 0.5px solid var(--line);
+      margin: 0;
+    }
+
+    .sidebar-links {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .sidebar-links a {
+      font-size: 14px;
+      color: #4D4D4D;
+      text-decoration: none;
+      display: block;
+      padding: 0px 0;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .sidebar-links a:hover { color: #252525; text-decoration: underline; text-underline-offset: 4px; }
+
+    /* ── Main ── */
+    .main {
+      margin-left: calc(var(--sidebar-width) + var(--gap));
+      padding: 40px 0 80px;
+      flex: 1;
     }
 
     /* ── CV Sections ── */
@@ -76,7 +111,7 @@
 
     .entry {
       display: grid;
-      grid-template-columns: 90px 1fr;
+      grid-template-columns: 100px 1fr;
       gap: 0 32px;
       padding: 12px 0;
       align-items: baseline;
@@ -106,7 +141,7 @@
     /* Contact */
     .contact-row {
       display: grid;
-      grid-template-columns: 90px 1fr;
+      grid-template-columns: 100px 1fr;
       gap: 0 32px;
       padding: 10px 0;
       align-items: baseline;
@@ -117,38 +152,53 @@
       color: var(--ink);
       text-decoration: none;
       font-weight: 400;
-      transition: color 0.2s;
     }
     .contact-val:hover { text-decoration: underline; text-underline-offset: 4px; }
 
     /* ── Mobile ── */
-    @media (max-width: 600px) {
-      .nav-inner { padding: 0 20px; }
-      .page { padding: 40px 20px 60px; }
-      .profile { gap: 16px; }
-      .profile-avatar { width: 56px; height: 56px; }
+    @media (max-width: 768px) {
+      .layout { padding: 0 24px; flex-direction: column; }
+      .sidebar {
+        position: relative !important;
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: auto;
+        padding: 24px 0 20px;
+        overflow-y: visible;
+        align-items: center;
+        text-align: center;
+      }
+      .sidebar-intro { max-width: 100%; }
+      .main { margin-left: 0; padding: 24px 0 60px; }
       .entry { grid-template-columns: 72px 1fr; gap: 0 20px; }
       .contact-row { grid-template-columns: 72px 1fr; gap: 0 20px; }
+    }
+    @media (max-width: 480px) {
+      .layout { padding: 0 20px; }
     }
   </style>
 </head>
 <body>
 
+<div class="layout">
 
-
-  <!-- Page -->
-  <div class="page">
-
-    <!-- Profile -->
-    <div class="profile">
-      <div class="profile-avatar">
-        <img src="ara-profile-1.png" alt="Ara An">
-      </div>
-      <div>
-        <div class="profile-name">Ara An</div>
-        <p class="profile-desc">I'm a product design leader based in Toronto. I've launched products, scaled teams and sweat the details in between.</p>
-      </div>
+  <aside class="sidebar">
+    <div class="sidebar-avatar">
+      <img src="ara-profile-1.png" alt="Ara An">
     </div>
+    <p class="sidebar-intro">
+      I'm a product design leader based in Toronto. I've launched products, scaled teams and sweat the details in between.<br><br>
+      Previously at <a href="https://www.thescore.bet/" target="_blank">theScore</a>, <a href="https://kineticecommerce.com/" target="_blank">Kinetic Commerce</a> and <a href="https://www.nascentdigital.com/" target="_blank">Nascent Digital</a>.
+    </p>
+    <hr class="sidebar-divider">
+    <div class="sidebar-links">
+      <a href="mailto:araleean@gmail.com">Contact</a>
+      <a href="https://www.linkedin.com/in/araan/" target="_blank">LinkedIn</a>
+    </div>
+  </aside>
+
+  <main class="main">
 
     <!-- Experience -->
     <div class="cv-section">
@@ -242,7 +292,9 @@
       </div>
     </div>
 
-  </div>
+  </main>
+
+</div>
 
 <script src="components.js"></script>
 
