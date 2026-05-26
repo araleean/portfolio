@@ -58,27 +58,11 @@
       height: calc(100vh - 56px);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      gap: 24px;
       padding: 64px 0 48px;
       background: var(--bg);
       z-index: 9;
       overflow-y: auto;
-    }
-
-    .sidebar-top {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .sidebar-logo {
-      font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #252525;
-      text-decoration: none;
     }
 
     .sidebar-avatar {
@@ -96,40 +80,15 @@
       display: block;
     }
 
-    .sidebar-intro a { color: inherit; text-decoration: none; }
-    .sidebar-intro a:hover { text-decoration: underline; text-underline-offset: 3px; }
-
     .sidebar-intro {
       font-size: 14px;
       line-height: 1.5;
       color: #4D4D4D;
       font-weight: 400;
       max-width: 230px;
-      margin-top: 0;
     }
-
-    .sidebar-nav {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      list-style: none;
-    }
-    .sidebar-nav a {
-      font-size: 15px;
-      color: var(--muted);
-      text-decoration: none;
-      font-weight: 400;
-      padding: 4px 0;
-      display: inline-block;
-      transition: color 0.2s;
-    }
-    .sidebar-nav a:hover { color: var(--ink); }
-
-    .sidebar-divider {
-      border: none;
-      border-top: 0.5px solid var(--line);
-      margin: 4px 0;
-    }
+    .sidebar-intro a { color: inherit; text-decoration: none; }
+    .sidebar-intro a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
     .sidebar-links {
       display: flex;
@@ -140,14 +99,14 @@
     .sidebar-links a img,
     .sidebar-links button img {
       filter: brightness(0);
-      opacity: 0.5;
+      opacity: 0.8;
       display: block;
       width: 24px;
       height: 24px;
       object-fit: contain;
     }
     .sidebar-links a:hover img,
-    .sidebar-links button:hover img { opacity: 0.9; }
+    .sidebar-links button:hover img { opacity: 1; }
     .email-copy {
       background: none;
       border: none;
@@ -155,18 +114,13 @@
       cursor: pointer;
       display: inline-flex;
       position: relative;
-      opacity: 0.7;
-      transition: opacity 0.2s;
       -webkit-appearance: none;
       appearance: none;
     }
-    .email-copy:hover { opacity: 1; }
     .copy-tooltip {
       position: absolute;
       bottom: 32px;
       left: 0;
-
-
       background: var(--ink);
       color: #fff;
       font-size: 12px;
@@ -178,11 +132,6 @@
       transition: opacity 0.2s;
     }
     .copy-tooltip.show { opacity: 1; }
-
-    .sidebar-bottom {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
     }
     .sidebar-bottom a {
       font-size: 15px;
@@ -378,7 +327,6 @@
         text-align: center;
         overflow-y: visible;
       }
-      .sidebar-top { align-items: center; }
       .sidebar-intro { max-width: 300px; }
       .sidebar-links { flex-direction: row; gap: 16px; }
       .main { margin-left: 0; padding: 24px 0 60px; font-size: 14px; }
@@ -400,23 +348,20 @@
 <div class="layout">
 
 <aside class="sidebar">
-  <div class="sidebar-top">
-    <div class="sidebar-avatar">
-      <img src="ara-profile-1.png" alt="Ara An">
-    </div>
-    <p class="sidebar-intro">
-      I'm a product design leader based in Toronto. I've launched products, scaled teams and sweat the details in between.<br><br>
-      Previously at <a href="https://www.thescore.bet/" target="_blank" style="color:inherit;">theScore</a>, <a href="https://kineticecommerce.com/" target="_blank" style="color:inherit;">Kinetic Commerce</a> and <a href="https://www.nascentdigital.com/" target="_blank" style="color:inherit;">Nascent Digital</a>.
-    </p>
-    <div class="sidebar-links">
-      <a href="https://www.linkedin.com/in/araan/" target="_blank"><img src="linkedin.png" alt="LinkedIn" width="24" height="24"></a>
-      <button class="email-copy" onclick="copyEmail()" title="Copy email">
-        <img src="email.png" alt="Email" width="24" height="24">
-        <span class="copy-tooltip" id="copy-tooltip">Copied!</span>
-      </button>
-    </div>
+  <div class="sidebar-avatar">
+    <img src="ara-profile-1.png" alt="Ara An">
   </div>
-  <div class="sidebar-bottom"></div>
+  <p class="sidebar-intro">
+    I'm a product design leader based in Toronto. I've launched products, scaled teams and sweat the details in between.<br><br>
+    Previously at <a href="https://www.thescore.bet/" target="_blank" style="color:inherit;">theScore</a>, <a href="https://kineticecommerce.com/" target="_blank" style="color:inherit;">Kinetic Commerce</a> and <a href="https://www.nascentdigital.com/" target="_blank" style="color:inherit;">Nascent Digital</a>.
+  </p>
+  <div class="sidebar-links">
+    <a href="https://www.linkedin.com/in/araan/" target="_blank"><img src="linkedin.png" alt="LinkedIn" width="24" height="24"></a>
+    <button class="email-copy" onclick="copyEmail()" title="Copy email">
+      <img src="email.png" alt="Email" width="24" height="24">
+      <span class="copy-tooltip" id="copy-tooltip">Copied!</span>
+    </button>
+  </div>
 </aside>
 
   <!-- Main -->
