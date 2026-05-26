@@ -5,9 +5,6 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ara An — TELUS Accessories</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="global.css">
   <style>
     :root {
@@ -15,6 +12,7 @@
       --muted: #9a9890;
       --body: #4D4D4D;
       --line: #e8e8e8;
+      --accent: #B85C38;
       --dark: #1b2238;
       --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
@@ -25,16 +23,15 @@
       color: var(--ink);
       font-family: 'DM Sans', sans-serif;
       font-weight: 400;
-      font-size: 15px;
+      font-size: 14px;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
       opacity: 0;
-      transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-    body.loaded { opacity: 1; transform: translateY(0); }
-    body { transform: translateY(12px); }
+    body.loaded { opacity: 1; }
 
-    .page-wrap { max-width: 1000px; margin: 0 auto; padding: 0 60px; }
+    .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
 
     /* ── Hero ── */
     .cs-hero {
@@ -53,7 +50,7 @@
       line-height: 1; color: var(--ink); margin: 32px 0px 0px;
     }
     .cs-subtitle {
-      font-size: 15px; color: var(--body); font-style: italic;
+      font-size: 14px; color: var(--body); font-style: italic;
       font-weight: 400; margin: 0px 0px 40px; line-height: 1.5;
     }
     .cs-summary { display: grid; grid-template-columns: 160px 1fr 1fr; gap: 0 40px; }
@@ -64,7 +61,7 @@
       font-size: 20px; font-weight: 700; letter-spacing: 0.06em;
       text-transform: uppercase; color: var(--ink); margin-bottom: 4px;
     }
-    .summary-val { font-size: 15px; color: var(--body); font-weight: 400; line-height: 1.5; }
+    .summary-val { font-size: 14px; color: var(--body); font-weight: 400; line-height: 1.5; }
 
     /* ── Sections ── */
     .cs-section {
@@ -79,11 +76,11 @@
       padding-top: 4px; position: sticky; top: 80px; align-self: start;
     }
     .cs-section-content { display: flex; flex-direction: column; }
-    .cs-section-content p { font-size: 15px; line-height: 1.5; color: var(--body); margin-bottom: 0; }
+    .cs-section-content p { font-size: 14px; line-height: 1.5; color: var(--body); margin-bottom: 0; }
     .cs-section-content p + p { margin-top: 12px; }
     .cs-section-content p strong { color: var(--ink); font-weight: 500; }
     .cs-section-content h4 {
-      font-size: 15px; font-weight: 500; color: var(--ink);
+      font-size: 14px; font-weight: 500; color: var(--ink);
       margin: 24px 0 4px; padding: 0;
       -webkit-margin-before: 0; -webkit-margin-after: 0;
     }
