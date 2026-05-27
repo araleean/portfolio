@@ -110,6 +110,68 @@
     .cs-section-content h4:first-child { margin-top: 0; }
     .cs-section-content p + h4 { margin-top: 24px; }
 
+    /* ── Carousel ── */
+    .carousel {
+      position: relative;
+      margin: 32px 0;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.4s var(--ease);
+    }
+    .carousel-track img {
+      min-width: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+    }
+    .carousel-track .img-placeholder {
+      min-width: 100%;
+      border-radius: 8px;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.9);
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: var(--ink);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      transition: background 0.2s;
+      z-index: 2;
+    }
+    .carousel-btn:hover { background: #fff; }
+    .carousel-btn.prev { left: 12px; }
+    .carousel-btn.next { right: 12px; }
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 12px;
+    }
+    .carousel-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--line);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.2s;
+    }
+    .carousel-dot.active { background: var(--ink); }
+
     /* ── Image grid ── */
     .img-grid-3 {
       display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 32px 0;
@@ -127,7 +189,18 @@
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
+    /* ── Discovery grid ── */
+    .discovery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin: 32px 0;
+    }
+    .carousel-mobile-only { display: none; }
+
     @media (max-width: 768px) {
+      .discovery-grid { display: none; }
+      .carousel-mobile-only { display: block; }
       .page-wrap { padding: 0 20px; }
       .cs-summary { grid-template-columns: 1fr; gap: 20px; }
       .cs-section { grid-template-columns: 1fr; gap: 16px; padding: 36px 0; }
@@ -139,7 +212,7 @@
 <body>
 
   <div class="cs-hero">
-    <div class="cs-hero-placeholder">Add hero image</div>
+    <img src="images/telus-cart-hero.png" alt="TELUS Cart">
   </div>
 
   <div class="page-wrap">
@@ -151,7 +224,7 @@
         <div class="summary-col">
           <div class="summary-item">
             <div class="summary-label">Role</div>
-            <div class="summary-val">Sole Designer</div>
+            <div class="summary-val">Product Designer</div>
           </div>
           <div class="summary-item">
             <div class="summary-label">Date</div>
@@ -170,13 +243,6 @@
             <div class="summary-val">A phased cart experience — launching with accessories, then expanding to support phones and plans — built to scale across TELUS's full product ecosystem.</div>
           </div>
         </div>
-      </div>
-    </div>
-
-    <div class="cs-section reveal">
-      <div class="cs-section-label">The Opportunity</div>
-      <div class="cs-section-content">
-        <p>Part of the TELUS Digital e-commerce transformation, we built TELUS's first e-commerce cart. The previous experience took users from a product page directly into a "buy now" flow. With the addition of the cart feature, users can now add more than one item and even save their purchases for another day.</p>
       </div>
     </div>
 
@@ -200,16 +266,30 @@
       <div class="cs-section-label">Discovery</div>
       <div class="cs-section-content">
         <p>During discovery, we captured all the Jobs to be Done for both the consumer and business. Once we prioritized the needs, we brainstormed features that would help accomplish them. We then began wireframing a few options and user tested to get validation.</p>
-        <div class="img-grid-3" style="margin-top: 32px;">
-          <div class="img-placeholder dark">Add image</div>
-          <div class="img-placeholder dark">Add image</div>
-          <div class="img-placeholder dark">Add image</div>
+        <div class="discovery-grid">
+          <img src="images/telus-cart-discovery-1.png" alt="Discovery 1" style="border-radius:4px;width:100%;display:block;">
+          <img src="images/telus-cart-discovery-2.png" alt="Discovery 2" style="border-radius:4px;width:100%;display:block;">
+          <img src="images/telus-cart-discovery-3.png" alt="Discovery 3" style="border-radius:4px;width:100%;display:block;">
+        </div>
+        <div class="carousel carousel-mobile-only" id="carousel-discovery">
+          <div class="carousel-track">
+            <img src="images/telus-cart-discovery-1.png" alt="Discovery 1">
+            <img src="images/telus-cart-discovery-2.png" alt="Discovery 2">
+            <img src="images/telus-cart-discovery-3.png" alt="Discovery 3">
+          </div>
+          <button class="carousel-btn prev" onclick="moveCarousel('carousel-discovery', -1)">&#8592;</button>
+          <button class="carousel-btn next" onclick="moveCarousel('carousel-discovery', 1)">&#8594;</button>
+          <div class="carousel-dots">
+            <button class="carousel-dot active" onclick="goToSlide('carousel-discovery', 0)"></button>
+            <button class="carousel-dot" onclick="goToSlide('carousel-discovery', 1)"></button>
+            <button class="carousel-dot" onclick="goToSlide('carousel-discovery', 2)"></button>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="cs-section reveal">
-      <div class="cs-section-label">Phase 1 — Accessories Cart</div>
+      <div class="cs-section-label">Phase 1: Accessories Cart</div>
       <div class="cs-section-content">
         <h4>Product Detail Page</h4>
         <p>From the product detail page, users can select their colour, size and quantity. To add the item to cart, users can simply click on the "Add to cart" button.</p>
@@ -220,16 +300,25 @@
         <h4>Accessories Cart Review</h4>
         <p>The cart review page was created to allow users to edit and confirm their order prior to checkout.</p>
 
-        <div class="img-grid-3" style="margin-top: 32px;">
-          <div class="img-placeholder">Add image</div>
-          <div class="img-placeholder">Add image</div>
-          <div class="img-placeholder">Add image</div>
+        <div class="carousel" id="carousel-phase1">
+          <div class="carousel-track">
+            <img src="images/telus-cart-phase1-1.png" alt="Product Detail Page">
+            <img src="images/telus-cart-phase1-2.png" alt="Dropdown Notification">
+            <img src="images/telus-cart-phase1-3.png" alt="Accessories Cart Review">
+          </div>
+          <button class="carousel-btn prev" onclick="moveCarousel('carousel-phase1', -1)">&#8592;</button>
+          <button class="carousel-btn next" onclick="moveCarousel('carousel-phase1', 1)">&#8594;</button>
+          <div class="carousel-dots">
+            <button class="carousel-dot active" onclick="goToSlide('carousel-phase1', 0)"></button>
+            <button class="carousel-dot" onclick="goToSlide('carousel-phase1', 1)"></button>
+            <button class="carousel-dot" onclick="goToSlide('carousel-phase1', 2)"></button>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="cs-section reveal">
-      <div class="cs-section-label">Phase 2 & 3 — Phones & Plans Cart</div>
+      <div class="cs-section-label">Phase 2: Phones & Plans Cart</div>
       <div class="cs-section-content">
         <h4>Product Experience Page</h4>
         <p>We discovered that users wanted more education and information about devices to help decide which phone is best for them.</p>
@@ -240,10 +329,19 @@
         <h4>Cart Review</h4>
         <p>After configuring their phone/plan, they're directed to the cart review page. Due to technical limitations, we were unable to unify the phones and accessories flows together.</p>
 
-        <div class="img-grid-3" style="margin-top: 32px;">
-          <div class="img-placeholder">Add image</div>
-          <div class="img-placeholder">Add image</div>
-          <div class="img-placeholder">Add image</div>
+        <div class="carousel" id="carousel-phase2">
+          <div class="carousel-track">
+            <div class="img-placeholder" style="aspect-ratio:4/3;">Add image</div>
+            <div class="img-placeholder" style="aspect-ratio:4/3;">Add image</div>
+            <div class="img-placeholder" style="aspect-ratio:4/3;">Add image</div>
+          </div>
+          <button class="carousel-btn prev" onclick="moveCarousel('carousel-phase2', -1)">&#8592;</button>
+          <button class="carousel-btn next" onclick="moveCarousel('carousel-phase2', 1)">&#8594;</button>
+          <div class="carousel-dots">
+            <button class="carousel-dot active" onclick="goToSlide('carousel-phase2', 0)"></button>
+            <button class="carousel-dot" onclick="goToSlide('carousel-phase2', 1)"></button>
+            <button class="carousel-dot" onclick="goToSlide('carousel-phase2', 2)"></button>
+          </div>
         </div>
       </div>
     </div>
@@ -251,6 +349,28 @@
   </div>
 
   <script>
+    const carouselState = {};
+    function initCarousel(id) { if (!carouselState[id]) carouselState[id] = 0; }
+    function updateCarousel(id) {
+      const el = document.getElementById(id);
+      const track = el.querySelector('.carousel-track');
+      const dots = el.querySelectorAll('.carousel-dot');
+      const idx = carouselState[id];
+      track.style.transform = `translateX(-${idx * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+    function moveCarousel(id, dir) {
+      initCarousel(id);
+      const el = document.getElementById(id);
+      const count = el.querySelectorAll('.carousel-track > *').length;
+      carouselState[id] = (carouselState[id] + dir + count) % count;
+      updateCarousel(id);
+    }
+    function goToSlide(id, idx) {
+      initCarousel(id);
+      carouselState[id] = idx;
+      updateCarousel(id);
+    }
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.08 });
