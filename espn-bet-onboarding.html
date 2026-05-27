@@ -149,6 +149,26 @@
       margin: 40px 0;
     }
 
+    /* ── Carousel ── */
+    .carousel { position: relative; margin: 32px 0; overflow: hidden; }
+    .carousel-track { display: flex; transition: transform 0.4s var(--ease); }
+    .carousel-track img { min-width: 100%; width: 100%; object-fit: cover; display: block; }
+    .carousel-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.9); border: none; border-radius: 50%;
+      width: 36px; height: 36px; cursor: pointer; display: flex;
+      align-items: center; justify-content: center; font-size: 16px;
+      color: var(--ink); box-shadow: 0 2px 8px rgba(0,0,0,0.12); z-index: 2;
+    }
+    .carousel-btn.prev { left: 12px; }
+    .carousel-btn.next { right: 12px; }
+    .carousel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 12px; }
+    .carousel-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--line);
+      border: none; cursor: pointer; padding: 0; transition: background 0.2s;
+    }
+    .carousel-dot.active { background: var(--ink); }
+
     /* ── Reveal ── */
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -179,41 +199,69 @@
         <div class="summary-col">
           <div class="summary-item">
             <div class="summary-label">Role</div>
-            <div class="summary-val">Senior Product Design Manager</div>
+            <div class="summary-val">Senior Manager, Product Design</div>
           </div>
           <div class="summary-item">
-            <div class="summary-label">Timeline</div>
-            <div class="summary-val">3 months</div>
+            <div class="summary-label">Date</div>
+            <div class="summary-val">2024</div>
           </div>
         </div>
         <div class="summary-col">
           <div class="summary-item">
             <div class="summary-label">Challenge</div>
-            <div class="summary-val">The ESPN Bet sign-up flow was lengthy — too many steps, too much friction, and measurable drop-off as a result. Users were abandoning the flow before completing registration.</div>
+            <div class="summary-val">The sign-up flow was lengthy, had too many steps and created a lot of friction — leading to users abandoning before completing registration.</div>
           </div>
         </div>
         <div class="summary-col">
           <div class="summary-item">
             <div class="summary-label">Solution</div>
-            <div class="summary-val">Streamlined the experience without cutting corners on compliance — finding where we could reduce friction without compromising what we were legally required to collect.</div>
+            <div class="summary-val">We optimized the experience without cutting corners on compliance and worked with research to dig into the user frustrations.</div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="cs-section reveal">
-      <div class="cs-section-label">The Problem</div>
+      <div class="cs-section-label">Note</div>
       <div class="cs-section-content">
-        <p>The ESPN Bet sign-up flow was lengthy — too many steps, too much friction, and measurable drop-off as a result. Users were abandoning the flow before completing registration, which meant lost players before they ever placed a bet.</p>
-        <p>There was a clear opportunity to streamline the experience without cutting corners on compliance. In a regulated space, every step exists for a reason — the challenge was finding where we could reduce friction without compromising what we were legally required to collect.</p>
+        <p>All features were built to be scalable to multiple brands — theScore Bet, ESPN Bet and Hollywood Casino. For this case study, I'll be using ESPN Bet branding.</p>
       </div>
     </div>
 
     <div class="cs-section reveal">
-      <div class="cs-section-label">The Designs</div>
+      <div class="cs-section-label">The Opportunity</div>
       <div class="cs-section-content">
-        <div style="display:flex; justify-content:center; margin-top:0;">
-          <img src="images/espnbet-signup-gif.gif" alt="ESPN Bet Sign-Up Flow" style="max-width:220px; width:100%; border-radius:24px;">
+        <p>The sign-up flow was long, complex and outdated — a single form per page pattern that made the experience feel extra long, leading to high drop-off and slow user growth.</p>
+        <p>Revisiting it gave us the chance to refresh the designs and take another look at the compliance requirements — understanding where we could reduce friction, defer steps, and be more transparent with users about what to expect next.</p>
+        <p>We collaborated with research to user test a couple of design options and build confidence in our final decisions.</p>
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <div class="cs-section-label">Old Flow</div>
+      <div class="cs-section-content">
+        <div class="carousel" id="carousel-oldflow">
+          <div class="carousel-track">
+            <img src="images/espnbet-problem-1.png" alt="Old Sign-Up Flow 1">
+            <img src="images/espnbet-problem-2.png" alt="Old Sign-Up Flow 2">
+            <img src="images/espnbet-problem-3.png" alt="Old Sign-Up Flow 3">
+          </div>
+          <button class="carousel-btn prev" onclick="moveCarousel('carousel-oldflow', -1)">&#8592;</button>
+          <button class="carousel-btn next" onclick="moveCarousel('carousel-oldflow', 1)">&#8594;</button>
+          <div class="carousel-dots">
+            <button class="carousel-dot active" onclick="goToSlide('carousel-oldflow', 0)"></button>
+            <button class="carousel-dot" onclick="goToSlide('carousel-oldflow', 1)"></button>
+            <button class="carousel-dot" onclick="goToSlide('carousel-oldflow', 2)"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <div class="cs-section-label">New Flow</div>
+      <div class="cs-section-content">
+        <div style="display:flex; justify-content:center;">
+          <img src="images/espnbet-signup-gif.gif" alt="ESPN Bet New Sign-Up Flow" style="max-width:220px; width:100%; border-radius:24px;">
         </div>
       </div>
     </div>
@@ -221,6 +269,28 @@
   </div>
 
   <script>
+    const carouselState = {};
+    function initCarousel(id) { if (!carouselState[id]) carouselState[id] = 0; }
+    function updateCarousel(id) {
+      const el = document.getElementById(id);
+      const track = el.querySelector('.carousel-track');
+      const dots = el.querySelectorAll('.carousel-dot');
+      const idx = carouselState[id];
+      track.style.transform = `translateX(-${idx * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+    function moveCarousel(id, dir) {
+      initCarousel(id);
+      const el = document.getElementById(id);
+      const count = el.querySelectorAll('.carousel-track img').length;
+      carouselState[id] = (carouselState[id] + dir + count) % count;
+      updateCarousel(id);
+    }
+    function goToSlide(id, idx) {
+      initCarousel(id);
+      carouselState[id] = idx;
+      updateCarousel(id);
+    }
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.08 });
