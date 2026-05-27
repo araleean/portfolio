@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ara An — TELUS Cart</title>
+  <link rel="stylesheet" href="global.css">
+  <style>
+    :root {
+      --ink: #252525;
+      --muted: #9a9890;
+      --body: #4D4D4D;
+      --line: #e8e8e8;
+      --dark: #1b2238;
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html, body { overflow-x: clip; }
+
+    body {
+      background: #ffffff;
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      opacity: 0;
+      transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    body.loaded { opacity: 1; }
+
+    /* ── Hero ── */
+    .cs-hero {
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #CEB7EB;
+    }
+    .cs-hero img,
+    .cs-hero video {
+      max-height: 500px;
+      width: auto;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .cs-hero-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.4); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    @media (max-width: 768px) {
+      .cs-hero { height: auto; padding: 24px 0; }
+      .cs-hero img, .cs-hero video { width: 100%; height: auto; }
+    }
+
+    .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
+
+    /* ── Header ── */
+    .cs-header { padding: 48px 0 40px; border-bottom: 0.5px solid var(--line); }
+    .cs-title {
+      font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1;
+      color: var(--ink);
+      margin: 48px 0 0;
+    }
+    .cs-subtitle {
+      font-size: 14px; color: var(--body); font-style: italic;
+      font-weight: 400; margin: 8px 0 40px; line-height: 1.5;
+    }
+    .cs-summary { display: grid; grid-template-columns: 160px 1fr 1fr; gap: 0 40px; }
+    .summary-col { display: flex; flex-direction: column; gap: 28px; }
+    .summary-item { display: flex; flex-direction: column; }
+    .summary-label {
+      font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
+      font-size: 20px; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--ink); margin-bottom: 4px;
+    }
+    .summary-val { font-size: 14px; color: var(--body); font-weight: 400; line-height: 1.5; }
+
+    /* ── Sections ── */
+    .cs-section {
+      display: grid; grid-template-columns: 160px 1fr; gap: 0 40px;
+      padding: 48px 0; border-bottom: 0.5px solid var(--line);
+    }
+    .cs-section:last-child { border-bottom: none; }
+    .cs-section-label {
+      font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
+      font-size: 20px; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--ink);
+      padding-top: 4px; position: sticky; top: 80px; align-self: start;
+    }
+    .cs-section-content { display: flex; flex-direction: column; }
+    .cs-section-content p { font-size: 14px; line-height: 1.6; color: var(--body); margin-bottom: 0; }
+    .cs-section-content p + p { margin-top: 12px; }
+    .cs-section-content p strong { color: var(--ink); font-weight: 500; }
+    .cs-section-content h4 {
+      font-size: 14px; font-weight: 500; color: var(--ink);
+      margin: 24px 0 4px;
+    }
+    .cs-section-content h4:first-child { margin-top: 0; }
+    .cs-section-content p + h4 { margin-top: 24px; }
+
+    /* ── Image grid ── */
+    .img-grid-3 {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 32px 0;
+    }
+    .img-placeholder {
+      width: 100%; aspect-ratio: 4/3; background: #f0ede8; border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .img-placeholder.dark {
+      background: #e8e4f0;
+    }
+
+    /* ── Reveal ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      .page-wrap { padding: 0 20px; }
+      .cs-summary { grid-template-columns: 1fr; gap: 20px; }
+      .cs-section { grid-template-columns: 1fr; gap: 16px; padding: 36px 0; }
+      .cs-section-label { position: static; }
+      .img-grid-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cs-hero">
+    <div class="cs-hero-placeholder">Add hero image</div>
+  </div>
+
+  <div class="page-wrap">
+
+    <div class="cs-header reveal">
+      <h1 class="cs-title">Building an E-Commerce Cart</h1>
+      <p class="cs-subtitle">Building TELUS's first e-commerce cart — from accessories only to a full phones and plans checkout.</p>
+      <div class="cs-summary">
+        <div class="summary-col">
+          <div class="summary-item">
+            <div class="summary-label">Role</div>
+            <div class="summary-val">Sole Designer</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-label">Date</div>
+            <div class="summary-val">2017</div>
+          </div>
+        </div>
+        <div class="summary-col">
+          <div class="summary-item">
+            <div class="summary-label">Challenge</div>
+            <div class="summary-val">The previous experience took users from a product page directly into a "buy now" flow. Users couldn't add more than one item or save purchases for another day.</div>
+          </div>
+        </div>
+        <div class="summary-col">
+          <div class="summary-item">
+            <div class="summary-label">Solution</div>
+            <div class="summary-val">A phased cart experience — launching with accessories, then expanding to support phones and plans — built to scale across TELUS's full product ecosystem.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <div class="cs-section-label">The Opportunity</div>
+      <div class="cs-section-content">
+        <p>Part of the TELUS Digital e-commerce transformation, we built TELUS's first e-commerce cart. The previous experience took users from a product page directly into a "buy now" flow. With the addition of the cart feature, users can now add more than one item and even save their purchases for another day.</p>
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <div class="cs-section-label">Process</div>
+      <div class="cs-section-content">
+        <p>To validate, learn and improve the cart experience, we launched the cart in different phases.</p>
+
+        <h4>Phase 1</h4>
+        <p>Cart for accessories only.</p>
+
+        <h4>Phase 2</h4>
+        <p>Cart for accessories and new phone/plan activation.</p>
+
+        <h4>Phase 3</h4>
+        <p>Cart for accessories and all mobility users (current and new customers). Due to technical limitations, we had to operate a solution that would support two separate checkout flows — one for accessories, and another for mobility.</p>
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <div class="cs-section-label">Discovery</div>
+      <div class="cs-section-content">
+        <p>During discovery, we captured all the Jobs to be Done for both the consumer and business. Once we prioritized the needs, we brainstormed features that would help accomplish them. We then began wireframing a few options and user tested to get validation.</p>
+        <div class="img-grid-3" style="margin-top: 32px;">
+          <div class="img-placeholder dark">Add image</div>
+          <div class="img-placeholder dark">Add image</div>
+          <div class="img-placeholder dark">Add image</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <div class="cs-section-label">Phase 1 — Accessories Cart</div>
+      <div class="cs-section-content">
+        <h4>Product Detail Page</h4>
+        <p>From the product detail page, users can select their colour, size and quantity. To add the item to cart, users can simply click on the "Add to cart" button.</p>
+
+        <h4>Dropdown Notification</h4>
+        <p>After the item has been added to cart, a notification will dropdown by the cart icon to confirm the action. The button will also change to "Added to cart" for 3 seconds.</p>
+
+        <h4>Accessories Cart Review</h4>
+        <p>The cart review page was created to allow users to edit and confirm their order prior to checkout.</p>
+
+        <div class="img-grid-3" style="margin-top: 32px;">
+          <div class="img-placeholder">Add image</div>
+          <div class="img-placeholder">Add image</div>
+          <div class="img-placeholder">Add image</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <div class="cs-section-label">Phase 2 & 3 — Phones & Plans Cart</div>
+      <div class="cs-section-content">
+        <h4>Product Experience Page</h4>
+        <p>We discovered that users wanted more education and information about devices to help decide which phone is best for them.</p>
+
+        <h4>Product Configure Page</h4>
+        <p>Once users click on one of the phones, they're directed to configure their phone and choose the right plan for them.</p>
+
+        <h4>Cart Review</h4>
+        <p>After configuring their phone/plan, they're directed to the cart review page. Due to technical limitations, we were unable to unify the phones and accessories flows together.</p>
+
+        <div class="img-grid-3" style="margin-top: 32px;">
+          <div class="img-placeholder">Add image</div>
+          <div class="img-placeholder">Add image</div>
+          <div class="img-placeholder">Add image</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+  <script src="password.js"></script>
+  <script src="components.js"></script>
+
+</body>
+</html>
