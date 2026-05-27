@@ -33,24 +33,27 @@
 
     .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
 
-        /* ── Hero ── */
-    .cs-hero {
+        .cs-hero {
       width: 100%;
       height: 500px;
       overflow: hidden;
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background: #C9BAD8;
     }
     .cs-hero img,
     .cs-hero video {
-      width: 100%;
+      max-height: 500px;
+      width: auto;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
     }
     @media (max-width: 768px) {
-      .cs-hero { height: auto; }
-      .cs-hero img, .cs-hero video { height: auto; object-fit: contain; }
+      .cs-hero { height: auto; padding: 24px 0; }
+      .cs-hero img, .cs-hero video { width: 100%; height: auto; }
+    }
     }
 
     /* ── Header ── */
@@ -188,8 +191,8 @@
             <div class="summary-val">Product Designer</div>
           </div>
           <div class="summary-item">
-            <div class="summary-label">Timeline</div>
-            <div class="summary-val">6 months</div>
+            <div class="summary-label">Date</div>
+            <div class="summary-val">2017</div>
           </div>
         </div>
         <div class="summary-col">
@@ -313,11 +316,11 @@
     <div class="cs-section reveal">
       <div class="cs-section-label">The Outcome</div>
       <div class="cs-section-content">
-        <p style="padding: 48px 0 40px">The TELUS Digital team and stakeholders were thrilled about the relaunch. We shared our learnings with the larger TELUS team to improve the phones and plans flow.</p>
+        <p>The TELUS Digital team and stakeholders were thrilled about the relaunch. We shared our learnings with the larger TELUS team to improve the phones and plans flow.</p>
         <h4>+40% Monthly Visits</h4>
-        <p style="padding: 48px 0 40px">Increase in monthly visits after launch.</p>
+        <p>Increase in monthly visits after launch.</p>
         <h4>-36% Time on Page</h4>
-        <p style="padding: 48px 0 40px">Users found what they needed faster.</p>
+        <p>Users found what they needed faster.</p>
         <h4>-40% Bounce Rate</h4>
         <p>Reduction in bounce rate across the accessories experience.</p>
       </div>
