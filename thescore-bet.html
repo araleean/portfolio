@@ -42,7 +42,7 @@
     .cs-hero video {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       display: block;
     }
 
@@ -100,14 +100,15 @@
     }
     .cs-section-content h4:first-child { margin-top: 0; }
 
-    .cs-img { width: 100%; border-radius: 8px; display: block; margin: 0; }
+    .cs-img { width: 100%; border-radius: 0; display: block; margin: 40px 0 0; }
 
     /* ── Reveal ── */
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 768px) {
-      .cs-hero { height: 300px; }
+      .cs-hero { height: auto; }
+      .cs-hero img, .cs-hero video { height: auto; object-fit: contain; }
       .page-wrap { padding: 0 20px; }
       .cs-summary { grid-template-columns: 1fr; gap: 20px; }
       .cs-section { grid-template-columns: 1fr; gap: 16px; padding: 36px 0; }
