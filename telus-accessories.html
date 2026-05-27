@@ -37,7 +37,6 @@
     .cs-hero {
       width: 100%; background: #f0ede8;
       display: flex; align-items: center; justify-content: center;
-      padding: 56px 60px;
       max-height: 500px;
       overflow: hidden;
     }
@@ -88,10 +87,63 @@
     }
     .cs-section-content h4:first-child { margin-top: 0; }
 
-    /* ── Image grids ── */
-    .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
-    .img-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 32px 0; }
-    .img-grid-2 img, .img-grid-3 img { width: 100%; object-fit: cover; border-radius: 4px; display: block; }
+    /* ── Carousel ── */
+    .carousel {
+      position: relative;
+      margin: 32px 0;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.4s var(--ease);
+    }
+    .carousel-track img {
+      min-width: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.9);
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: var(--ink);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      transition: background 0.2s;
+      z-index: 2;
+    }
+    .carousel-btn:hover { background: #fff; }
+    .carousel-btn.prev { left: 12px; }
+    .carousel-btn.next { right: 12px; }
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 12px;
+    }
+    .carousel-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--line);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.2s;
+    }
+    .carousel-dot.active { background: var(--ink); }
 
     /* ── Reveal ── */
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
@@ -171,9 +223,17 @@
       <div class="cs-section-label">Homepage</div>
       <div class="cs-section-content">
         <p>The homepage gave customers a glimpse into the latest products and deals available at TELUS. We created a sticky navigation with full icons to represent each product category, and editorial content to drive discovery.</p>
-        <div class="img-grid-2">
-          <img src="images/telus-homepage1.png" alt="TELUS Homepage">
-          <img src="images/telus-homepage2.png" alt="TELUS Homepage 2">
+        <div class="carousel" id="carousel-homepage">
+          <div class="carousel-track">
+            <img src="images/telus-homepage1.png" alt="TELUS Homepage">
+            <img src="images/telus-homepage2.png" alt="TELUS Homepage 2">
+          </div>
+          <button class="carousel-btn prev" onclick="moveCarousel('carousel-homepage', -1)">&#8592;</button>
+          <button class="carousel-btn next" onclick="moveCarousel('carousel-homepage', 1)">&#8594;</button>
+          <div class="carousel-dots">
+            <button class="carousel-dot active" onclick="goToSlide('carousel-homepage', 0)"></button>
+            <button class="carousel-dot" onclick="goToSlide('carousel-homepage', 1)"></button>
+          </div>
         </div>
       </div>
     </div>
@@ -182,10 +242,19 @@
       <div class="cs-section-label">Product Detail</div>
       <div class="cs-section-content">
         <p>Product detail pages were designed with custom components that could be added or removed based on how much product information and imagery was available — flexible enough to work across a wide range of accessories.</p>
-        <div class="img-grid-3">
-          <img src="images/telus-productdetail1.png" alt="Product Detail 1">
-          <img src="images/telus-productdetail2.png" alt="Product Detail 2">
-          <img src="images/telus-productdetail3.png" alt="Product Detail 3">
+        <div class="carousel" id="carousel-productdetail">
+          <div class="carousel-track">
+            <img src="images/telus-productdetail1.png" alt="Product Detail 1">
+            <img src="images/telus-productdetail2.png" alt="Product Detail 2">
+            <img src="images/telus-productdetail3.png" alt="Product Detail 3">
+          </div>
+          <button class="carousel-btn prev" onclick="moveCarousel('carousel-productdetail', -1)">&#8592;</button>
+          <button class="carousel-btn next" onclick="moveCarousel('carousel-productdetail', 1)">&#8594;</button>
+          <div class="carousel-dots">
+            <button class="carousel-dot active" onclick="goToSlide('carousel-productdetail', 0)"></button>
+            <button class="carousel-dot" onclick="goToSlide('carousel-productdetail', 1)"></button>
+            <button class="carousel-dot" onclick="goToSlide('carousel-productdetail', 2)"></button>
+          </div>
         </div>
       </div>
     </div>
@@ -194,10 +263,19 @@
       <div class="cs-section-label">Category</div>
       <div class="cs-section-content">
         <p>Category pages focused on the lifestyle aspect of the products — rich imagery, mini descriptions, and product information to help customers find the right accessory for them.</p>
-        <div class="img-grid-3">
-          <img src="images/telus-category1.png" alt="Category 1">
-          <img src="images/telus-category2.png" alt="Category 2">
-          <img src="images/telus-category3.png" alt="Category 3">
+        <div class="carousel" id="carousel-category">
+          <div class="carousel-track">
+            <img src="images/telus-category1.png" alt="Category 1">
+            <img src="images/telus-category2.png" alt="Category 2">
+            <img src="images/telus-category3.png" alt="Category 3">
+          </div>
+          <button class="carousel-btn prev" onclick="moveCarousel('carousel-category', -1)">&#8592;</button>
+          <button class="carousel-btn next" onclick="moveCarousel('carousel-category', 1)">&#8594;</button>
+          <div class="carousel-dots">
+            <button class="carousel-dot active" onclick="goToSlide('carousel-category', 0)"></button>
+            <button class="carousel-dot" onclick="goToSlide('carousel-category', 1)"></button>
+            <button class="carousel-dot" onclick="goToSlide('carousel-category', 2)"></button>
+          </div>
         </div>
       </div>
     </div>
@@ -206,9 +284,17 @@
       <div class="cs-section-label">Campaign</div>
       <div class="cs-section-content">
         <p>Seasonal campaign pages gave us the opportunity to tell a fuller narrative around the products — helping customers find the best accessory for any moment in their life.</p>
-        <div class="img-grid-2">
-          <img src="images/telus-campaign1.png" alt="Campaign 1">
-          <img src="images/telus-campaign2.png" alt="Campaign 2">
+        <div class="carousel" id="carousel-campaign">
+          <div class="carousel-track">
+            <img src="images/telus-campaign1.png" alt="Campaign 1">
+            <img src="images/telus-campaign2.png" alt="Campaign 2">
+          </div>
+          <button class="carousel-btn prev" onclick="moveCarousel('carousel-campaign', -1)">&#8592;</button>
+          <button class="carousel-btn next" onclick="moveCarousel('carousel-campaign', 1)">&#8594;</button>
+          <div class="carousel-dots">
+            <button class="carousel-dot active" onclick="goToSlide('carousel-campaign', 0)"></button>
+            <button class="carousel-dot" onclick="goToSlide('carousel-campaign', 1)"></button>
+          </div>
         </div>
       </div>
     </div>
@@ -229,6 +315,35 @@
   </div>
 
   <script>
+    const carouselState = {};
+
+    function initCarousel(id) {
+      if (!carouselState[id]) carouselState[id] = 0;
+    }
+
+    function updateCarousel(id) {
+      const el = document.getElementById(id);
+      const track = el.querySelector('.carousel-track');
+      const dots = el.querySelectorAll('.carousel-dot');
+      const idx = carouselState[id];
+      track.style.transform = `translateX(-${idx * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+
+    function moveCarousel(id, dir) {
+      initCarousel(id);
+      const el = document.getElementById(id);
+      const count = el.querySelectorAll('.carousel-track img').length;
+      carouselState[id] = (carouselState[id] + dir + count) % count;
+      updateCarousel(id);
+    }
+
+    function goToSlide(id, idx) {
+      initCarousel(id);
+      carouselState[id] = idx;
+      updateCarousel(id);
+    }
+
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.08 });
