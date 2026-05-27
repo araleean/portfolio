@@ -39,7 +39,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #CEB7EB;
+      background: #AF80D9;
     }
     .cs-hero img,
     .cs-hero video {
@@ -177,7 +177,7 @@
       display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 32px 0;
     }
     .img-placeholder {
-      width: 100%; aspect-ratio: 4/3; background: #f0ede8; border-radius: 4px;
+      width: 100%; aspect-ratio: 4/3; background: #f0ede8; border-radius: 0;
       display: flex; align-items: center; justify-content: center;
       color: var(--muted); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
     }
@@ -267,9 +267,9 @@
       <div class="cs-section-content">
         <p>During discovery, we captured all the Jobs to be Done for both the consumer and business. Once we prioritized the needs, we brainstormed features that would help accomplish them. We then began wireframing a few options and user tested to get validation.</p>
         <div class="discovery-grid">
-          <img src="images/telus-cart-discovery-1.png" alt="Discovery 1" style="border-radius:4px;width:100%;display:block;">
-          <img src="images/telus-cart-discovery-2.png" alt="Discovery 2" style="border-radius:4px;width:100%;display:block;">
-          <img src="images/telus-cart-discovery-3.png" alt="Discovery 3" style="border-radius:4px;width:100%;display:block;">
+          <img src="images/telus-cart-discovery-1.png" alt="Discovery 1" style="width:100%;display:block;">
+          <img src="images/telus-cart-discovery-2.png" alt="Discovery 2" style="width:100%;display:block;">
+          <img src="images/telus-cart-discovery-3.png" alt="Discovery 3" style="width:100%;display:block;">
         </div>
         <div class="carousel carousel-mobile-only" id="carousel-discovery">
           <div class="carousel-track">
@@ -331,9 +331,9 @@
 
         <div class="carousel" id="carousel-phase2">
           <div class="carousel-track">
-            <div class="img-placeholder" style="aspect-ratio:4/3;">Add image</div>
-            <div class="img-placeholder" style="aspect-ratio:4/3;">Add image</div>
-            <div class="img-placeholder" style="aspect-ratio:4/3;">Add image</div>
+            <img src="images/telus-cart-phase2-1.png" alt="Product Experience Page">
+            <img src="images/telus-cart-phase2-2.png" alt="Product Configure Page">
+            <img src="images/telus-cart-phase2-3.png" alt="Cart Review">
           </div>
           <button class="carousel-btn prev" onclick="moveCarousel('carousel-phase2', -1)">&#8592;</button>
           <button class="carousel-btn next" onclick="moveCarousel('carousel-phase2', 1)">&#8594;</button>
