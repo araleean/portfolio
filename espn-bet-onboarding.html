@@ -35,10 +35,12 @@
 
         /* ── Hero ── */
     .cs-hero {
+      height: 90vh;
       width: 100%;
-      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
-      display: block;
     }
     .cs-hero img,
     .cs-hero video {
@@ -46,10 +48,6 @@
       height: 100%;
       object-fit: cover;
       display: block;
-    }
-    @media (max-width: 768px) {
-      .cs-hero { height: auto; }
-      .cs-hero img, .cs-hero video { height: auto; object-fit: contain; }
     }
 
     /* ── Header ── */
