@@ -33,27 +33,22 @@
 
     .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
 
-        .cs-hero {
+        /* ── Hero ── */
+    .cs-hero {
       width: 100%;
       height: 500px;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #C9BAD8;
+      display: block;
     }
     .cs-hero img,
     .cs-hero video {
-      max-height: 500px;
-      width: auto;
+      width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       display: block;
     }
     @media (max-width: 768px) {
-      .cs-hero { height: auto; padding: 24px 0; }
-      .cs-hero img, .cs-hero video { width: 100%; height: auto; }
-    }
+      .cs-hero { height: 300px; }
     }
 
     /* ── Header ── */
@@ -62,11 +57,11 @@
       font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
       font-size: clamp(28px, 4vw, 40px); font-weight: 700;
       letter-spacing: 0.04em; text-transform: uppercase;
-      line-height: 1; color: var(--ink); margin: 48px 0 0;
+      line-height: 1; color: var(--ink); margin: 0;
     }
     .cs-subtitle {
       font-size: 14px; color: var(--body); font-style: italic;
-      font-weight: 400; margin: 8px 0 40px; line-height: 1.5;
+      font-weight: 400; margin: 0px 0px 40px; line-height: 1.5;
     }
     .cs-summary { display: grid; grid-template-columns: 160px 1fr 1fr; gap: 0 40px; }
     .summary-col { display: flex; flex-direction: column; gap: 28px; }
@@ -99,8 +94,6 @@
       margin: 24px 0 4px; padding: 0;
       -webkit-margin-before: 0; -webkit-margin-after: 0;
     }
-    .cs-section-content h4:first-child { margin-top: 0; }
-    .cs-section-content p + h4 { margin-top: 24px; }
     .cs-section-content h4:first-child { margin-top: 0; }
 
     /* ── Carousel ── */
@@ -184,7 +177,7 @@
   <div class="page-wrap">
 
     <div class="cs-header reveal">
-      <h1 class="cs-title">Transforming the e-commerce experience</h1>
+      <h1 class="cs-title">TELUS Accessories</h1>
       <p class="cs-subtitle">Transforming TELUS.com into the go-to destination for digital connectivity — where customers could explore, learn about, and buy accessories with confidence.</p>
       <div class="cs-summary">
         <div class="summary-col">
@@ -193,8 +186,8 @@
             <div class="summary-val">Product Designer</div>
           </div>
           <div class="summary-item">
-            <div class="summary-label">Date</div>
-            <div class="summary-val">2017</div>
+            <div class="summary-label">Timeline</div>
+            <div class="summary-val">6 months</div>
           </div>
         </div>
         <div class="summary-col">
@@ -318,11 +311,11 @@
     <div class="cs-section reveal">
       <div class="cs-section-label">The Outcome</div>
       <div class="cs-section-content">
-        <p>The TELUS Digital team and stakeholders were thrilled about the relaunch. We shared our learnings with the larger TELUS team to improve the phones and plans flow.</p>
+        <p style="padding: 48px 0 40px">The TELUS Digital team and stakeholders were thrilled about the relaunch. We shared our learnings with the larger TELUS team to improve the phones and plans flow.</p>
         <h4>+40% Monthly Visits</h4>
-        <p>Increase in monthly visits after launch.</p>
+        <p style="padding: 48px 0 40px">Increase in monthly visits after launch.</p>
         <h4>-36% Time on Page</h4>
-        <p>Users found what they needed faster.</p>
+        <p style="padding: 48px 0 40px">Users found what they needed faster.</p>
         <h4>-40% Bounce Rate</h4>
         <p>Reduction in bounce rate across the accessories experience.</p>
       </div>
@@ -365,7 +358,7 @@
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
-  <script src="password.js"></script>
+
   <script src="components.js"></script>
 </body>
 </html>
