@@ -33,27 +33,28 @@
 
     .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
 
-        /* ── Hero ── */
+    /* ── Hero ── */
+    .cs-hero-wrap {
+      max-width: 1100px;
+      margin: 40px auto 0;
+      padding: 0 60px;
+    }
     .cs-hero {
       width: 100%;
-      height: 500px;
+      border-radius: 12px;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #ffffff;
+      aspect-ratio: 16/8;
     }
     .cs-hero img,
     .cs-hero video {
-      max-height: 500px;
-      width: auto;
+      width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       display: block;
     }
     @media (max-width: 768px) {
-      .cs-hero { height: auto; padding: 24px 0; }
-      .cs-hero img, .cs-hero video { width: 100%; height: auto; }
+      .cs-hero-wrap { padding: 0 16px; margin-top: 24px; }
+      .cs-hero { aspect-ratio: 4/3; border-radius: 8px; }
     }
 
     /* ── Header ── */
@@ -186,8 +187,10 @@
 </head>
 <body>
 
-  <div class="cs-hero" style="background:#2D387F;">
-    <img src="images/espnbet-hero.png" alt="ESPN Bet Sign-Up Flow" >
+  <div class="cs-hero-wrap">
+    <div class="cs-hero" style="background:#2D387F;">
+      <img src="images/espnbet-hero.png" alt="ESPN Bet Sign-Up Flow">
+    </div>
   </div>
 
   <div class="page-wrap">
