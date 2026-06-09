@@ -130,6 +130,11 @@
     }
     .cs-section-content h4:first-child { margin-top: 0; }
 
+    /* ── Overview 2-col ── */
+    .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; }
+    .overview-grid h4 { font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); margin: 0 0 12px; }
+    @media (max-width: 768px) { .overview-grid { grid-template-columns: 1fr; gap: 28px 0; } }
+
     /* ── Images ── */
     .cs-img { width: 100%; border-radius: 8px; display: block; margin: 40px 0; }
     .img-placeholder {
@@ -214,10 +219,16 @@
     <div class="cs-section reveal">
       <div class="cs-section-label">Overview</div>
       <div class="cs-section-content">
-        <h4>Challenge</h4>
-        <p>The sign-up flow was long, complex and outdated — a single form per page pattern that made the experience feel extra long, leading to high drop-off and slow user growth.</p>
-        <h4>Solution</h4>
-        <p>We revisited the compliance requirements to understand where we could reduce friction, defer steps, and be more transparent with users. We partnered with research to run user testing on a few design directions, using the insights to validate our decisions and build alignment across the team.</p>
+        <div class="overview-grid">
+          <div>
+            <h4>Challenge</h4>
+            <p>The sign-up flow was lengthy, had too many steps and created a lot of friction — leading to users abandoning before completing registration.</p>
+          </div>
+          <div>
+            <h4>Solution</h4>
+            <p>We optimized the experience without cutting corners on compliance and worked with research to dig into the user frustrations.</p>
+          </div>
+        </div>
       </div>
     </div>
 
