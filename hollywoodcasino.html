@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ara An — Hollywood Casino</title>
+  <link rel="stylesheet" href="global.css">
+  <style>
+    :root {
+      --ink: #252525;
+      --muted: #9a9890;
+      --body: #4D4D4D;
+      --line: #e8e8e8;
+      --dark: #1a0a2e;
+      --gold: #c9a84c;
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html, body { overflow-x: clip; }
+    body {
+      background: #ffffff;
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      opacity: 0;
+      transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    body.loaded { opacity: 1; }
+
+    /* ── Hero ── */
+    .cs-hero-wrap {
+      max-width: 1100px;
+      margin: 40px auto 0;
+      padding: 0 60px;
+    }
+    .cs-hero {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 16/8;
+      background: var(--dark);
+    }
+    .cs-hero img,
+    .cs-hero video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .cs-hero-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.18); font-size: 11px;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    @media (max-width: 768px) {
+      .cs-hero-wrap { padding: 0 16px; margin-top: 24px; }
+      .cs-hero { aspect-ratio: 4/3; border-radius: 8px; }
+    }
+
+    .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
+
+    /* ── Header ── */
+    .cs-header { padding: 48px 0 40px; border-bottom: 0.5px solid var(--line); }
+    .cs-title {
+      font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1;
+      color: var(--ink);
+      margin: 0;
+    }
+    .cs-subtitle {
+      font-size: 14px;
+      color: var(--body);
+      font-style: italic;
+      font-weight: 400;
+      margin: 8px 0 40px;
+      line-height: 1.5;
+    }
+    .cs-summary { display: grid; grid-template-columns: 160px 1fr 1fr; gap: 0 40px; }
+    .summary-col { display: flex; flex-direction: column; gap: 28px; }
+    .summary-item { display: flex; flex-direction: column; }
+    .summary-label {
+      font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
+      font-size: 20px; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--ink); margin-bottom: 4px;
+    }
+    .summary-val { font-size: 14px; color: var(--body); font-weight: 400; line-height: 1.5; }
+
+    /* ── Sections ── */
+    .cs-section {
+      display: grid; grid-template-columns: 160px 1fr; gap: 0 40px;
+      padding: 48px 0; border-bottom: 0.5px solid var(--line);
+    }
+    .cs-section:last-child { border-bottom: none; }
+    .cs-section-label {
+      font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
+      font-size: 20px; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--ink);
+      padding-top: 4px; position: sticky; top: 80px; align-self: start;
+    }
+    .cs-section-content { display: flex; flex-direction: column; }
+    .cs-section-content p { font-size: 14px; line-height: 1.6; color: var(--body); margin-bottom: 0; }
+    .cs-section-content p + p { margin-top: 12px; }
+    .cs-section-content p strong { color: var(--ink); font-weight: 500; }
+    .cs-section-content h4 {
+      font-size: 14px; font-weight: 500; color: var(--ink);
+      margin: 28px 0 4px;
+    }
+    .cs-section-content h4:first-child { margin-top: 0; }
+
+    /* ── Images ── */
+    .cs-img { width: 100%; border-radius: 8px; display: block; margin: 32px 0; }
+    .img-placeholder {
+      width: 100%; aspect-ratio: 16/8; background: #f0ede8; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); font-size: 11px; letter-spacing: 0.1em;
+      text-transform: uppercase; margin: 32px 0;
+    }
+    .img-placeholder.dark { background: var(--dark); color: rgba(255,255,255,0.18); }
+    .img-placeholder.tall { aspect-ratio: 16/10; }
+
+    /* ── Feature grid ── */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0 8px;
+    }
+    .feature-card {
+      background: #f7f5f2;
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .feature-card-label {
+      font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--ink); margin-bottom: 6px;
+    }
+    .feature-card p { font-size: 13px; color: var(--body); line-height: 1.5; margin: 0; }
+
+    /* ── Carousel ── */
+    .carousel { position: relative; margin: 32px 0; overflow: hidden; border-radius: 8px; }
+    .carousel-track { display: flex; transition: transform 0.4s var(--ease); }
+    .carousel-track img { min-width: 100%; width: 100%; object-fit: cover; display: block; }
+    .carousel-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.9); border: none; border-radius: 50%;
+      width: 36px; height: 36px; cursor: pointer; display: flex;
+      align-items: center; justify-content: center; font-size: 16px;
+      color: var(--ink); box-shadow: 0 2px 8px rgba(0,0,0,0.12); z-index: 2;
+    }
+    .carousel-btn.prev { left: 12px; }
+    .carousel-btn.next { right: 12px; }
+    .carousel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 12px; }
+    .carousel-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--line);
+      border: none; cursor: pointer; padding: 0; transition: background 0.2s;
+    }
+    .carousel-dot.active { background: var(--ink); }
+
+    /* ── Reveal ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      .page-wrap { padding: 0 20px; }
+      .cs-summary { grid-template-columns: 1fr; gap: 20px; }
+      .cs-section { grid-template-columns: 1fr; gap: 16px; padding: 36px 0; }
+      .cs-section-label { position: static; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cs-hero-wrap">
+    <div class="cs-hero">
+      <div class="cs-hero-placeholder">Add hero image</div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+
+    <div class="cs-header reveal">
+      <h1 class="cs-title">Launching Hollywood Casino</h1>
+      <p class="cs-subtitle">Taking casino from embedded tab to standalone product — built for players who never wanted a sportsbook.</p>
+      <div class="cs-summary">
+        <div class="summary-col">
+          <div class="summary-item">
+            <div class="summary-label">Role</div>
+            <div class="summary-val">Senior Manager, Product Design</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-label">Date</div>
+            <div class="summary-val">2024–2025</div>
+          </div>
+        </div>
+        <div class="summary-col">
+          <div class="summary-item">
+            <div class="summary-label">Challenge</div>
+            <div class="summary-val">Casino gameplay lived inside theScore Bet and ESPN Bet — products built around sports. Casino-first players had to navigate a sportsbook they didn't need, and we couldn't optimize onboarding, lobby hierarchy, or retention mechanics without competing with the sports experience.</div>
+          </div>
+        </div>
+        <div class="summary-col">
+          <div class="summary-item">
+            <div class="summary-label">Solution</div>
+            <div class="summary-val">A focused MVP that extracted casino from the sportsbook entirely and launched it under the Hollywood Casino brand — purpose-built for casino-first players, with a new design system, a dedicated retention mechanic, and deep PENN Play loyalty integration.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- The Opportunity -->
+    <div class="cs-section reveal">
+      <div class="cs-section-label">The Opportunity</div>
+      <div class="cs-section-content">
+        <p>Casino had always been a tab. In theScore Bet it launched as a secondary feature, then carried into ESPN Bet — both products designed around the rhythms of sports: live scores, pre-game betting, a content feed tied to the sports calendar. Casino players got a functional but subordinate experience. Promotions, lobby structure, and onboarding were all shaped by sportsbook constraints.</p>
+        <p>The standalone app changed the equation. Hollywood Casino gave us permission to design exclusively around casino-first behaviour — players motivated by slots, table games, and daily bonuses, not overnight line movements. A dedicated product also meant reaching users who would never download a sportsbook, and building a direct relationship with the Hollywood Casino brand and PENN's loyalty ecosystem.</p>
+        <p>At MVP, the app launched in New Jersey, Michigan, Pennsylvania, and West Virginia — four regulated real-money casino markets on iOS.</p>
+
+        <div class="img-placeholder dark">Add context / brand positioning image</div>
+      </div>
+    </div>
+
+    <!-- Design Approach -->
+    <div class="cs-section reveal">
+      <div class="cs-section-label">Approach</div>
+      <div class="cs-section-content">
+        <h4>Casino-first, all the way down</h4>
+        <p>The home screen is the game lobby — no news feed, no live scores, no score alerts. Every navigation and IA decision was made with one question: does this help someone find a game and play it? We removed everything that didn't serve that goal. For a product extracted from a sportsbook, that required active restraint at every design decision.</p>
+
+        <h4>Building a new brand skin, not porting the old one</h4>
+        <p>Hollywood Casino has its own visual identity — separate from theScore Bet's red-and-black and ESPN Bet's purple. The app uses the Hollywood Casino brand standards: dark backgrounds, gold accents, and the aesthetic associated with PENN's physical properties. This meant building a new design system skin from scratch rather than reskinning the sportsbook UI. Midway through the project, PENN's corporate marketing team finalized an updated brand direction, which reset a significant portion of completed design work. We compressed what's normally a months-long integration into a few weeks, touching approximately 1,600 screens across 11 Figma files.</p>
+
+        <h4>Optimizing for the first bet</h4>
+        <p>Registration and deposit are the most drop-off-prone moments in any real-money gaming product. We minimized form length, surfaced the welcome offer at the point of first deposit rather than burying it in a promotions hub, and made the game lobby browsable before registration was complete — so users could explore 700+ games before committing to sign up. Every friction point was weighed against a compliance reason for it to exist.</p>
+
+        <div class="img-placeholder dark">Add registration flow / first deposit screens</div>
+
+        <h4>Designing for two audiences in parallel</h4>
+        <p>New casino players need a product that doesn't assume sportsbook fluency — no jargon, clear onboarding, and a low-stakes way to engage before depositing. Experienced players need something that feels complete and credible from day one: a deep game library, fast deposits, and a loyalty programme they recognize. SPIN IT — a daily free-to-play slot mechanic — served both: a no-deposit entry point for new users, and a daily re-engagement hook for active players.</p>
+      </div>
+    </div>
+
+    <!-- Key Features -->
+    <div class="cs-section reveal">
+      <div class="cs-section-label">Key Features</div>
+      <div class="cs-section-content">
+
+        <h4>Game Lobby</h4>
+        <p>700+ slots and table games at launch, organized by category — Slots, Table Games, Live Casino, Jackpots, New, and Popular. Live dealer surfaces as a distinct category given its higher engagement and longer session times. Recently played and favourites rails reduce navigation friction for returning players. Game thumbnails are standardized in size to enable a consistent grid across providers — which, given the number of external game suppliers involved, required careful spec work with the engineering team.</p>
+
+        <div class="img-placeholder dark">Add game lobby screens</div>
+
+        <h4>SPIN IT — Daily Free-to-Play</h4>
+        <p>Three free spins per day, accessible without a deposit. Spins reset at 5pm ET — intentionally timed to the post-work engagement peak, and distinct from the midnight resets most competitors use. Prizes are awarded as Casino Credits to comply with state promotional gaming rules. A weekly chip collection mechanic accumulates across the week toward a larger end-of-week reward pool, encouraging consistent daily returns.</p>
+        <p>SPIN IT was a deliberate double-duty mechanic: a retention tool for active depositing players, and an acquisition hook for new registrants who hadn't yet put money in. Designing it to work credibly in both contexts — without feeling like a consolation prize to experienced players — was one of the more interesting product design problems on the project.</p>
+
+        <div class="img-placeholder dark">Add SPIN IT screens</div>
+
+        <h4>PENN Play Rewards</h4>
+        <p>Existing PENN Play cardholders can link their card in-app to earn PENN Cash on real-money play and see their tier status — Preferred, Preferred Plus, VIP, Elite. No other online casino app connects to a physical brick-and-mortar loyalty ecosystem at this scale, which made PENN Play a genuine differentiator in the product's positioning. The design challenge was surfacing it contextually — after a session, in the promotions hub — without it cluttering the gameplay experience for players who aren't PENN Play members.</p>
+
+        <h4>Wallet &amp; Payments</h4>
+        <p>Deposit methods include credit/debit card, PayPal, online banking, and Play+. PayPal was prioritized given its demonstrated impact on conversion in comparable products and its high trust signal for new users. Withdrawal confirmation includes a responsible gaming prompt — both a compliance requirement and an intentional friction point to reduce impulsive withdrawal-and-redeposit behaviour. State-required disclosures are embedded in the confirmation flow without interrupting it.</p>
+
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-card-label">1x Playthrough</div>
+            <p>A product-level positioning decision — not just a marketing claim. Most competitors require 10–35x wagering on bonus wins. 1x required alignment across product, legal, and compliance, and became a core differentiator in the welcome offer.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card-label">Responsible Gaming</div>
+            <p>Deposit limits, session time reminders, self-exclusion (temporary and permanent), and reality check pop-ups — all required for licensing in NJ, MI, PA, and WV. Patterns were closely modelled on theScore Bet to minimize legal review cycles.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card-label">Geolocation</div>
+            <p>Verified at session start and re-checked at key transaction points — not continuously, to reduce battery impact. Error messaging includes a clear manual review path for false negatives at state boundaries.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card-label">Account Linking</div>
+            <p>Existing theScore Bet casino users can link their account at first login to restore wallet and game history — a continuity experience for migrated users that required careful state management across two backend systems.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- My Role -->
+    <div class="cs-section reveal">
+      <div class="cs-section-label">My Role</div>
+      <div class="cs-section-content">
+        <p>I directed the design across the iOS app, set quality standards, and was hands-on in key decisions around brand application, component direction, and experience architecture. I also managed the designer responsible for the majority of the execution.</p>
+        <p>I was the primary design point of contact for the initiative — working across product, engineering, and PENN's external brand team to keep decisions moving and coordinate approvals. That included managing marketing asset delivery timelines, reviewing engineering handoffs, and absorbing the mid-project rebrand without losing momentum.</p>
+        <p>The project ran on a tight timeline with a hard regulatory launch date. A lot of the role was knowing which decisions could be deferred and which needed to be locked, and keeping alignment across a large, cross-functional team working under real pressure.</p>
+
+        <div class="img-placeholder">Add screens / handoff image</div>
+      </div>
+    </div>
+
+    <!-- The Outcome -->
+    <div class="cs-section reveal">
+      <div class="cs-section-label">The Outcome</div>
+      <div class="cs-section-content">
+        <h4>Launched in 4 markets at MVP</h4>
+        <p>New Jersey, Michigan, Pennsylvania, and West Virginia — covering all regulated real-money online casino states active at launch, iOS-first.</p>
+
+        <h4>Exceeded adoption targets</h4>
+        <p>The product surpassed user adoption and engagement metrics within the first month of the Pennsylvania launch.</p>
+
+        <h4>Two rebrands, one launch</h4>
+        <p>We shipped with a new Hollywood Casino brand identity — updated color tokens, logos, and motion across 11 design files and approximately 1,600 screens — after absorbing a mid-project brand reset from PENN's corporate team.</p>
+
+        <h4>A platform, not just a product</h4>
+        <p>The app was built as a foundation for expansion — Android, additional states, and deeper PENN Play personalization — not a one-off launch. The design system and component architecture were built to support that roadmap from day one.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const carouselState = {};
+    function initCarousel(id) { if (!carouselState[id]) carouselState[id] = 0; }
+    function updateCarousel(id) {
+      const el = document.getElementById(id);
+      const track = el.querySelector('.carousel-track');
+      const dots = el.querySelectorAll('.carousel-dot');
+      const idx = carouselState[id];
+      track.style.transform = `translateX(-${idx * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+    function moveCarousel(id, dir) {
+      initCarousel(id);
+      const el = document.getElementById(id);
+      const count = el.querySelectorAll('.carousel-track img').length;
+      carouselState[id] = (carouselState[id] + dir + count) % count;
+      updateCarousel(id);
+    }
+    function goToSlide(id, idx) {
+      initCarousel(id);
+      carouselState[id] = idx;
+      updateCarousel(id);
+    }
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+  <script src="components.js"></script>
+
+</body>
+</html>
