@@ -69,10 +69,7 @@
       font-size: 14px; color: var(--body); font-style: italic;
       font-weight: 400; margin: 0px 0px 40px; line-height: 1.5;
     }
-    .cs-summary { display: grid; grid-template-columns: 160px 1fr; gap: 0 40px; }
-    .summary-meta { display: flex; flex-direction: column; gap: 28px; }
-    .summary-details { display: flex; flex-direction: column; gap: 24px; }
-    .summary-details .summary-item { display: grid; grid-template-columns: 160px 1fr; gap: 0 40px; }
+    .cs-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 40px; }
     .summary-item { display: flex; flex-direction: column; }
     .summary-label {
       font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
@@ -190,26 +187,32 @@
       <h1 class="cs-title">TELUS Accessories</h1>
       <p class="cs-subtitle">Transforming TELUS.com into the go-to destination for digital connectivity — where customers could explore, learn about, and buy accessories with confidence.</p>
       <div class="cs-summary">
-        <div class="summary-meta">
-          <div class="summary-item">
-            <div class="summary-label">Role</div>
-            <div class="summary-val">Product Designer</div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-label">Timeline</div>
-            <div class="summary-val">6 months</div>
-          </div>
+        <div class="summary-item">
+          <div class="summary-label">Role</div>
+          <div class="summary-val">Product Designer</div>
         </div>
-        <div class="summary-details">
-          <div class="summary-item">
-            <div class="summary-label">Challenge</div>
-            <div class="summary-val">Most customers didn't know TELUS sold accessories. The online experience was sparse — no lifestyle context, no guidance, and not enough information to confidently make a purchase.</div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-label">Solution</div>
-            <div class="summary-val">A full e-commerce redesign — homepage, category, product detail, campaign pages, and TELUS's first cart — built to mirror the in-store "Digital Life" experience online.</div>
-          </div>
+        <div class="summary-item">
+          <div class="summary-label">Brand</div>
+          <div class="summary-val">TELUS</div>
         </div>
+        <div class="summary-item">
+          <div class="summary-label">Year</div>
+          <div class="summary-val">2017</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <div class="cs-section-label">Challenge</div>
+      <div class="cs-section-content">
+        <p>Most customers didn't know TELUS sold accessories. The online experience was sparse — no lifestyle context, no guidance, and not enough information to confidently make a purchase.</p>
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <div class="cs-section-label">Solution</div>
+      <div class="cs-section-content">
+        <p>A full e-commerce redesign — homepage, category, product detail, campaign pages, and TELUS's first cart — built to mirror the in-store "Digital Life" experience online.</p>
       </div>
     </div>
 
