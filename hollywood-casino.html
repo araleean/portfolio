@@ -119,6 +119,26 @@
     }
     .img-placeholder.dark { background: #1a0a2e; color: rgba(255,255,255,0.2); }
 
+    /* ── Carousel ── */
+    .carousel { position: relative; margin: 32px 0; overflow: hidden; border-radius: 8px; }
+    .carousel-track { display: flex; transition: transform 0.4s var(--ease); }
+    .carousel-track img { min-width: 100%; width: 100%; object-fit: cover; display: block; }
+    .carousel-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.9); border: none; border-radius: 50%;
+      width: 36px; height: 36px; cursor: pointer; display: flex;
+      align-items: center; justify-content: center; font-size: 16px;
+      color: var(--ink); box-shadow: 0 2px 8px rgba(0,0,0,0.12); z-index: 2;
+    }
+    .carousel-btn.prev { left: 12px; }
+    .carousel-btn.next { right: 12px; }
+    .carousel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 12px; }
+    .carousel-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--line);
+      border: none; cursor: pointer; padding: 0; transition: background 0.2s;
+    }
+    .carousel-dot.active { background: var(--ink); }
+
     /* ── Reveal ── */
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -187,7 +207,20 @@
         <p>The app needed its own identity. We worked with the design systems team to stay consistent with the patterns of our other apps, while ensuring we were making the Hollywood Casino brand clearly distinct.</p>
         <h4>Low Friction</h4>
         <p>Users moving over from the sportsbook needed a low learning curve. We worked with the Core Accounts team to optimize registration, sign-up, and deposit flows to get players into a game as fast as possible.</p>
-        <div class="img-placeholder">Hi-fi screens</div>
+        <div class="carousel" id="hifi-carousel">
+          <div class="carousel-track" id="hifi-track">
+            <img src="images/hwcasino-hifi-1.png" alt="Hi-fi screen 1">
+            <img src="images/hwcasino-hifi-2.png" alt="Hi-fi screen 2">
+            <img src="images/hwcasino-hifi-3.png" alt="Hi-fi screen 3">
+          </div>
+          <button class="carousel-btn prev" onclick="moveCarousel('hifi', -1)">&#8592;</button>
+          <button class="carousel-btn next" onclick="moveCarousel('hifi', 1)">&#8594;</button>
+          <div class="carousel-dots" id="hifi-dots">
+            <button class="carousel-dot active" onclick="goToSlide('hifi', 0)"></button>
+            <button class="carousel-dot" onclick="goToSlide('hifi', 1)"></button>
+            <button class="carousel-dot" onclick="goToSlide('hifi', 2)"></button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -211,6 +244,30 @@
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+  <script>
+    const carousels = {};
+    function initCarousel(id, total) {
+      carousels[id] = 0;
+    }
+    function moveCarousel(id, dir) {
+      const track = document.getElementById(id + '-track');
+      const total = track.children.length;
+      carousels[id] = (carousels[id] + dir + total) % total;
+      updateCarousel(id);
+    }
+    function goToSlide(id, index) {
+      carousels[id] = index;
+      updateCarousel(id);
+    }
+    function updateCarousel(id) {
+      const track = document.getElementById(id + '-track');
+      track.style.transform = `translateX(-${carousels[id] * 100}%)`;
+      document.querySelectorAll(`#${id}-dots .carousel-dot`).forEach((d, i) => {
+        d.classList.toggle('active', i === carousels[id]);
+      });
+    }
+    initCarousel('hifi', 3);
   </script>
   <script src="components.js"></script>
 
