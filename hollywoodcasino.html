@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ara An — Hollywood Casino</title>
+  <link rel="stylesheet" href="global.css">
+  <style>
+    :root {
+      --ink: #252525;
+      --muted: #9a9890;
+      --body: #4D4D4D;
+      --line: #e8e8e8;
+      --dark: #1b2238;
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html, body { overflow-x: clip; }
+    body {
+      background: #ffffff;
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      opacity: 0;
+      transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    body.loaded { opacity: 1; }
+
+    .cs-hero-wrap {
+      max-width: 1100px;
+      margin: 40px auto 0;
+      padding: 0 60px;
+    }
+    .cs-hero {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 16/8;
+      background: #1a0a2e;
+    }
+    .cs-hero img,
+    .cs-hero video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .cs-hero-wrap { padding: 0 16px; margin-top: 24px; }
+      .cs-hero { aspect-ratio: 4/3; border-radius: 8px; }
+    }
+
+    .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
+
+    /* ── Header ── */
+    .cs-header { padding: 48px 0 40px; border-bottom: 0.5px solid var(--line); }
+    .cs-title {
+      font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1;
+      color: var(--ink);
+      margin: 0 0 40px;
+    }
+    .cs-subtitle {
+      font-size: 14px;
+      color: var(--body);
+      font-style: italic;
+      font-weight: 400;
+      margin: 0 0 40px;
+      line-height: 1.5;
+    }
+    .cs-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 40px; }
+    .summary-item { display: flex; flex-direction: column; }
+    .summary-label {
+      font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
+      font-size: 20px; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--ink); margin-bottom: 4px;
+    }
+    .summary-val { font-size: 14px; color: var(--body); font-weight: 400; line-height: 1.5; }
+
+    /* ── Sections ── */
+    .cs-section {
+      display: grid; grid-template-columns: 160px 1fr; gap: 0 40px;
+      padding: 48px 0; border-bottom: 0.5px solid var(--line);
+    }
+    .cs-section:last-child { border-bottom: none; }
+    .cs-section-label {
+      font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
+      font-size: 20px; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--ink);
+      padding-top: 4px; position: sticky; top: 80px; align-self: start;
+    }
+    .cs-section-content { display: flex; flex-direction: column; }
+    .cs-section-content p { font-size: 14px; line-height: 1.6; color: var(--body); margin-bottom: 0; }
+    .cs-section-content p + p { margin-top: 12px; }
+    .cs-section-content p strong { color: var(--ink); font-weight: 500; }
+    .cs-section-content h4 {
+      font-size: 14px; font-weight: 500; color: var(--ink);
+      margin: 24px 0 4px;
+    }
+    .cs-section-content h4:first-child { margin-top: 0; }
+
+    /* ── Images ── */
+    .cs-img { width: 100%; border-radius: 8px; display: block; margin: 0; }
+    .cs-img-wrap { max-width: 1100px; margin: 0 auto; padding: 0 60px 48px; background: #fff; }
+    @media (max-width: 768px) { .cs-img-wrap { padding: 0 20px 36px; } }
+    .img-placeholder {
+      width: 100%; aspect-ratio: 16/8; background: #f0ede8; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); font-size: 11px; letter-spacing: 0.1em;
+      text-transform: uppercase; margin: 32px 0;
+    }
+    .img-placeholder.dark { background: #1a0a2e; color: rgba(255,255,255,0.2); }
+
+    /* ── Carousel ── */
+    .carousel { position: relative; margin: 32px 0; overflow: hidden; border-radius: 8px; }
+    .carousel-track { display: flex; transition: transform 0.4s var(--ease); }
+    .carousel-track img { min-width: 100%; width: 100%; object-fit: cover; display: block; }
+    .carousel-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.9); border: none; border-radius: 50%;
+      width: 36px; height: 36px; cursor: pointer; display: flex;
+      align-items: center; justify-content: center; font-size: 16px;
+      color: var(--ink); box-shadow: 0 2px 8px rgba(0,0,0,0.12); z-index: 2;
+    }
+    .carousel-btn.prev { left: 12px; }
+    .carousel-btn.next { right: 12px; }
+    .carousel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 12px; }
+    .carousel-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--line);
+      border: none; cursor: pointer; padding: 0; transition: background 0.2s;
+    }
+    .carousel-dot.active { background: var(--ink); }
+
+    /* ── Reveal ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      .page-wrap { padding: 0 20px; }
+      .cs-summary { grid-template-columns: 1fr; gap: 20px; }
+      .cs-section { grid-template-columns: 1fr; gap: 16px; padding: 36px 0; }
+      .cs-section-label { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cs-hero-wrap">
+    <div class="cs-hero">
+      <img src="images/hwcasino-hero.png" alt="Hollywood Casino">
+    </div>
+  </div>
+
+  <div class="page-wrap">
+
+    <div class="cs-header reveal">
+      <h1 class="cs-title">Standalone Casino</h1>
+
+      <div class="cs-summary">
+        <div class="summary-item">
+          <div class="summary-label">Role</div>
+          <div class="summary-val">Senior Product Design Manager</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Brand</div>
+          <div class="summary-val">Hollywood Casino</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Year</div>
+          <div class="summary-val">2024</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <div class="cs-section-label">Overview</div>
+      <div class="cs-section-content">
+        <p>The casino experience lived as a tab inside theScore Bet and ESPN Bet. It worked for hybrid users who bet on sports and played casino, but it was a pain point for those who only came to play games. The navigation, hierarchy, and promotions were built around sports. Casino was an afterthought.</p>
+        <p>We had the opportunity to prioritize our casino-first players and create a dedicated experience with a cleaner entry point and a brand with its own identity. We launched a standalone casino experience on iOS, Android and desktop.</p>
+        <img class="cs-img" style="margin-top:24px; width:200px; border-radius:16px; display:block; margin-left:auto; margin-right:auto;" src="images/hwcasino-overview.gif" alt="Hollywood Casino overview">
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <div class="cs-section-label">How We Worked</div>
+      <div class="cs-section-content">
+        <p>We ran a series of workshops with the full team: product design, research, design systems, PMs, engineers and stakeholders to align on the overall goals, approach and timelines.</p>
+        <img class="cs-img" style="margin-top:24px;" src="images/hwcasino-workshop-1.png.png" alt="Workshop artifacts">
+        <img class="cs-img" style="margin-top:24px;" src="images/hwcasino-workshop-2.png.png" alt="Workshop artifacts">
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <div class="cs-section-label">Design Principles</div>
+      <div class="cs-section-content">
+        <h4>Casino-first</h4>
+        <p>We moved away from considering casino as a tab. The navigation and IA were built around what casino users actually want: easy exploration, searchability, and play.</p>
+        <h4>Design Scalability</h4>
+        <p>The app needed its own identity. We worked with the design systems team to stay consistent with the patterns of our other apps, while ensuring we were making the Hollywood Casino brand clearly distinct.</p>
+        <h4>Low Friction</h4>
+        <p>Users moving over from the sportsbook needed a low learning curve. We worked with the Core Accounts team to optimize registration, sign-up, and deposit flows to get players into a game as fast as possible.</p>
+        <div class="carousel" id="hifi-carousel">
+          <div class="carousel-track" id="hifi-track">
+            <img src="images/hwcasino-hifi-1.png" alt="Hi-fi screen 1">
+            <img src="images/hwcasino-hifi-2.png" alt="Hi-fi screen 2">
+            <img src="images/hwcasino-hifi-3.png" alt="Hi-fi screen 3">
+          </div>
+          <button class="carousel-btn prev" onclick="moveCarousel('hifi', -1)">&#8592;</button>
+          <button class="carousel-btn next" onclick="moveCarousel('hifi', 1)">&#8594;</button>
+          <div class="carousel-dots" id="hifi-dots">
+            <button class="carousel-dot active" onclick="goToSlide('hifi', 0)"></button>
+            <button class="carousel-dot" onclick="goToSlide('hifi', 1)"></button>
+            <button class="carousel-dot" onclick="goToSlide('hifi', 2)"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <div class="cs-section-label">Outcome</div>
+      <div class="cs-section-content">
+        <p>For the MVP, we prioritized speed to market by adapting the casino experience from the sportsbook. Specialized features were shelved for later sessions. To support adoption, special promos were released alongside a large-scale marketing rollout to motivate users to download the app.</p>
+        <h4>#1 Ranking</h4>
+        <p>Overall casino product in the US, ranked by Eilers and Krejcik.</p>
+        <h4>42% YoY Growth</h4>
+        <p>Casino monthly active users increased from Q4 2023 to Q4 2024.</p>
+        <h4>5 Active Markets</h4>
+        <p>Launched in 8 months: Pennsylvania, Michigan, New Jersey, West Virginia and Ontario (as theScore Casino).</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+  <script>
+    const carousels = {};
+    function initCarousel(id, total) {
+      carousels[id] = 0;
+    }
+    function moveCarousel(id, dir) {
+      const track = document.getElementById(id + '-track');
+      const total = track.children.length;
+      carousels[id] = (carousels[id] + dir + total) % total;
+      updateCarousel(id);
+    }
+    function goToSlide(id, index) {
+      carousels[id] = index;
+      updateCarousel(id);
+    }
+    function updateCarousel(id) {
+      const track = document.getElementById(id + '-track');
+      track.style.transform = `translateX(-${carousels[id] * 100}%)`;
+      document.querySelectorAll(`#${id}-dots .carousel-dot`).forEach((d, i) => {
+        d.classList.toggle('active', i === carousels[id]);
+      });
+    }
+    initCarousel('hifi', 3);
+  </script>
+  <script src="components.js"></script>
+
+</body>
+</html>
