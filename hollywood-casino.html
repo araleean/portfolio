@@ -108,7 +108,9 @@
     .cs-section-content h4:first-child { margin-top: 0; }
 
     /* ── Images ── */
-    .cs-img { width: 100%; border-radius: 8px; display: block; margin: 32px 0; }
+    .cs-img { width: 100%; border-radius: 8px; display: block; margin: 0; }
+    .cs-img-wrap { max-width: 1100px; margin: 0 auto; padding: 0 60px 48px; background: #fff; }
+    @media (max-width: 768px) { .cs-img-wrap { padding: 0 20px 36px; } }
     .img-placeholder {
       width: 100%; aspect-ratio: 16/8; background: #f0ede8; border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
@@ -162,8 +164,11 @@
       <div class="cs-section-content">
         <p>The casino experience lived as a tab inside theScore Bet and ESPN Bet. It worked for hybrid users who bet on sports and played casino, but it was a pain point for those who only came to play games. The navigation, hierarchy, and promotions were built around sports. Casino was an afterthought.</p>
         <p>We had the opportunity to prioritize our casino-first players and create a dedicated experience with a cleaner entry point and a brand with its own identity. We launched a standalone casino experience on iOS, Android and desktop.</p>
-        <div class="img-placeholder dark">Hero / overview image</div>
       </div>
+    </div>
+
+    <div class="cs-img-wrap reveal">
+      <img class="cs-img" src="images/hwcasino-hero.png" alt="Hollywood Casino">
     </div>
 
     <div class="cs-section reveal">
