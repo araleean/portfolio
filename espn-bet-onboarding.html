@@ -68,7 +68,7 @@
       text-transform: uppercase;
       line-height: 1;
       color: var(--ink);
-      margin: 0;
+      margin: 0 0 40px;
     }
     .cs-subtitle {
       font-size: 14px;
@@ -79,12 +79,7 @@
       line-height: 1.5;
     }
 
-    .cs-summary {
-      display: grid;
-      grid-template-columns: 160px 1fr 1fr;
-      gap: 0 40px;
-    }
-    .summary-col { display: flex; flex-direction: column; gap: 28px; }
+    .cs-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 40px; }
     .summary-item { display: flex; flex-direction: column; }
     .summary-label {
       font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
@@ -197,46 +192,36 @@
 
     <div class="cs-header reveal">
       <h1 class="cs-title">Redesigning the Sign-Up Flow</h1>
-      <p class="cs-subtitle">Rethinking a complex sign-up flow to reduce drop-off and drive growth.</p>
       <div class="cs-summary">
-        <div class="summary-col">
-          <div class="summary-item">
-            <div class="summary-label">Role</div>
-            <div class="summary-val">Senior Manager, Product Design</div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-label">Date</div>
-            <div class="summary-val">2024</div>
-          </div>
+        <div class="summary-item">
+          <div class="summary-label">Role</div>
+          <div class="summary-val">Senior Product Design Manager</div>
         </div>
-        <div class="summary-col">
-          <div class="summary-item">
-            <div class="summary-label">Challenge</div>
-            <div class="summary-val">The sign-up flow was lengthy, had too many steps and created a lot of friction — leading to users abandoning before completing registration.</div>
-          </div>
+        <div class="summary-item">
+          <div class="summary-label">Brand</div>
+          <div class="summary-val">ESPN Bet &amp; theScore Bet</div>
         </div>
-        <div class="summary-col">
-          <div class="summary-item">
-            <div class="summary-label">Solution</div>
-            <div class="summary-val">We optimized the experience without cutting corners on compliance and worked with research to dig into the user frustrations.</div>
-          </div>
+        <div class="summary-item">
+          <div class="summary-label">Year</div>
+          <div class="summary-val">2024</div>
         </div>
       </div>
     </div>
 
     <div class="cs-section reveal">
-      <div class="cs-section-label">Note</div>
+      <div class="cs-section-label">Overview</div>
       <div class="cs-section-content">
-        <p>All features were built to be scalable for multiple brands — theScore Bet, ESPN Bet and Hollywood Casino. For this case study, I'll be using ESPN Bet branding.</p>
+        <p>The sign-up flow was long and repetitive — a single-form-per-page pattern that made registration feel endless. Drop-off was high, and it was costing us on acquisition.</p>
+        <p>We had the opportunity to revisit the entire experience: reduce friction where we could, defer what didn't need to happen upfront, and find smarter ways to handle compliance without making users feel punished for it. We redesigned and launched the updated flow across ESPN Bet, theScore Bet, and Hollywood Casino.</p>
       </div>
     </div>
 
     <div class="cs-section reveal">
-      <div class="cs-section-label">The Opportunity</div>
+      <div class="cs-section-label">How We Worked</div>
       <div class="cs-section-content">
-        <p>The sign-up flow was long, complex and outdated — a single form per page pattern that made the experience feel extra long, leading to high drop-off and slow user growth.</p>
-        <p>Revisiting it gave us the chance to refresh the designs and take another look at the compliance requirements — understanding where we could reduce friction, defer steps, and be more transparent with users about what to expect next.</p>
-        <p>We partnered with research to run user testing on a few design directions, using the insights to validate our decisions and build alignment across the team.</p>
+        <p>We started by getting the full picture — funnel analysis to see where users were dropping off, a user survey to understand why, and a competitive audit to benchmark against other regulated products.</p>
+        <p>From there, we ran workshops with the cross-functional team to dig into the findings and align on direction. A key part of that was working closely with legal and compliance to understand what the requirements actually were and where there was room for flexibility.</p>
+        <p>We explored two sign-up patterns and brought both into user testing. Users preferred the long form, step-by-step approach, finding it faster and less overwhelming.</p>
       </div>
     </div>
 
