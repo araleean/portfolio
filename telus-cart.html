@@ -73,8 +73,7 @@
       font-size: 14px; color: var(--body); font-style: italic;
       font-weight: 400; margin: 8px 0 40px; line-height: 1.5;
     }
-    .cs-summary { display: grid; grid-template-columns: 160px 1fr 1fr; gap: 0 40px; }
-    .summary-col { display: flex; flex-direction: column; gap: 28px; }
+    .cs-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 40px; }
     .summary-item { display: flex; flex-direction: column; }
     .summary-label {
       font-family: 'DIN Condensed', 'DINCondensed-Bold', impact, sans-serif;
@@ -217,29 +216,18 @@
 
     <div class="cs-header reveal">
       <h1 class="cs-title">Building an E-Commerce Cart</h1>
-      <p class="cs-subtitle">Building TELUS's first e-commerce cart — from accessories only to a full phones and plans checkout.</p>
       <div class="cs-summary">
-        <div class="summary-col">
-          <div class="summary-item">
-            <div class="summary-label">Role</div>
-            <div class="summary-val">Product Designer</div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-label">Date</div>
-            <div class="summary-val">2017</div>
-          </div>
+        <div class="summary-item">
+          <div class="summary-label">Role</div>
+          <div class="summary-val">Product Designer</div>
         </div>
-        <div class="summary-col">
-          <div class="summary-item">
-            <div class="summary-label">Challenge</div>
-            <div class="summary-val">The previous experience took users from a product page directly into a "buy now" flow. Users couldn't add more than one item or save purchases for another day.</div>
-          </div>
+        <div class="summary-item">
+          <div class="summary-label">Platforms</div>
+          <div class="summary-val">Responsive Web</div>
         </div>
-        <div class="summary-col">
-          <div class="summary-item">
-            <div class="summary-label">Solution</div>
-            <div class="summary-val">A phased cart experience — launching with accessories, then expanding to support phones and plans — built to scale across TELUS's full product ecosystem.</div>
-          </div>
+        <div class="summary-item">
+          <div class="summary-label">Year</div>
+          <div class="summary-val">2017</div>
         </div>
       </div>
     </div>
