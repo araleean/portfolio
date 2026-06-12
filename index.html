@@ -192,6 +192,20 @@
       line-height: 1.3;
       letter-spacing: 0em;
       margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .proj-arrow {
+      font-size: 16px;
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
+      display: inline-block;
+    }
+    .proj-inner:hover .proj-arrow {
+      opacity: 1;
+      transform: translateX(0);
     }
 
     .proj-desc {
@@ -199,24 +213,7 @@
       line-height: 1.5;
       color: #4D4D4D;
       font-weight: 400;
-      margin-bottom: 16px;
-    }
-
-    .proj-cta {
-      font-size: 13px;
-      color: #252525;
-      font-weight: 500;
-      display: inline-block;
-      border: 1px solid #252525;
-      border-radius: 999px;
-      padding: 6px 12px;
-      margin-top: 0;
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s;
-    }
-    .proj-inner:hover .proj-cta {
-      background: #252525;
-      color: #ffffff;
+      margin-bottom: 0;
     }
 
     /* ── Project image card ── */
@@ -371,12 +368,9 @@
     <!-- ESPN Bet Onboarding -->
     <div class="proj">
       <a class="proj-inner" href="espn-bet-onboarding.html">
-        <div>
-          <div class="proj-eyebrow">theScore Bet & ESPN Bet</div>
-          <div class="proj-title">Redesigning the Sign-Up Flow</div>
-          <p class="proj-desc">Rethinking a complex sign-up flow to reduce drop-off and drive growth.</p>
-          <span class="proj-cta">View Project</span>
-        </div>
+        <div class="proj-eyebrow">theScore Bet & ESPN Bet</div>
+        <div class="proj-title">Redesigning the Sign-Up Flow <span class="proj-arrow">→</span></div>
+        <p class="proj-desc">Rethinking a complex sign-up flow to reduce drop-off and drive growth.</p>
         <div class="proj-img" style="background:#2D387F;">
           <img src="images/espnbet-thumbnail.png" alt="ESPN Bet" style="width:100%;height:100%;object-fit:cover;">
         </div>
@@ -385,12 +379,9 @@
 
     <div class="proj">
       <a class="proj-inner" href="thescore-bet.html">
-        <div>
-          <div class="proj-eyebrow">theScore Bet</div>
-          <div class="proj-title">Launching a sportsbook for millions of sports fans</div>
-          <p class="proj-desc">Introducing sports betting from your favourite sports app.</p>
-          <span class="proj-cta">View Project</span>
-        </div>
+        <div class="proj-eyebrow">theScore Bet</div>
+        <div class="proj-title">Launching a sportsbook for millions of sports fans <span class="proj-arrow">→</span></div>
+        <p class="proj-desc">Introducing sports betting from your favourite sports app.</p>
         <div class="proj-img" style="background:#71AFF5;">
           <img src="images/tsblaunch-thumbnail.png" alt="theScore Bet Launch" style="width:100%;height:100%;object-fit:cover;">
         </div>
@@ -400,12 +391,9 @@
     <!-- TELUS Accessories -->
     <div class="proj">
       <a class="proj-inner" href="telus-accessories.html">
-        <div>
-          <div class="proj-eyebrow">TELUS Digital</div>
-          <div class="proj-title">Transforming the e-commerce experience</div>
-          <p class="proj-desc">Transforming TELUS.com into the go-to destination for digital connectivity — where customers could explore, learn about, and buy accessories with confidence.</p>
-          <span class="proj-cta">View Project</span>
-        </div>
+        <div class="proj-eyebrow">TELUS Digital</div>
+        <div class="proj-title">Transforming the e-commerce experience <span class="proj-arrow">→</span></div>
+        <p class="proj-desc">Transforming TELUS.com into the go-to destination for digital connectivity — where customers could explore, learn about, and buy accessories with confidence.</p>
         <div class="proj-img" style="background:#f0ede8;">
           <img src="images/telus-accessories-thumbnail.png" alt="TELUS Accessories" style="width:100%;height:100%;object-fit:cover;">
         </div>
@@ -415,12 +403,9 @@
     <!-- TELUS Cart -->
     <div class="proj">
       <a class="proj-inner" href="telus-cart.html">
-        <div>
-          <div class="proj-eyebrow">TELUS Digital</div>
-          <div class="proj-title">Building an e-commerce cart</div>
-          <p class="proj-desc">Building TELUS's first e-commerce cart — from accessories only to a full phones and plans checkout.</p>
-          <span class="proj-cta">View Project</span>
-        </div>
+        <div class="proj-eyebrow">TELUS Digital</div>
+        <div class="proj-title">Building an e-commerce cart <span class="proj-arrow">→</span></div>
+        <p class="proj-desc">Building TELUS's first e-commerce cart — from accessories only to a full phones and plans checkout.</p>
         <div class="proj-img" style="background:#774D9C;">
           <img src="images/telus-cart-thumbnail.png" alt="TELUS Cart" style="width:100%;height:100%;object-fit:cover;">
         </div>
