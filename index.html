@@ -18,8 +18,8 @@
       --accent: #B85C38;
       --accent: #c17b4e;
       --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      --sidebar-width: 300px;
-      --gap: 80px;
+      --sidebar-width: 280px;
+      --gap: 60px;
     }
 
     @keyframes fadeIn {
@@ -44,32 +44,33 @@
     /* ── Layout ── */
     .layout {
       display: flex;
-      min-height: 100vh;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 60px;
     }
 
     .sidebar {
       width: var(--sidebar-width);
       flex-shrink: 0;
-      position: fixed;
-      top: 0;
-      left: max(0px, calc((100vw - 1100px) / 2));
-      height: 100vh;
+      position: fixed !important;
+      top: 56px;
+      left: max(60px, calc((100vw - 1100px) / 2 + 60px));
+      height: calc(100vh - 56px);
       display: flex;
       flex-direction: column;
-      padding: 56px 48px 48px;
+      gap: 24px;
+      padding: 64px 0 48px;
       background: var(--bg);
-      border-right: 0.5px solid var(--line);
       z-index: 9;
       overflow-y: auto;
     }
 
     .sidebar-avatar {
-      width: 64px;
-      height: 64px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       overflow: hidden;
       flex-shrink: 0;
-      margin-bottom: 32px;
     }
     .sidebar-avatar img {
       width: 100%;
@@ -79,67 +80,33 @@
       display: block;
     }
 
-    .sidebar-name {
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--ink);
-      line-height: 1.2;
-      margin-bottom: 8px;
-      letter-spacing: -0.01em;
-    }
-
-    .sidebar-role {
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 400;
-      margin-bottom: 32px;
-      letter-spacing: 0.01em;
-    }
-
     .sidebar-intro {
-      font-size: 13px;
-      line-height: 1.6;
-      color: var(--body);
+      font-size: 14px;
+      line-height: 1.5;
+      color: #4D4D4D;
       font-weight: 400;
-      margin-bottom: 40px;
+      max-width: 230px;
     }
     .sidebar-intro a { color: inherit; text-decoration: none; }
     .sidebar-intro a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
-    .sidebar-nav {
+    .sidebar-links {
       display: flex;
-      flex-direction: column;
-      gap: 4px;
-      margin-bottom: auto;
+      flex-direction: row;
+      gap: 12px;
+      align-items: center;
     }
-    .sidebar-nav a {
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--body);
-      text-decoration: none;
-      padding: 6px 0;
-      transition: color 0.2s;
-      border-bottom: none;
+    .sidebar-links a img,
+    .sidebar-links button img {
+      filter: brightness(0);
+      opacity: 0.8;
+      display: block;
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
     }
-    .sidebar-nav a:hover { color: var(--ink); }
-    .sidebar-nav a.active { color: var(--ink); font-weight: 500; }
-
-    .sidebar-footer {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      padding-top: 32px;
-      border-top: 0.5px solid var(--line);
-      margin-top: 40px;
-    }
-    .sidebar-footer a {
-      font-size: 13px;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .sidebar-footer a:hover { color: var(--ink); }
-
+    .sidebar-links a:hover img,
+    .sidebar-links button:hover img { opacity: 1; }
     .email-copy {
       background: none;
       border: none;
@@ -149,19 +116,14 @@
       position: relative;
       -webkit-appearance: none;
       appearance: none;
-      font-size: 13px;
-      color: var(--muted);
-      font-family: inherit;
-      transition: color 0.2s;
     }
-    .email-copy:hover { color: var(--ink); }
     .copy-tooltip {
       position: absolute;
-      bottom: 24px;
+      bottom: 32px;
       left: 0;
       background: var(--ink);
       color: #fff;
-      font-size: 11px;
+      font-size: 12px;
       padding: 4px 8px;
       border-radius: 4px;
       white-space: nowrap;
@@ -170,13 +132,28 @@
       transition: opacity 0.2s;
     }
     .copy-tooltip.show { opacity: 1; }
+    }
+    .sidebar-bottom a {
+      font-size: 15px;
+      color: #4D4D4D;
+      text-decoration: none;
+      display: block;
+      padding: 2px 0;
+      transition: color 0.2s;
+      font-weight: 400;
+    }
+    .sidebar-bottom a:hover { color: #252525; }
+    .sidebar-copy {
+      font-size: 13px;
+      color: #A4A4A4;
+      letter-spacing: 0.04em;
+      margin-top: 8px;
+    }
 
     /* ── Main ── */
     .main {
-      margin-left: max(var(--sidebar-width), calc((100vw - 1100px) / 2 + var(--sidebar-width)));
-      max-width: 760px;
-      padding: 56px 80px 80px;
-      flex: 1;
+      margin-left: calc(var(--sidebar-width) + var(--gap));
+      padding: 40px 0 80px;
     }
 
     /* ── Projects ── */
@@ -238,7 +215,7 @@
       text-decoration: none;
       transition: background 0.2s, color 0.2s;
     }
-    .proj-cta:hover {
+    .proj-inner:hover .proj-cta {
       background: #252525;
       color: #ffffff;
     }
@@ -262,8 +239,7 @@
       display: block;
       transition: transform 0.5s var(--ease);
     }
-    .proj-img:hover > img { transform: scale(1.03); }
-    .proj-img { cursor: pointer; }
+    .proj-inner:hover .proj-img > img { transform: scale(1.03); }
 
     /* Phone mockups */
     .phone-row {
@@ -337,20 +313,23 @@
     }
 
     @media (max-width: 768px) {
-      .layout { flex-direction: column; }
+      .layout { padding: 0 24px; display: flex; flex-direction: column; }
       .sidebar {
-        position: relative;
+        position: relative !important;
         top: auto;
         left: auto;
         width: 100%;
         height: auto;
-        padding: 40px 24px 32px;
-        border-right: none;
-        border-bottom: 0.5px solid var(--line);
+        padding: 24px 24px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
         overflow-y: visible;
       }
-      .sidebar-footer { flex-direction: row; gap: 20px; border-top: none; padding-top: 16px; margin-top: 24px; }
-      .main { margin-left: 0; padding: 32px 24px 60px; max-width: 100%; }
+      .sidebar-intro { max-width: 300px; }
+      .sidebar-links { flex-direction: row; gap: 16px; }
+      .main { margin-left: 0; padding: 24px 0 60px; font-size: 14px; }
       .proj { padding: 32px 0; }
       .proj-inner { grid-template-columns: 1fr; gap: 20px; }
       .proj-img { order: -1; aspect-ratio: 16/9; }
@@ -358,6 +337,10 @@
       .proj-title { font-size: 16px; }
       .proj-desc { font-size: 14px; }
       .proj-eyebrow { font-size: 11px; }
+    }
+    @media (max-width: 480px) {
+      .layout { padding: 0 20px; }
+      .sidebar { padding: 24px 20px 20px; }
     }
   </style>
 </head>
@@ -369,19 +352,14 @@
   <div class="sidebar-avatar">
     <img src="ara-profile-1.png" alt="Ara An">
   </div>
-  <div class="sidebar-name">Ara An</div>
-  <div class="sidebar-role">Product Designer · Toronto</div>
   <p class="sidebar-intro">
-    I design products that ship. Previously at <a href="https://www.thescore.bet/" target="_blank">theScore</a>, <a href="https://kineticecommerce.com/" target="_blank">Kinetic Commerce</a>, and <a href="https://www.nascentdigital.com/" target="_blank">Nascent Digital</a>.
+    I'm a product designer based in Toronto who has launched products and scaled teams.<br><br>
+    Previously at <a href="https://www.thescore.bet/" target="_blank" style="color:inherit;">theScore</a>, <a href="https://kineticecommerce.com/" target="_blank" style="color:inherit;">Kinetic Commerce</a> and <a href="https://www.nascentdigital.com/" target="_blank" style="color:inherit;">Nascent Digital</a>.
   </p>
-  <nav class="sidebar-nav">
-    <a href="/index.html" class="active">Work</a>
-    <a href="/about.html">About</a>
-  </nav>
-  <div class="sidebar-footer">
-    <a href="https://www.linkedin.com/in/araan/" target="_blank">LinkedIn</a>
+  <div class="sidebar-links">
+    <a href="https://www.linkedin.com/in/araan/" target="_blank"><img src="linkedin.png" alt="LinkedIn" width="24" height="24"></a>
     <button class="email-copy" onclick="copyEmail()" title="Copy email">
-      araleean@gmail.com
+      <img src="email.png" alt="Email" width="24" height="24">
       <span class="copy-tooltip" id="copy-tooltip">Copied!</span>
     </button>
   </div>
@@ -390,78 +368,63 @@
   <!-- Main -->
   <main class="main" id="work">
 
-    <!-- Hollywood Casino -->
-    <div class="proj">
-      <div class="proj-inner">
-        <div>
-          <div class="proj-eyebrow">Hollywood Casino</div>
-          <div class="proj-title">Standalone Casino</div>
-          <p class="proj-desc">A dedicated experience for casino users across the US and Canada on iOS, Android and desktop.</p>
-          <a class="proj-cta" href="hollywood-casino.html">View Project</a>
-        </div>
-        <a class="proj-img" href="hollywood-casino.html" style="background:#1a0a2e;">
-          <img src="images/hwcasino-thumbnail.png" alt="Hollywood Casino" style="width:100%;height:100%;object-fit:cover;">
-        </a>
-      </div>
-    </div>
-
     <!-- ESPN Bet Onboarding -->
     <div class="proj">
-      <div class="proj-inner">
+      <a class="proj-inner" href="espn-bet-onboarding.html">
         <div>
           <div class="proj-eyebrow">theScore Bet & ESPN Bet</div>
           <div class="proj-title">Redesigning the Sign-Up Flow</div>
           <p class="proj-desc">Rethinking a complex sign-up flow to reduce drop-off and drive growth.</p>
-          <a class="proj-cta" href="espn-bet-onboarding.html">View Project</a>
+          <span class="proj-cta">View Project</span>
         </div>
-        <a class="proj-img" href="espn-bet-onboarding.html" style="background:#2D387F;">
+        <div class="proj-img" style="background:#2D387F;">
           <img src="images/espnbet-thumbnail.png" alt="ESPN Bet" style="width:100%;height:100%;object-fit:cover;">
-        </a>
-      </div>
+        </div>
+      </a>
     </div>
 
     <div class="proj">
-      <div class="proj-inner">
+      <a class="proj-inner" href="thescore-bet.html">
         <div>
           <div class="proj-eyebrow">theScore Bet</div>
           <div class="proj-title">Launching a sportsbook for millions of sports fans</div>
           <p class="proj-desc">Introducing sports betting from your favourite sports app.</p>
-          <a class="proj-cta" href="thescore-bet.html">View Project</a>
+          <span class="proj-cta">View Project</span>
         </div>
-        <a class="proj-img" href="thescore-bet.html" style="background:#71AFF5;">
+        <div class="proj-img" style="background:#71AFF5;">
           <img src="images/tsblaunch-thumbnail.png" alt="theScore Bet Launch" style="width:100%;height:100%;object-fit:cover;">
-        </a>
-      </div>
+        </div>
+      </a>
     </div>
 
     <!-- TELUS Accessories -->
     <div class="proj">
-      <div class="proj-inner">
+      <a class="proj-inner" href="telus-accessories.html">
         <div>
           <div class="proj-eyebrow">TELUS Digital</div>
           <div class="proj-title">Transforming the e-commerce experience</div>
           <p class="proj-desc">Transforming TELUS.com into the go-to destination for digital connectivity — where customers could explore, learn about, and buy accessories with confidence.</p>
-          <a class="proj-cta" href="telus-accessories.html">View Project</a>
+          <span class="proj-cta">View Project</span>
         </div>
-        <a class="proj-img" href="telus-accessories.html" style="background:#f0ede8;">
+        <div class="proj-img" style="background:#f0ede8;">
           <img src="images/telus-accessories-thumbnail.png" alt="TELUS Accessories" style="width:100%;height:100%;object-fit:cover;">
-        </a>
-      </div>
+        </div>
+      </a>
     </div>
 
     <!-- TELUS Cart -->
     <div class="proj">
-      <div class="proj-inner">
+      <a class="proj-inner" href="telus-cart.html">
         <div>
           <div class="proj-eyebrow">TELUS Digital</div>
           <div class="proj-title">Building an e-commerce cart</div>
           <p class="proj-desc">Building TELUS's first e-commerce cart — from accessories only to a full phones and plans checkout.</p>
-          <a class="proj-cta" href="telus-cart.html">View Project</a>
+          <span class="proj-cta">View Project</span>
         </div>
-        <a class="proj-img" href="telus-cart.html" style="background:#774D9C;">
+        <div class="proj-img" style="background:#774D9C;">
           <img src="images/telus-cart-thumbnail.png" alt="TELUS Cart" style="width:100%;height:100%;object-fit:cover;">
-        </a>
-      </div>
+        </div>
+      </a>
     </div>
 
   </main>
