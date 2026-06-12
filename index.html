@@ -18,8 +18,8 @@
       --accent: #B85C38;
       --accent: #c17b4e;
       --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      --sidebar-width: 280px;
-      --gap: 60px;
+      --sidebar-width: 300px;
+      --gap: 80px;
     }
 
     @keyframes fadeIn {
@@ -44,33 +44,32 @@
     /* ── Layout ── */
     .layout {
       display: flex;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 60px;
+      min-height: 100vh;
     }
 
     .sidebar {
       width: var(--sidebar-width);
       flex-shrink: 0;
-      position: fixed !important;
-      top: 56px;
-      left: max(60px, calc((100vw - 1100px) / 2 + 60px));
-      height: calc(100vh - 56px);
+      position: fixed;
+      top: 0;
+      left: max(0px, calc((100vw - 1100px) / 2));
+      height: 100vh;
       display: flex;
       flex-direction: column;
-      gap: 24px;
-      padding: 64px 0 48px;
+      padding: 56px 48px 48px;
       background: var(--bg);
+      border-right: 0.5px solid var(--line);
       z-index: 9;
       overflow-y: auto;
     }
 
     .sidebar-avatar {
-      width: 120px;
-      height: 120px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       overflow: hidden;
       flex-shrink: 0;
+      margin-bottom: 32px;
     }
     .sidebar-avatar img {
       width: 100%;
@@ -80,33 +79,67 @@
       display: block;
     }
 
-    .sidebar-intro {
-      font-size: 14px;
-      line-height: 1.5;
-      color: #4D4D4D;
+    .sidebar-name {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.2;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .sidebar-role {
+      font-size: 13px;
+      color: var(--muted);
       font-weight: 400;
-      max-width: 230px;
+      margin-bottom: 32px;
+      letter-spacing: 0.01em;
+    }
+
+    .sidebar-intro {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--body);
+      font-weight: 400;
+      margin-bottom: 40px;
     }
     .sidebar-intro a { color: inherit; text-decoration: none; }
     .sidebar-intro a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
-    .sidebar-links {
+    .sidebar-nav {
       display: flex;
-      flex-direction: row;
-      gap: 12px;
-      align-items: center;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: auto;
     }
-    .sidebar-links a img,
-    .sidebar-links button img {
-      filter: brightness(0);
-      opacity: 0.8;
-      display: block;
-      width: 24px;
-      height: 24px;
-      object-fit: contain;
+    .sidebar-nav a {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--body);
+      text-decoration: none;
+      padding: 6px 0;
+      transition: color 0.2s;
+      border-bottom: none;
     }
-    .sidebar-links a:hover img,
-    .sidebar-links button:hover img { opacity: 1; }
+    .sidebar-nav a:hover { color: var(--ink); }
+    .sidebar-nav a.active { color: var(--ink); font-weight: 500; }
+
+    .sidebar-footer {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-top: 32px;
+      border-top: 0.5px solid var(--line);
+      margin-top: 40px;
+    }
+    .sidebar-footer a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .sidebar-footer a:hover { color: var(--ink); }
+
     .email-copy {
       background: none;
       border: none;
@@ -116,14 +149,19 @@
       position: relative;
       -webkit-appearance: none;
       appearance: none;
+      font-size: 13px;
+      color: var(--muted);
+      font-family: inherit;
+      transition: color 0.2s;
     }
+    .email-copy:hover { color: var(--ink); }
     .copy-tooltip {
       position: absolute;
-      bottom: 32px;
+      bottom: 24px;
       left: 0;
       background: var(--ink);
       color: #fff;
-      font-size: 12px;
+      font-size: 11px;
       padding: 4px 8px;
       border-radius: 4px;
       white-space: nowrap;
@@ -132,28 +170,13 @@
       transition: opacity 0.2s;
     }
     .copy-tooltip.show { opacity: 1; }
-    }
-    .sidebar-bottom a {
-      font-size: 15px;
-      color: #4D4D4D;
-      text-decoration: none;
-      display: block;
-      padding: 2px 0;
-      transition: color 0.2s;
-      font-weight: 400;
-    }
-    .sidebar-bottom a:hover { color: #252525; }
-    .sidebar-copy {
-      font-size: 13px;
-      color: #A4A4A4;
-      letter-spacing: 0.04em;
-      margin-top: 8px;
-    }
 
     /* ── Main ── */
     .main {
-      margin-left: calc(var(--sidebar-width) + var(--gap));
-      padding: 40px 0 80px;
+      margin-left: max(var(--sidebar-width), calc((100vw - 1100px) / 2 + var(--sidebar-width)));
+      max-width: 760px;
+      padding: 56px 80px 80px;
+      flex: 1;
     }
 
     /* ── Projects ── */
@@ -314,23 +337,20 @@
     }
 
     @media (max-width: 768px) {
-      .layout { padding: 0 24px; display: flex; flex-direction: column; }
+      .layout { flex-direction: column; }
       .sidebar {
-        position: relative !important;
+        position: relative;
         top: auto;
         left: auto;
         width: 100%;
         height: auto;
-        padding: 24px 24px 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+        padding: 40px 24px 32px;
+        border-right: none;
+        border-bottom: 0.5px solid var(--line);
         overflow-y: visible;
       }
-      .sidebar-intro { max-width: 300px; }
-      .sidebar-links { flex-direction: row; gap: 16px; }
-      .main { margin-left: 0; padding: 24px 0 60px; font-size: 14px; }
+      .sidebar-footer { flex-direction: row; gap: 20px; border-top: none; padding-top: 16px; margin-top: 24px; }
+      .main { margin-left: 0; padding: 32px 24px 60px; max-width: 100%; }
       .proj { padding: 32px 0; }
       .proj-inner { grid-template-columns: 1fr; gap: 20px; }
       .proj-img { order: -1; aspect-ratio: 16/9; }
@@ -338,10 +358,6 @@
       .proj-title { font-size: 16px; }
       .proj-desc { font-size: 14px; }
       .proj-eyebrow { font-size: 11px; }
-    }
-    @media (max-width: 480px) {
-      .layout { padding: 0 20px; }
-      .sidebar { padding: 24px 20px 20px; }
     }
   </style>
 </head>
@@ -353,14 +369,19 @@
   <div class="sidebar-avatar">
     <img src="ara-profile-1.png" alt="Ara An">
   </div>
+  <div class="sidebar-name">Ara An</div>
+  <div class="sidebar-role">Product Designer · Toronto</div>
   <p class="sidebar-intro">
-    I'm a product designer based in Toronto who has launched products and scaled teams.<br><br>
-    Previously at <a href="https://www.thescore.bet/" target="_blank" style="color:inherit;">theScore</a>, <a href="https://kineticecommerce.com/" target="_blank" style="color:inherit;">Kinetic Commerce</a> and <a href="https://www.nascentdigital.com/" target="_blank" style="color:inherit;">Nascent Digital</a>.
+    I design products that ship. Previously at <a href="https://www.thescore.bet/" target="_blank">theScore</a>, <a href="https://kineticecommerce.com/" target="_blank">Kinetic Commerce</a>, and <a href="https://www.nascentdigital.com/" target="_blank">Nascent Digital</a>.
   </p>
-  <div class="sidebar-links">
-    <a href="https://www.linkedin.com/in/araan/" target="_blank"><img src="linkedin.png" alt="LinkedIn" width="24" height="24"></a>
+  <nav class="sidebar-nav">
+    <a href="/index.html" class="active">Work</a>
+    <a href="/about.html">About</a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="https://www.linkedin.com/in/araan/" target="_blank">LinkedIn</a>
     <button class="email-copy" onclick="copyEmail()" title="Copy email">
-      <img src="email.png" alt="Email" width="24" height="24">
+      araleean@gmail.com
       <span class="copy-tooltip" id="copy-tooltip">Copied!</span>
     </button>
   </div>
