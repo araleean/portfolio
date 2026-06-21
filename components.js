@@ -50,7 +50,7 @@ const PROJECTS = [
 
 (function injectOtherProjects() {
   const page = location.pathname.split('/').pop().replace('.html', '') || 'index';
-  if (page === 'index') return;
+  if (page === 'index' || page === 'about') return;
 
   const others = PROJECTS.filter(p => p.slug !== page);
 

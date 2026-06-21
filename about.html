@@ -8,276 +8,112 @@
   <link rel="stylesheet" href="global.css">
   <style>
     :root {
-      --sidebar-width: 280px;
-      --gap: 60px;
+      --ink: #252525;
+      --muted: #9a9890;
+      --body: #4D4D4D;
+      --line: #e8e8e8;
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    .layout {
-      display: flex;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 60px;
-    }
+    html, body { overflow-x: clip; }
 
-    /* ── Sidebar ── */
-    .sidebar {
-      width: var(--sidebar-width);
-      flex-shrink: 0;
-      position: fixed !important;
-      top: 56px;
-      left: max(60px, calc((100vw - 1100px) / 2 + 60px));
-      height: calc(100vh - 56px);
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      padding: 64px 0 48px;
-      background: var(--bg);
-      z-index: 9;
-      overflow-y: auto;
-    }
+    .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
 
-    .sidebar-avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-    .sidebar-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 20%;
-      display: block;
-    }
-
-    .sidebar-intro {
-      font-size: 14px;
-      line-height: 1.5;
-      color: #4D4D4D;
-      font-weight: 400;
-      max-width: 230px;
-    }
-    .sidebar-intro a { color: inherit; text-decoration: none; }
-    .sidebar-intro a:hover { text-decoration: underline; text-underline-offset: 3px; }
-
-    .sidebar-links {
-      display: flex;
-      flex-direction: row;
-      gap: 12px;
-      align-items: center;
-    }
-    .sidebar-links a img,
-    .sidebar-links button img {
-      filter: brightness(0);
-      opacity: 0.8;
-      display: block;
-      width: 24px;
-      height: 24px;
-      object-fit: contain;
-    }
-    .sidebar-links a:hover img,
-    .sidebar-links button:hover img { opacity: 1; }
-
-    .email-copy {
-      background: none;
-      border: none;
-      padding: 0;
-      cursor: pointer;
-      display: inline-flex;
-      position: relative;
-    }
-    .copy-tooltip {
-      position: absolute;
-      bottom: 32px;
-      left: 0;
-      background: var(--ink);
-      color: #fff;
-      font-size: 12px;
-      padding: 4px 8px;
-      border-radius: 4px;
-      white-space: nowrap;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s;
-    }
-    .copy-tooltip.show { opacity: 1; }
-
-    /* ── Main ── */
-    .main {
-      margin-left: calc(var(--sidebar-width) + var(--gap));
-      padding: 40px 0 80px;
-      flex: 1;
-    }
-
-    /* ── CV Sections ── */
-    .cv-section {
-      margin-bottom: 40px;
-      padding-bottom: 40px;
+    .about-header {
+      padding: 48px 0 40px;
       border-bottom: 0.5px solid var(--line);
     }
-    .cv-section:last-child { border-bottom: none; padding-bottom: 0; }
-
-    .cv-section-title {
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
+    .about-title {
+      font-size: clamp(28px, 4vw, 40px);
       font-weight: 500;
+      line-height: 1.1;
+      color: var(--ink);
+      margin: 0 0 16px;
+    }
+    .about-bio {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--body);
+      max-width: 560px;
+    }
+
+    /* ── Sections ── */
+    .cv-section {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 0 40px;
+      padding: 48px 0;
+      border-bottom: 0.5px solid var(--line);
+    }
+    .cv-section:last-child { border-bottom: none; }
+
+    .cv-section-label {
+      font-size: 12px;
+      font-weight: 400;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 20px;
+      padding-top: 4px;
+      position: sticky;
+      top: 80px;
+      align-self: start;
     }
 
-    /* ── Entry ── */
-    .entry {
-      padding: 8px 0;
-    }
+    .cv-entries { display: flex; flex-direction: column; }
+
+    .entry { padding: 12px 0; }
+    .entry:first-child { padding-top: 0; }
+    .entry + .entry { border-top: 0.5px solid var(--line); }
 
     .entry-header {
       display: flex;
       align-items: baseline;
+      justify-content: space-between;
       gap: 16px;
       margin-bottom: 4px;
       flex-wrap: wrap;
     }
-
     .entry-title {
       font-size: 14px;
       font-weight: 500;
       color: var(--ink);
     }
-
     .entry-date {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--muted);
       font-weight: 400;
       white-space: nowrap;
+      flex-shrink: 0;
     }
-
     .entry-desc {
       font-size: 14px;
       line-height: 1.6;
       color: var(--body);
-      font-weight: 400;
     }
 
-    /* ── Contact ── */
-    .contact-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 8px 0;
-      position: relative;
-    }
-    .contact-row:hover .contact-val { text-decoration: underline; text-underline-offset: 4px; }
-    .contact-row img {
-      width: 20px;
-      height: 20px;
-      object-fit: contain;
-      filter: brightness(0);
-      opacity: 0.8;
-      flex-shrink: 0;
-    }
-    .contact-val {
-      font-size: 14px;
-      color: var(--body);
-      text-decoration: none;
-      font-weight: 400;
-    }
-    .contact-val:hover { text-decoration: underline; text-underline-offset: 4px; }
-    .contact-copy {
-      background: none;
-      border: none;
-      padding: 0;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      position: relative;
-      font-family: 'Inter', sans-serif;
-      -webkit-appearance: none;
-      appearance: none;
-    }
-    .contact-copy img {
-      width: 20px;
-      height: 20px;
-      object-fit: contain;
-      filter: brightness(0);
-      opacity: 0.8;
-      flex-shrink: 0;
-    }
-    .contact-copy span {
-      font-size: 14px;
-      color: var(--body);
-      font-weight: 400;
-      text-decoration: none;
-    }
-    .contact-copy:hover span { text-decoration: underline; text-underline-offset: 4px; }
-    .contact-copy-tooltip {
-      position: absolute;
-      left: 0;
-      top: -28px;
-      background: var(--ink);
-      color: #fff;
-      font-size: 12px;
-      padding: 4px 8px;
-      border-radius: 4px;
-      white-space: nowrap;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s;
-    }
-    .contact-copy-tooltip.show { opacity: 1; }
-
-    /* ── Mobile ── */
     @media (max-width: 768px) {
-      .layout { padding: 0 24px; flex-direction: column; }
-      .sidebar {
-        position: relative !important;
-        top: auto;
-        left: auto;
-        width: 100%;
-        height: auto;
-        padding: 24px 0 20px;
-        overflow-y: visible;
-        align-items: center;
-        text-align: center;
-      }
-      .sidebar-intro { max-width: 300px; }
-      .main { margin-left: 0; padding: 24px 0 60px; }
-      .entry-header { flex-wrap: wrap; }
+      .page-wrap { padding: 0 24px; }
+      .cv-section { grid-template-columns: 1fr; gap: 16px; padding: 36px 0; }
+      .cv-section-label { position: static; }
     }
     @media (max-width: 480px) {
-      .layout { padding: 0 20px; }
+      .page-wrap { padding: 0 20px; }
     }
   </style>
 </head>
 <body>
 
-<div class="layout">
+<div class="page-wrap">
 
-  <aside class="sidebar">
-    <div class="sidebar-avatar">
-      <img src="ara-profile-1.png" alt="Ara An">
-    </div>
-    <p class="sidebar-intro">
-      I'm a product designer based in Toronto who has launched products and scaled teams.<br><br>
-      Previously at <a href="https://www.thescore.bet/" target="_blank">theScore</a>, <a href="https://kineticecommerce.com/" target="_blank">Kinetic Commerce</a> and <a href="https://www.nascentdigital.com/" target="_blank">Nascent Digital</a>.
-    </p>
-    <div class="sidebar-links">
-      <a href="https://www.linkedin.com/in/araan/" target="_blank"><img src="linkedin.png" alt="LinkedIn" width="24" height="24"></a>
-      <button class="email-copy" onclick="copyEmail()" title="Copy email">
-        <img src="email.png" alt="Email" width="24" height="24">
-        <span class="copy-tooltip" id="copy-tooltip">Copied!</span>
-      </button>
-    </div>
-  </aside>
+  <div class="about-header">
+    <h1 class="about-title">About</h1>
+    <p class="about-bio">I'm a product designer based in Toronto. I care about craft, clarity, and building things that actually ship. I've spent the last several years leading design across sports betting, casino, and e-commerce — managing teams, partnering closely with product and engineering, and doing the hands-on work myself.<br><br>Previously at <a href="https://www.thescore.bet/" target="_blank" style="color:inherit;">theScore</a>, <a href="https://kineticecommerce.com/" target="_blank" style="color:inherit;">Kinetic Commerce</a> and <a href="https://www.nascentdigital.com/" target="_blank" style="color:inherit;">Nascent Digital</a>.</p>
+  </div>
 
-  <main class="main">
-
-    <!-- Experience -->
-    <div class="cv-section">
-      <div class="cv-section-title">Experience</div>
+  <!-- Experience -->
+  <div class="cv-section">
+    <div class="cv-section-label">Experience</div>
+    <div class="cv-entries">
 
       <div class="entry">
         <div class="entry-header">
@@ -326,11 +162,14 @@
         </div>
         <p class="entry-desc">I worked on the accessories e-commerce experience and launched the first cart with the TELUS Digital team.</p>
       </div>
-    </div>
 
-    <!-- Education -->
-    <div class="cv-section">
-      <div class="cv-section-title">Education</div>
+    </div>
+  </div>
+
+  <!-- Education -->
+  <div class="cv-section">
+    <div class="cv-section-label">Education</div>
+    <div class="cv-entries">
 
       <div class="entry">
         <div class="entry-header">
@@ -352,56 +191,29 @@
           <div class="entry-date">2009 – 2013</div>
         </div>
       </div>
+
     </div>
+  </div>
 
-    <!-- Contact -->
-    <div class="cv-section">
-      <div class="cv-section-title">Contact</div>
-
-      <div class="contact-row" style="cursor:pointer;" onclick="copyEmailContact()">
-        <img src="email.png" alt="Email">
-        <span class="contact-val">araleean@gmail.com</span>
-        <span class="contact-copy-tooltip" id="copy-tooltip-contact">Copied!</span>
+  <!-- Contact -->
+  <div class="cv-section">
+    <div class="cv-section-label">Contact</div>
+    <div class="cv-entries">
+      <div class="entry">
+        <div class="entry-header">
+          <a class="entry-title" href="mailto:araleean@gmail.com" style="color:inherit;text-decoration:none;">araleean@gmail.com</a>
+        </div>
       </div>
-
-      <div class="contact-row">
-        <img src="linkedin.png" alt="LinkedIn">
-        <a class="contact-val" href="https://www.linkedin.com/in/araan/" target="_blank">linkedin.com/in/araan</a>
+      <div class="entry">
+        <div class="entry-header">
+          <a class="entry-title" href="https://www.linkedin.com/in/araan/" target="_blank" style="color:inherit;text-decoration:none;">linkedin.com/in/araan</a>
+        </div>
       </div>
     </div>
-
-  </main>
+  </div>
 
 </div>
 
-<script>
-  function showTooltip(id) {
-    const tooltip = document.getElementById(id);
-    tooltip.classList.add('show');
-    setTimeout(() => tooltip.classList.remove('show'), 2000);
-  }
-
-  function copyText(text, tooltipId) {
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(text).then(() => showTooltip(tooltipId));
-    } else {
-      // Fallback for file:// or http
-      const el = document.createElement('textarea');
-      el.value = text;
-      el.style.position = 'fixed';
-      el.style.opacity = '0';
-      document.body.appendChild(el);
-      el.select();
-      document.execCommand('copy');
-      document.body.removeChild(el);
-      showTooltip(tooltipId);
-    }
-  }
-
-  function copyEmail() { copyText('araleean@gmail.com', 'copy-tooltip'); }
-  function copyEmailContact() { copyText('araleean@gmail.com', 'copy-tooltip-contact'); }
-</script>
 <script src="components.js"></script>
-
 </body>
 </html>
