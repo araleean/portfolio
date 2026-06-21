@@ -93,45 +93,17 @@
     .sidebar-links {
       display: flex;
       flex-direction: row;
-      gap: 12px;
+      gap: 16px;
       align-items: center;
     }
-    .sidebar-links a img,
-    .sidebar-links button img {
-      filter: brightness(0);
-      opacity: 0.8;
-      display: block;
-      width: 24px;
-      height: 24px;
-      object-fit: contain;
+    .sidebar-links a {
+      font-size: 14px;
+      color: #4D4D4D;
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.2s;
     }
-    .sidebar-links a:hover img,
-    .sidebar-links button:hover img { opacity: 1; }
-    .email-copy {
-      background: none;
-      border: none;
-      padding: 0;
-      cursor: pointer;
-      display: inline-flex;
-      position: relative;
-      -webkit-appearance: none;
-      appearance: none;
-    }
-    .copy-tooltip {
-      position: absolute;
-      bottom: 32px;
-      left: 0;
-      background: var(--ink);
-      color: #fff;
-      font-size: 12px;
-      padding: 4px 8px;
-      border-radius: 4px;
-      white-space: nowrap;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s;
-    }
-    .copy-tooltip.show { opacity: 1; }
+    .sidebar-links a:hover { color: #252525; text-decoration: underline; text-underline-offset: 3px; }
     }
     .sidebar-bottom a {
       font-size: 15px;
@@ -366,11 +338,8 @@
     Previously at <a href="https://www.thescore.bet/" target="_blank" style="color:inherit;">theScore</a>, <a href="https://kineticecommerce.com/" target="_blank" style="color:inherit;">Kinetic Commerce</a> and <a href="https://www.nascentdigital.com/" target="_blank" style="color:inherit;">Nascent Digital</a>.
   </p>
   <div class="sidebar-links">
-    <a href="https://www.linkedin.com/in/araan/" target="_blank"><img src="linkedin.png" alt="LinkedIn" width="24" height="24"></a>
-    <button class="email-copy" onclick="copyEmail()" title="Copy email">
-      <img src="email.png" alt="Email" width="24" height="24">
-      <span class="copy-tooltip" id="copy-tooltip">Copied!</span>
-    </button>
+    <a href="mailto:araleean@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/araan/" target="_blank">LinkedIn</a>
   </div>
 </aside>
 

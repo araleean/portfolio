@@ -9,7 +9,7 @@ const NAV_HTML = `
     <div class="nav-inner">
       <a class="nav-logo" href="/index.html">Ara An</a>
       <ul class="nav-links">
-        <li><a href="/index.html">Work</a></li>
+        <li><a href="/index.html">Projects</a></li>
         <li><a href="/about.html">About</a></li>
       </ul>
     </div>
