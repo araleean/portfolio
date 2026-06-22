@@ -1,7 +1,7 @@
 /* ── Global Styles ── */
 /* Nav, footer, and base styles shared across all pages */
 
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600&family=Caveat:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -58,11 +58,14 @@ nav.scrolled {
   align-items: center;
 }
 .nav-logo {
-  font-family: 'Caveat', cursive;
+  font-family: 'Barlow Condensed', sans-serif;
   font-size: 22px;
-  font-weight: 500;
-  color: #252525;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1.5px #252525;
   text-decoration: none;
+  letter-spacing: 0.03em;
+  line-height: 1;
 }
 .nav-links {
   display: flex;
