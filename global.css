@@ -9,7 +9,7 @@
   --bg: #ffffff;
   --ink: #252525;
   --muted: #9a9890;
-  --body: #6a6a6a;
+  --body: #555555;
   --line: #e8e8e8;
   --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -72,7 +72,7 @@ nav.scrolled {
 .nav-links a {
   font-family: 'Karla', sans-serif;
   font-size: 15px;
-  color: #6a6a6a;
+  color: #555555;
   text-decoration: none;
   font-weight: 500;
   transition: text-decoration 0.2s;
@@ -105,7 +105,7 @@ footer {
 }
 .footer-link {
   font-size: 15px;
-  color: #6a6a6a;
+  color: #555555;
   text-decoration: none;
   font-weight: 400;
 }
