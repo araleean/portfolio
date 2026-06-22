@@ -58,7 +58,6 @@
       display: block;
     }
 
-    .sidebar-text {}
     .sidebar-name {
       font-size: 20px;
       font-weight: 500;
@@ -115,25 +114,27 @@
       font-size: 15px;
       font-weight: 500;
       color: var(--ink);
-      margin: 0 0 4px;
+      margin: 0;
     }
+
+    /* Grouped roles (theScore) */
+    .exp-roles {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .exp-role-item {}
     .exp-role {
       font-size: 15px;
       font-weight: 400;
       color: var(--body);
-      line-height: 1.4;
-      margin: 0 0 4px;
+      margin: 0 0 2px;
     }
     .exp-year {
       font-size: 14px;
       color: var(--muted);
       font-weight: 400;
-    }
-
-    .exp-right {
-      display: flex;
-      align-items: flex-start;
-      padding-top: 4px;
+      margin: 0 0 6px;
     }
     .exp-desc {
       font-size: 15px;
@@ -188,69 +189,65 @@
 
   <main class="main">
 
+    <!-- theScore — grouped -->
     <div class="exp-entry">
       <div class="exp-left">
         <p class="exp-company">theScore</p>
-        <p class="exp-role">Senior Manager, Product Design</p>
-        <p class="exp-year">2024 – 2026</p>
       </div>
-      <div class="exp-right">
-        <p class="exp-desc">I managed 6–8 product designers across the Core Accounts and Casino teams. I helped navigate the team through the ESPN Bet partnership.</p>
+      <div class="exp-roles">
+
+        <div class="exp-role-item">
+          <p class="exp-role">Senior Manager, Product Design</p>
+          <p class="exp-year">2024 – 2026</p>
+          <p class="exp-desc">I managed 6–8 product designers across the Core Accounts and Casino teams. I helped navigate the team through the ESPN Bet partnership.</p>
+        </div>
+
+        <div class="exp-role-item">
+          <p class="exp-role">Manager, Product Design</p>
+          <p class="exp-year">2022 – 2024</p>
+          <p class="exp-desc">I managed 11–13 product designers across the Sportsbook and Media teams through the PENN Entertainment acquisition. I helped scale the UX org to 50+ across product design, research, design systems and operations.</p>
+        </div>
+
+        <div class="exp-role-item">
+          <p class="exp-role">Senior Product Designer</p>
+          <p class="exp-year">2020 – 2022</p>
+          <p class="exp-desc">I launched theScore Bet web, expanding the sportsbook from mobile to desktop. I rebuilt the Figma design system to unify components across theScore and theScore Bet.</p>
+        </div>
+
+        <div class="exp-role-item">
+          <p class="exp-role">Product Designer</p>
+          <p class="exp-year">2019 – 2020</p>
+          <p class="exp-desc">I launched theScore Bet, a sportsbook app built with theScore brand, on iOS and Android across the US and Canada.</p>
+        </div>
+
       </div>
     </div>
 
-    <div class="exp-entry">
-      <div class="exp-left">
-        <p class="exp-company">theScore</p>
-        <p class="exp-role">Manager, Product Design</p>
-        <p class="exp-year">2022 – 2024</p>
-      </div>
-      <div class="exp-right">
-        <p class="exp-desc">I managed 11–13 product designers across the Sportsbook and Media teams through the PENN Entertainment acquisition. I helped scale the UX org to 50+ across product design, research, design systems and operations.</p>
-      </div>
-    </div>
-
-    <div class="exp-entry">
-      <div class="exp-left">
-        <p class="exp-company">theScore</p>
-        <p class="exp-role">Senior Product Designer</p>
-        <p class="exp-year">2020 – 2022</p>
-      </div>
-      <div class="exp-right">
-        <p class="exp-desc">I launched theScore Bet web, expanding the sportsbook from mobile to desktop. I rebuilt the Figma design system to unify components across theScore and theScore Bet.</p>
-      </div>
-    </div>
-
-    <div class="exp-entry">
-      <div class="exp-left">
-        <p class="exp-company">theScore</p>
-        <p class="exp-role">Product Designer</p>
-        <p class="exp-year">2019 – 2020</p>
-      </div>
-      <div class="exp-right">
-        <p class="exp-desc">I launched theScore Bet, a sportsbook app built with theScore brand, on iOS and Android across the US and Canada.</p>
-      </div>
-    </div>
-
+    <!-- Kinetic Commerce -->
     <div class="exp-entry">
       <div class="exp-left">
         <p class="exp-company">Kinetic Commerce</p>
-        <p class="exp-role">Product Designer</p>
-        <p class="exp-year">2018 – 2019</p>
       </div>
-      <div class="exp-right">
-        <p class="exp-desc">I worked on the Associate App, part of Kinetic Commerce's omnichannel retail platform, helping associates deliver better service and drive sales.</p>
+      <div class="exp-roles">
+        <div class="exp-role-item">
+          <p class="exp-role">Product Designer</p>
+          <p class="exp-year">2018 – 2019</p>
+          <p class="exp-desc">I worked on the Associate App, part of Kinetic Commerce's omnichannel retail platform, helping associates deliver better service and drive sales.</p>
+        </div>
       </div>
     </div>
 
+    <!-- Nascent Digital -->
     <div class="exp-entry">
       <div class="exp-left">
         <p class="exp-company">Nascent Digital</p>
-        <p class="exp-role">Product Designer</p>
-        <p class="exp-year">2017 – 2018</p>
       </div>
-      <div class="exp-right">
-        <p class="exp-desc">I worked on the accessories e-commerce experience and launched the first cart with the TELUS Digital team.</p>
+      <div class="exp-roles">
+        <div class="exp-role-item">
+          <p class="exp-role">Product Designer</p>
+          <p class="exp-year">2017 – 2018</p>
+          <p class="exp-desc">I worked on the accessories e-commerce experience and launched the first cart with the TELUS Digital team.</p>
+        </div>
       </div>
     </div>
 
