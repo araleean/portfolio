@@ -139,7 +139,7 @@ const PROJECTS = [
         margin-bottom: 2px;
       }
       .op-title {
-        font-size: 15px;
+        font-size: 18px;
         font-weight: 500;
         color: #252525;
         line-height: 1.3;
