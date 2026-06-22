@@ -84,7 +84,7 @@
       font-size: 18px;
       font-weight: 500;
       color: var(--ink);
-      margin: 12px 0 16px;
+      margin: 12px 0 12px;
     }
     .sidebar-intro {
       font-size: 16px;
@@ -99,17 +99,20 @@
     .sidebar-links {
       display: flex;
       flex-direction: row;
-      gap: 16px;
+      gap: 8px;
       align-items: center;
     }
     .sidebar-links a {
-      font-size: 16px;
-      color: #555555;
+      font-size: 14px;
+      color: #252525;
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.2s;
+      border: 1px solid #e0e0e0;
+      border-radius: 999px;
+      padding: 6px 14px;
+      transition: background 0.2s, border-color 0.2s;
     }
-    .sidebar-links a:hover { color: #252525; text-decoration: underline; text-underline-offset: 3px; }
+    .sidebar-links a:hover { background: #f5f5f5; border-color: #bbb; }
     }
     .sidebar-bottom a {
       font-size: 16px;
