@@ -131,11 +131,11 @@ const PROJECTS = [
       }
       .op-card:hover .op-thumb { opacity: 0.88; }
       .op-eyebrow {
-        font-size: 14px;
+        font-size: 13px;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: #9a9890;
-        font-weight: 500;
+        color: #9b9b9b;
+        font-weight: 400;
         margin-bottom: 2px;
       }
       .op-title {
