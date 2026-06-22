@@ -33,6 +33,8 @@ const FOOTER_HTML = `
 // Inject nav before body content
 document.body.insertAdjacentHTML('afterbegin', NAV_HTML);
 
+// Inject footer (before other projects so it's always last)
+document.body.insertAdjacentHTML('beforeend', FOOTER_HTML);
 // Nav behaviour — always visible
 window.addEventListener('scroll', () => {
   const currentScrollY = window.scrollY;
