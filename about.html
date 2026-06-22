@@ -20,62 +20,51 @@
     .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
 
     .about-header {
-      padding: 48px 0 40px;
+      padding: 48px 0 48px;
       border-bottom: 0.5px solid var(--line);
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
     }
-    .about-title {
-      font-size: clamp(28px, 4vw, 40px);
+    .about-photo {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .about-header-text {}
+    .about-name {
+      font-size: 20px;
       font-weight: 500;
-      line-height: 1.1;
       color: var(--ink);
-      margin: 0 0 16px;
+      margin: 0 0 8px;
+      line-height: 1;
     }
     .about-bio {
       font-size: 14px;
-      line-height: 1.7;
+      line-height: 1.6;
       color: var(--body);
-      max-width: 560px;
+      margin: 0;
     }
 
-    /* ── Sections ── */
-    .cv-section {
-      display: grid;
-      grid-template-columns: 160px 1fr;
-      gap: 0 40px;
-      padding: 48px 0;
-      border-bottom: 0.5px solid var(--line);
-    }
-    .cv-section:last-child { border-bottom: none; }
-
-    .cv-section-label {
-      font-size: 12px;
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding-top: 4px;
-      position: sticky;
-      top: 80px;
-      align-self: start;
+    /* ── Experience ── */
+    .exp-section {
+      padding: 40px 0;
     }
 
-    .cv-entries { display: flex; flex-direction: column; }
-
-    .entry { padding: 12px 0; }
-    .entry:first-child { padding-top: 0; }
-
-    .entry-header {
+    .entry {
       display: flex;
       align-items: baseline;
       justify-content: space-between;
       gap: 16px;
-      margin-bottom: 4px;
+      padding: 10px 0;
       flex-wrap: wrap;
     }
     .entry-title {
       font-size: 14px;
-      font-weight: 500;
-      color: var(--ink);
+      font-weight: 400;
+      color: var(--body);
     }
     .entry-date {
       font-size: 13px;
@@ -84,16 +73,10 @@
       white-space: nowrap;
       flex-shrink: 0;
     }
-    .entry-desc {
-      font-size: 14px;
-      line-height: 1.6;
-      color: var(--body);
-    }
 
     @media (max-width: 768px) {
       .page-wrap { padding: 0 24px; }
-      .cv-section { grid-template-columns: 1fr; gap: 16px; padding: 36px 0; }
-      .cv-section-label { position: static; }
+      .about-header { flex-direction: column; gap: 20px; }
     }
     @media (max-width: 480px) {
       .page-wrap { padding: 0 20px; }
@@ -105,110 +88,45 @@
 <div class="page-wrap">
 
   <div class="about-header">
-    <h1 class="about-title">About</h1>
-    <p class="about-bio">I'm a product designer based in Toronto. I care about craft, clarity, and building things that actually ship. I've spent the last several years leading design across sports betting, casino, and e-commerce — managing teams, partnering closely with product and engineering, and doing the hands-on work myself.<br><br>Previously at <a href="https://www.thescore.bet/" target="_blank" style="color:inherit;">theScore</a>, <a href="https://kineticecommerce.com/" target="_blank" style="color:inherit;">Kinetic Commerce</a> and <a href="https://www.nascentdigital.com/" target="_blank" style="color:inherit;">Nascent Digital</a>.</p>
-  </div>
-
-  <!-- Experience -->
-  <div class="cv-section">
-    <div class="cv-section-label">Experience</div>
-    <div class="cv-entries">
-
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">theScore / Senior Manager, Product Design</div>
-          <div class="entry-date">2024 – 2026</div>
-        </div>
-        <p class="entry-desc">I managed 6–8 product designers across the Core Accounts and Casino teams. I helped navigate the team through the ESPN Bet partnership.</p>
-      </div>
-
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">theScore / Manager, Product Design</div>
-          <div class="entry-date">2022 – 2024</div>
-        </div>
-        <p class="entry-desc">I managed 11–13 product designers across the Sportsbook and Media teams through the PENN Entertainment acquisition. I helped scale the UX org to 50+ across product design, research, design systems and operations.</p>
-      </div>
-
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">theScore / Senior Product Designer</div>
-          <div class="entry-date">2020 – 2022</div>
-        </div>
-        <p class="entry-desc">I launched theScore Bet web, expanding the sportsbook from mobile to desktop. I rebuilt the Figma design system to unify components across theScore and theScore Bet.</p>
-      </div>
-
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">theScore / Product Designer</div>
-          <div class="entry-date">2019 – 2020</div>
-        </div>
-        <p class="entry-desc">I launched theScore Bet, a sportsbook app built with theScore brand, on iOS and Android across the US and Canada.</p>
-      </div>
-
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">Kinetic Commerce / Product Designer</div>
-          <div class="entry-date">2018 – 2019</div>
-        </div>
-        <p class="entry-desc">I worked on the Associate App, part of Kinetic Commerce's omnichannel retail platform, helping associates deliver better service and drive sales.</p>
-      </div>
-
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">Nascent Digital / Product Designer</div>
-          <div class="entry-date">2017 – 2018</div>
-        </div>
-        <p class="entry-desc">I worked on the accessories e-commerce experience and launched the first cart with the TELUS Digital team.</p>
-      </div>
-
+    <img class="about-photo" src="ara-profile-1.png" alt="Ara An">
+    <div class="about-header-text">
+      <p class="about-name">Ara An</p>
+      <p class="about-bio">Product designer based in Toronto. I've spent the last several years leading design across sports betting, casino, and e-commerce — managing teams, partnering closely with product and engineering, and doing the hands-on work myself.</p>
     </div>
   </div>
 
-  <!-- Education -->
-  <div class="cv-section">
-    <div class="cv-section-label">Education</div>
-    <div class="cv-entries">
+  <div class="exp-section">
 
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">Brainstation / UX Design Bootcamp</div>
-          <div class="entry-date">2016</div>
-        </div>
-      </div>
-
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">Centennial College / Corporate Communications & PR</div>
-          <div class="entry-date">2013 – 2014</div>
-        </div>
-      </div>
-
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">Wilfrid Laurier University / Communications</div>
-          <div class="entry-date">2009 – 2013</div>
-        </div>
-      </div>
-
+    <div class="entry">
+      <div class="entry-title">theScore / Senior Manager, Product Design</div>
+      <div class="entry-date">2024 – 2026</div>
     </div>
-  </div>
 
-  <!-- Contact -->
-  <div class="cv-section">
-    <div class="cv-section-label">Contact</div>
-    <div class="cv-entries">
-      <div class="entry">
-        <div class="entry-header">
-          <a class="entry-title" href="mailto:araleean@gmail.com" style="color:inherit;text-decoration:none;">araleean@gmail.com</a>
-        </div>
-      </div>
-      <div class="entry">
-        <div class="entry-header">
-          <a class="entry-title" href="https://www.linkedin.com/in/araan/" target="_blank" style="color:inherit;text-decoration:none;">linkedin.com/in/araan</a>
-        </div>
-      </div>
+    <div class="entry">
+      <div class="entry-title">theScore / Manager, Product Design</div>
+      <div class="entry-date">2022 – 2024</div>
     </div>
+
+    <div class="entry">
+      <div class="entry-title">theScore / Senior Product Designer</div>
+      <div class="entry-date">2020 – 2022</div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-title">theScore / Product Designer</div>
+      <div class="entry-date">2019 – 2020</div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-title">Kinetic Commerce / Product Designer</div>
+      <div class="entry-date">2018 – 2019</div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-title">Nascent Digital / Product Designer</div>
+      <div class="entry-date">2017 – 2018</div>
+    </div>
+
   </div>
 
 </div>
