@@ -84,7 +84,7 @@ const PROJECTS = [
         margin-bottom: 32px;
       }
       .op-heading {
-        font-size: clamp(24px, 2.5vw, 32px);
+        font-size: 28px;
         font-weight: 500;
         color: #252525;
         line-height: 1.15;
@@ -131,7 +131,7 @@ const PROJECTS = [
       }
       .op-card:hover .op-thumb { opacity: 0.88; }
       .op-eyebrow {
-        font-size: 11px;
+        font-size: 12px;
         letter-spacing: 0.1em;
         text-transform: uppercase;
         color: #9a9890;
@@ -139,7 +139,7 @@ const PROJECTS = [
         margin-bottom: 2px;
       }
       .op-title {
-        font-size: 18px;
+        font-size: 15px;
         font-weight: 500;
         color: #252525;
         line-height: 1.3;
