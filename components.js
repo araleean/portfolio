@@ -33,8 +33,6 @@ const FOOTER_HTML = `
 // Inject nav before body content
 document.body.insertAdjacentHTML('afterbegin', NAV_HTML);
 
-// Inject footer (before other projects so it's always last)
-document.body.insertAdjacentHTML('beforeend', FOOTER_HTML);
 // Nav behaviour — always visible
 window.addEventListener('scroll', () => {
   const currentScrollY = window.scrollY;
@@ -185,3 +183,6 @@ const PROJECTS = [
   document.getElementById('op-prev').addEventListener('click', () => slide(-1));
   document.getElementById('op-next').addEventListener('click', () => slide(1));
 })();
+
+// Inject footer last so it always appears after Other Projects
+document.body.insertAdjacentHTML('beforeend', FOOTER_HTML);
