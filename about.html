@@ -19,7 +19,6 @@
 
     html, body { overflow-x: clip; }
 
-    /* ── Layout ── */
     .layout {
       display: flex;
       max-width: 1100px;
@@ -100,47 +99,49 @@
     }
 
     /* ── Experience ── */
-    .exp-entry {
-      display: grid;
-      grid-template-columns: 0.5fr 1fr;
-      gap: 0 40px;
-      padding: 48px 0;
+    .exp-group {
+      padding: 40px 0;
       border-bottom: 0.5px solid var(--line);
     }
-    .exp-entry:first-child { padding-top: 16px; }
-    .exp-entry:last-child { border-bottom: none; }
+    .exp-group:first-child { padding-top: 16px; }
+    .exp-group:last-child { border-bottom: none; }
 
     .exp-company {
       font-size: 15px;
       font-weight: 500;
       color: var(--ink);
-      margin: 0;
+      margin: 0 0 20px;
     }
 
-    /* Grouped roles (theScore) */
-    .exp-roles {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+    .exp-role-item {
+      margin-bottom: 20px;
     }
-    .exp-role-item {}
+    .exp-role-item:last-child { margin-bottom: 0; }
+
+    .exp-role-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 6px;
+    }
     .exp-role {
       font-size: 15px;
       font-weight: 400;
       color: var(--body);
-      margin: 0 0 2px;
     }
     .exp-year {
       font-size: 14px;
       color: var(--muted);
       font-weight: 400;
-      margin: 0 0 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .exp-desc {
       font-size: 15px;
       line-height: 1.65;
       color: var(--body);
-      margin: 0;
+      max-width: 560px;
     }
 
     @media (max-width: 768px) {
@@ -158,7 +159,6 @@
       .sidebar-intro { max-width: 300px; }
       .sidebar-links { flex-direction: row; gap: 16px; }
       .main { margin-left: 0; padding: 24px 0 60px; }
-      .exp-entry { grid-template-columns: 1fr; gap: 16px; padding: 36px 0; }
     }
     @media (max-width: 480px) {
       .layout { padding: 0 20px; }
@@ -189,65 +189,61 @@
 
   <main class="main">
 
-    <!-- theScore — grouped -->
-    <div class="exp-entry">
-      <div class="exp-left">
-        <p class="exp-company">theScore</p>
+    <div class="exp-group">
+      <p class="exp-company">theScore</p>
+
+      <div class="exp-role-item">
+        <div class="exp-role-header">
+          <span class="exp-role">Senior Manager, Product Design</span>
+          <span class="exp-year">2024 – 2026</span>
+        </div>
+        <p class="exp-desc">I managed 6–8 product designers across the Core Accounts and Casino teams. I helped navigate the team through the ESPN Bet partnership.</p>
       </div>
-      <div class="exp-roles">
 
-        <div class="exp-role-item">
-          <p class="exp-role">Senior Manager, Product Design</p>
-          <p class="exp-year">2024 – 2026</p>
-          <p class="exp-desc">I managed 6–8 product designers across the Core Accounts and Casino teams. I helped navigate the team through the ESPN Bet partnership.</p>
+      <div class="exp-role-item">
+        <div class="exp-role-header">
+          <span class="exp-role">Manager, Product Design</span>
+          <span class="exp-year">2022 – 2024</span>
         </div>
-
-        <div class="exp-role-item">
-          <p class="exp-role">Manager, Product Design</p>
-          <p class="exp-year">2022 – 2024</p>
-          <p class="exp-desc">I managed 11–13 product designers across the Sportsbook and Media teams through the PENN Entertainment acquisition. I helped scale the UX org to 50+ across product design, research, design systems and operations.</p>
-        </div>
-
-        <div class="exp-role-item">
-          <p class="exp-role">Senior Product Designer</p>
-          <p class="exp-year">2020 – 2022</p>
-          <p class="exp-desc">I launched theScore Bet web, expanding the sportsbook from mobile to desktop. I rebuilt the Figma design system to unify components across theScore and theScore Bet.</p>
-        </div>
-
-        <div class="exp-role-item">
-          <p class="exp-role">Product Designer</p>
-          <p class="exp-year">2019 – 2020</p>
-          <p class="exp-desc">I launched theScore Bet, a sportsbook app built with theScore brand, on iOS and Android across the US and Canada.</p>
-        </div>
-
+        <p class="exp-desc">I managed 11–13 product designers across the Sportsbook and Media teams through the PENN Entertainment acquisition. I helped scale the UX org to 50+ across product design, research, design systems and operations.</p>
       </div>
-    </div>
 
-    <!-- Kinetic Commerce -->
-    <div class="exp-entry">
-      <div class="exp-left">
-        <p class="exp-company">Kinetic Commerce</p>
-      </div>
-      <div class="exp-roles">
-        <div class="exp-role-item">
-          <p class="exp-role">Product Designer</p>
-          <p class="exp-year">2018 – 2019</p>
-          <p class="exp-desc">I worked on the Associate App, part of Kinetic Commerce's omnichannel retail platform, helping associates deliver better service and drive sales.</p>
+      <div class="exp-role-item">
+        <div class="exp-role-header">
+          <span class="exp-role">Senior Product Designer</span>
+          <span class="exp-year">2020 – 2022</span>
         </div>
+        <p class="exp-desc">I launched theScore Bet web, expanding the sportsbook from mobile to desktop. I rebuilt the Figma design system to unify components across theScore and theScore Bet.</p>
+      </div>
+
+      <div class="exp-role-item">
+        <div class="exp-role-header">
+          <span class="exp-role">Product Designer</span>
+          <span class="exp-year">2019 – 2020</span>
+        </div>
+        <p class="exp-desc">I launched theScore Bet, a sportsbook app built with theScore brand, on iOS and Android across the US and Canada.</p>
       </div>
     </div>
 
-    <!-- Nascent Digital -->
-    <div class="exp-entry">
-      <div class="exp-left">
-        <p class="exp-company">Nascent Digital</p>
-      </div>
-      <div class="exp-roles">
-        <div class="exp-role-item">
-          <p class="exp-role">Product Designer</p>
-          <p class="exp-year">2017 – 2018</p>
-          <p class="exp-desc">I worked on the accessories e-commerce experience and launched the first cart with the TELUS Digital team.</p>
+    <div class="exp-group">
+      <p class="exp-company">Kinetic Commerce</p>
+      <div class="exp-role-item">
+        <div class="exp-role-header">
+          <span class="exp-role">Product Designer</span>
+          <span class="exp-year">2018 – 2019</span>
         </div>
+        <p class="exp-desc">I worked on the Associate App, part of Kinetic Commerce's omnichannel retail platform, helping associates deliver better service and drive sales.</p>
+      </div>
+    </div>
+
+    <div class="exp-group">
+      <p class="exp-company">Nascent Digital</p>
+      <div class="exp-role-item">
+        <div class="exp-role-header">
+          <span class="exp-role">Product Designer</span>
+          <span class="exp-year">2017 – 2018</span>
+        </div>
+        <p class="exp-desc">I worked on the accessories e-commerce experience and launched the first cart with the TELUS Digital team.</p>
       </div>
     </div>
 
