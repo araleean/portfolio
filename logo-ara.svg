@@ -1,18 +1,34 @@
-<svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 222 58" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-  <!-- A (left) — scaled from original 34x56 viewBox to fit 40px height -->
-  <g transform="translate(0, 0) scale(0.685)">
-    <path d="M20.865 1L21.0398 1.78223L32.488 53.0459L32.7595 54.2637H23.3445L23.1863 53.4561L21.1843 43.248H12.823L10.821 53.4561L10.6628 54.2637H1.2478L1.52026 53.0459L12.9675 1.78223L13.1423 1H20.865ZM14.5076 34.3359H19.4275L16.9675 21.6436L14.5076 34.3359Z" stroke="#252525" stroke-width="2" fill="none"/>
+  <!-- A -->
+  <g transform="translate(0,1)">
+    <path d="M20.865 1L21.0398 1.78223L32.488 53.0459L32.7595 54.2637H23.3445L23.1863 53.4561L21.1843 43.248H12.823L10.821 53.4561L10.6628 54.2637H1.2478L1.52026 53.0459L12.9675 1.78223L13.1423 1H20.865ZM14.5076 34.3359H19.4275L16.9675 21.6436L14.5076 34.3359Z"
+      stroke="#252525" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
   </g>
 
-  <!-- R (middle) -->
-  <g transform="translate(28, 1)">
-    <path d="M0 0H13C16.2 0 18.7 0.9 20.4 2.6C22.1 4.3 23 6.7 23 9.7C23 12.0 22.4 13.9 21.2 15.5C20.2 16.8 18.9 17.7 17.2 18.3L23 37.3H16.5L11.5 19.8H5.5V37.3H0V0ZM5.5 14.8H11.5C12.9 14.8 14.0 14.4 14.8 13.6C15.6 12.8 16.0 11.7 16.0 10.3C16.0 8.9 15.6 7.8 14.8 7.1C14.0 6.3 12.9 6.0 11.5 6.0H5.5V14.8Z" stroke="#252525" stroke-width="1.5" fill="none"/>
+  <!-- R -->
+  <g transform="translate(40,1)">
+    <path d="M1 1H19C26.5 1 31 5.5 31 13C31 18.5 28 23 22.5 25.5L32 54.26H23L14.5 27.5H9V54.26H1V1Z
+             M9 8V21H18C22 21 23.5 18.5 23.5 14.5C23.5 10.5 21.5 8 17.5 8H9Z"
+      stroke="#252525" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
   </g>
 
-  <!-- A (right) — same as left, offset -->
-  <g transform="translate(58, 0) scale(0.685)">
-    <path d="M20.865 1L21.0398 1.78223L32.488 53.0459L32.7595 54.2637H23.3445L23.1863 53.4561L21.1843 43.248H12.823L10.821 53.4561L10.6628 54.2637H1.2478L1.52026 53.0459L12.9675 1.78223L13.1423 1H20.865ZM14.5076 34.3359H19.4275L16.9675 21.6436L14.5076 34.3359Z" stroke="#252525" stroke-width="2" fill="none"/>
+  <!-- A -->
+  <g transform="translate(80,1)">
+    <path d="M20.865 1L21.0398 1.78223L32.488 53.0459L32.7595 54.2637H23.3445L23.1863 53.4561L21.1843 43.248H12.823L10.821 53.4561L10.6628 54.2637H1.2478L1.52026 53.0459L12.9675 1.78223L13.1423 1H20.865ZM14.5076 34.3359H19.4275L16.9675 21.6436L14.5076 34.3359Z"
+      stroke="#252525" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+  </g>
+
+  <!-- A (second word) -->
+  <g transform="translate(128,1)">
+    <path d="M20.865 1L21.0398 1.78223L32.488 53.0459L32.7595 54.2637H23.3445L23.1863 53.4561L21.1843 43.248H12.823L10.821 53.4561L10.6628 54.2637H1.2478L1.52026 53.0459L12.9675 1.78223L13.1423 1H20.865ZM14.5076 34.3359H19.4275L16.9675 21.6436L14.5076 34.3359Z"
+      stroke="#252525" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+  </g>
+
+  <!-- N -->
+  <g transform="translate(168,1)">
+    <path d="M1 1H9.5L24.5 38V1H32V54.26H23.5L8.5 17.5V54.26H1V1Z"
+      stroke="#252525" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
   </g>
 
 </svg>
