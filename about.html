@@ -13,69 +13,115 @@
       --body: #555555;
       --line: #e8e8e8;
       --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --sidebar-width: 280px;
+      --gap: 60px;
     }
 
     html, body { overflow-x: clip; }
 
-    .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
-
-    .about-header {
-      padding: 48px 0 48px;
-      border-bottom: 0.5px solid var(--line);
+    /* ── Layout ── */
+    .layout {
       display: flex;
-      align-items: flex-start;
-      gap: 28px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 60px;
     }
-    .about-photo {
-      width: 72px;
-      height: 72px;
+
+    .sidebar {
+      width: var(--sidebar-width);
+      flex-shrink: 0;
+      position: fixed !important;
+      top: 56px;
+      left: max(60px, calc((100vw - 1100px) / 2 + 60px));
+      height: calc(100vh - 56px);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 64px 0 48px;
+      background: #fff;
+      z-index: 9;
+      overflow-y: auto;
+    }
+
+    .sidebar-avatar {
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
-      object-fit: cover;
+      overflow: hidden;
       flex-shrink: 0;
     }
-    .about-name {
-      font-size: 20px;
+    .sidebar-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+    }
+
+    .sidebar-text {}
+    .sidebar-name {
+      font-size: 18px;
       font-weight: 500;
       color: var(--ink);
       margin: 0 0 8px;
-      line-height: 1;
     }
-    .about-bio {
+    .sidebar-intro {
       font-size: 15px;
-      line-height: 1.6;
-      color: var(--body);
-      margin: 0;
+      line-height: 1.5;
+      color: #555555;
+      font-weight: 400;
+      max-width: 230px;
+    }
+    .sidebar-intro a { color: inherit; text-decoration: none; }
+    .sidebar-intro a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    .sidebar-links {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      align-items: center;
+    }
+    .sidebar-links a {
+      font-size: 14px;
+      color: #252525;
+      text-decoration: none;
+      font-weight: 500;
+      border: 1px solid #e0e0e0;
+      border-radius: 999px;
+      padding: 6px 14px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .sidebar-links a:hover { background: #f5f5f5; border-color: #bbb; }
+
+    /* ── Main ── */
+    .main {
+      margin-left: calc(var(--sidebar-width) + var(--gap));
+      padding: 40px 0 80px;
+      width: 100%;
     }
 
     /* ── Experience ── */
-    .exp-section { padding: 0; }
-
     .exp-entry {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0 80px;
-      padding: 56px 0;
+      gap: 0 60px;
+      padding: 48px 0;
       border-bottom: 0.5px solid var(--line);
     }
+    .exp-entry:first-child { padding-top: 16px; }
     .exp-entry:last-child { border-bottom: none; }
 
-    .exp-left {}
     .exp-role {
-      font-size: clamp(22px, 2.5vw, 28px);
+      font-size: clamp(20px, 2vw, 26px);
       font-weight: 500;
       color: var(--ink);
       line-height: 1.2;
-      margin: 0 0 12px;
+      margin: 0 0 10px;
     }
     .exp-meta {
       font-size: 14px;
       color: var(--body);
       font-weight: 400;
-    }
-    .exp-meta a {
-      color: inherit;
-      text-decoration: underline;
-      text-underline-offset: 2px;
     }
 
     .exp-right {
@@ -91,28 +137,50 @@
     }
 
     @media (max-width: 768px) {
-      .page-wrap { padding: 0 24px; }
-      .about-header { flex-direction: column; gap: 20px; }
-      .exp-entry { grid-template-columns: 1fr; gap: 16px; padding: 40px 0; }
+      .layout { padding: 0 24px; flex-direction: column; }
+      .sidebar {
+        position: relative !important;
+        top: auto; left: auto;
+        width: 100%; height: auto;
+        padding: 24px 24px 20px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        overflow-y: visible;
+      }
+      .sidebar-intro { max-width: 300px; }
+      .sidebar-links { flex-direction: row; gap: 16px; }
+      .main { margin-left: 0; padding: 24px 0 60px; }
+      .exp-entry { grid-template-columns: 1fr; gap: 16px; padding: 36px 0; }
     }
     @media (max-width: 480px) {
-      .page-wrap { padding: 0 20px; }
+      .layout { padding: 0 20px; }
+      .sidebar { padding: 24px 20px 20px; }
     }
   </style>
 </head>
 <body>
 
-<div class="page-wrap">
+<div class="layout">
 
-  <div class="about-header">
-    <img class="about-photo" src="ara-profile-1.png" alt="Ara An">
-    <div>
-      <p class="about-name">Ara An</p>
-      <p class="about-bio">Product designer based in Toronto. I've spent the last several years leading design across sports betting, casino, and e-commerce — managing teams, partnering closely with product and engineering, and doing the hands-on work myself.</p>
+  <aside class="sidebar">
+    <div class="sidebar-avatar">
+      <img src="ara-profile-1.png" alt="Ara An">
     </div>
-  </div>
+    <div class="sidebar-text">
+      <p class="sidebar-name">Ara An</p>
+      <p class="sidebar-intro">
+        I'm a product designer based in Toronto who has launched products and scaled teams.<br><br>
+        Previously at <a href="https://www.thescore.bet/" target="_blank" style="color:inherit;">theScore</a>, <a href="https://kineticecommerce.com/" target="_blank" style="color:inherit;">Kinetic Commerce</a> and <a href="https://www.nascentdigital.com/" target="_blank" style="color:inherit;">Nascent Digital</a>.
+      </p>
+    </div>
+    <div class="sidebar-links">
+      <a href="mailto:araleean@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/araan/" target="_blank">LinkedIn</a>
+    </div>
+  </aside>
 
-  <div class="exp-section">
+  <main class="main">
 
     <div class="exp-entry">
       <div class="exp-left">
@@ -174,7 +242,7 @@
       </div>
     </div>
 
-  </div>
+  </main>
 
 </div>
 
