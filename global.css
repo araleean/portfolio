@@ -1,7 +1,7 @@
 /* ── Global Styles ── */
 /* Nav, footer, and base styles shared across all pages */
 
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600&family=Caveat:wght@400;500;600&display=swap');
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -58,8 +58,8 @@ nav.scrolled {
   align-items: center;
 }
 .nav-logo {
-  font-family: 'Karla', sans-serif;
-  font-size: 18px;
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
   font-weight: 500;
   color: #252525;
   text-decoration: none;
