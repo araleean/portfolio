@@ -33,7 +33,6 @@
       object-fit: cover;
       flex-shrink: 0;
     }
-    .about-header-text {}
     .about-name {
       font-size: 20px;
       font-weight: 500;
@@ -42,41 +41,59 @@
       line-height: 1;
     }
     .about-bio {
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.6;
       color: var(--body);
       margin: 0;
     }
 
     /* ── Experience ── */
-    .exp-section {
-      padding: 40px 0;
+    .exp-section { padding: 0; }
+
+    .exp-entry {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 80px;
+      padding: 56px 0;
+      border-bottom: 0.5px solid var(--line);
+    }
+    .exp-entry:last-child { border-bottom: none; }
+
+    .exp-left {}
+    .exp-role {
+      font-size: clamp(22px, 2.5vw, 28px);
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.2;
+      margin: 0 0 12px;
+    }
+    .exp-meta {
+      font-size: 14px;
+      color: var(--body);
+      font-weight: 400;
+    }
+    .exp-meta a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
     }
 
-    .entry {
+    .exp-right {
       display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 10px 0;
-      flex-wrap: wrap;
+      align-items: flex-start;
+      padding-top: 4px;
     }
-    .entry-title {
-      font-size: 16px;
-      font-weight: 400;
+    .exp-desc {
+      font-size: 15px;
+      line-height: 1.65;
       color: var(--body);
-    }
-    .entry-date {
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 400;
-      white-space: nowrap;
-      flex-shrink: 0;
+      margin: 0;
     }
 
     @media (max-width: 768px) {
       .page-wrap { padding: 0 24px; }
       .about-header { flex-direction: column; gap: 20px; }
+      .exp-entry { grid-template-columns: 1fr; gap: 16px; padding: 40px 0; }
     }
     @media (max-width: 480px) {
       .page-wrap { padding: 0 20px; }
@@ -89,7 +106,7 @@
 
   <div class="about-header">
     <img class="about-photo" src="ara-profile-1.png" alt="Ara An">
-    <div class="about-header-text">
+    <div>
       <p class="about-name">Ara An</p>
       <p class="about-bio">Product designer based in Toronto. I've spent the last several years leading design across sports betting, casino, and e-commerce — managing teams, partnering closely with product and engineering, and doing the hands-on work myself.</p>
     </div>
@@ -97,34 +114,64 @@
 
   <div class="exp-section">
 
-    <div class="entry">
-      <div class="entry-title">theScore / Senior Manager, Product Design</div>
-      <div class="entry-date">2024 – 2026</div>
+    <div class="exp-entry">
+      <div class="exp-left">
+        <p class="exp-role">Senior Manager,<br>Product Design</p>
+        <p class="exp-meta">theScore &mdash; 2024 to 2026</p>
+      </div>
+      <div class="exp-right">
+        <p class="exp-desc">I managed 6–8 product designers across the Core Accounts and Casino teams. I helped navigate the team through the ESPN Bet partnership.</p>
+      </div>
     </div>
 
-    <div class="entry">
-      <div class="entry-title">theScore / Manager, Product Design</div>
-      <div class="entry-date">2022 – 2024</div>
+    <div class="exp-entry">
+      <div class="exp-left">
+        <p class="exp-role">Manager,<br>Product Design</p>
+        <p class="exp-meta">theScore &mdash; 2022 to 2024</p>
+      </div>
+      <div class="exp-right">
+        <p class="exp-desc">I managed 11–13 product designers across the Sportsbook and Media teams through the PENN Entertainment acquisition. I helped scale the UX org to 50+ across product design, research, design systems and operations.</p>
+      </div>
     </div>
 
-    <div class="entry">
-      <div class="entry-title">theScore / Senior Product Designer</div>
-      <div class="entry-date">2020 – 2022</div>
+    <div class="exp-entry">
+      <div class="exp-left">
+        <p class="exp-role">Senior Product Designer</p>
+        <p class="exp-meta">theScore &mdash; 2020 to 2022</p>
+      </div>
+      <div class="exp-right">
+        <p class="exp-desc">I launched theScore Bet web, expanding the sportsbook from mobile to desktop. I rebuilt the Figma design system to unify components across theScore and theScore Bet.</p>
+      </div>
     </div>
 
-    <div class="entry">
-      <div class="entry-title">theScore / Product Designer</div>
-      <div class="entry-date">2019 – 2020</div>
+    <div class="exp-entry">
+      <div class="exp-left">
+        <p class="exp-role">Product Designer</p>
+        <p class="exp-meta">theScore &mdash; 2019 to 2020</p>
+      </div>
+      <div class="exp-right">
+        <p class="exp-desc">I launched theScore Bet, a sportsbook app built with theScore brand, on iOS and Android across the US and Canada.</p>
+      </div>
     </div>
 
-    <div class="entry">
-      <div class="entry-title">Kinetic Commerce / Product Designer</div>
-      <div class="entry-date">2018 – 2019</div>
+    <div class="exp-entry">
+      <div class="exp-left">
+        <p class="exp-role">Product Designer</p>
+        <p class="exp-meta">Kinetic Commerce &mdash; 2018 to 2019</p>
+      </div>
+      <div class="exp-right">
+        <p class="exp-desc">I worked on the Associate App, part of Kinetic Commerce's omnichannel retail platform, helping associates deliver better service and drive sales.</p>
+      </div>
     </div>
 
-    <div class="entry">
-      <div class="entry-title">Nascent Digital / Product Designer</div>
-      <div class="entry-date">2017 – 2018</div>
+    <div class="exp-entry">
+      <div class="exp-left">
+        <p class="exp-role">Product Designer</p>
+        <p class="exp-meta">Nascent Digital &mdash; 2017 to 2018</p>
+      </div>
+      <div class="exp-right">
+        <p class="exp-desc">I worked on the accessories e-commerce experience and launched the first cart with the TELUS Digital team.</p>
+      </div>
     </div>
 
   </div>
