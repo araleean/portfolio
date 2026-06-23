@@ -1,7 +1,7 @@
 /* ── Global Styles ── */
 /* Nav, footer, and base styles shared across all pages */
 
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600&family=Nunito:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600&display=swap');
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -61,18 +61,7 @@ nav.scrolled {
   display: flex;
   align-items: center;
   text-decoration: none;
-}
-.nav-logo-text {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 900;
-  font-size: 21px;
-  color: white;
-  -webkit-text-stroke: 2.5px #252525;
-  paint-order: stroke fill;
-  letter-spacing: 1px;
-  line-height: 1;
-}
-.nav-links {
+}.nav-links {
   display: flex;
   gap: 24px;
   list-style: none;
