@@ -44,8 +44,8 @@ const PROJECTS = [
   { slug: 'hollywood-casino',    company: 'Hollywood Casino',       label: 'Standalone Casino',                          href: 'hollywood-casino.html',    bg: '#1a0a2e', thumb: 'images/hwcasino-thumbnail.png' },
   { slug: 'espn-bet-onboarding', company: 'theScore Bet & ESPN Bet', label: 'Sign Up Optimization',               href: 'espn-bet-onboarding.html', bg: '#2D387F', thumb: 'images/espnbet-thumbnail.png' },
   { slug: 'thescore-bet',        company: 'theScore Bet',           label: 'Launching a sportsbook for millions of fans', href: 'thescore-bet.html',        bg: '#71AFF5', thumb: 'images/tsblaunch-thumbnail.png' },
-  { slug: 'telus-accessories',   company: 'TELUS Digital',          label: 'Transforming the e-commerce experience',      href: 'telus-accessories.html',   bg: '#f0ede8', thumb: 'images/telus-accessories-thumbnail.png' },
-  { slug: 'telus-cart',          company: 'TELUS Digital',          label: 'Building an e-commerce cart',                 href: 'telus-cart.html',          bg: '#774D9C', thumb: 'images/telus-cart-thumbnail.png' },
+  { slug: 'telus-accessories',   company: 'TELUS Digital',          label: 'Accessories',      href: 'telus-accessories.html',   bg: '#f0ede8', thumb: 'images/telus-accessories-thumbnail.png' },
+  { slug: 'telus-cart',          company: 'TELUS Digital',          label: 'Cart',                 href: 'telus-cart.html',          bg: '#774D9C', thumb: 'images/telus-cart-thumbnail.png' },
 ];
 
 (function injectOtherProjects() {
