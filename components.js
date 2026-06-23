@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => document.body.classList.add(
 const NAV_HTML = `
   <nav id="nav">
     <div class="nav-inner">
-      <a class="nav-logo" href="/index.html"><img src="/favicon.svg" alt="Ara An" style="height:20px;width:auto;display:block;"></a>
+      <a class="nav-logo" href="/index.html"><span class="nav-logo-text">ARA</span></a>
       <ul class="nav-links">
         <li><a href="/index.html">Projects</a></li>
         <li><a href="/about.html">About</a></li>
