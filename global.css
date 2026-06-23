@@ -58,8 +58,10 @@ nav.scrolled {
   align-items: center;
 }
 .nav-logo {
-  display: flex;
-  align-items: center;
+  font-family: 'Karla', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #252525;
   text-decoration: none;
 }.nav-links {
   display: flex;
