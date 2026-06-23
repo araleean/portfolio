@@ -184,5 +184,3 @@ const PROJECTS = [
   document.getElementById('op-next').addEventListener('click', () => slide(1));
 })();
 
-// Inject footer last so it always appears after Other Projects
-document.body.insertAdjacentHTML('beforeend', FOOTER_HTML);
