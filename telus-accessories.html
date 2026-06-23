@@ -129,22 +129,20 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(255,255,255,0.9);
-      border: none;
+      background: #fff;
+      border: 1px solid #e0e0e0;
       border-radius: 50%;
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-
       color: var(--ink);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-      transition: background 0.2s;
+      transition: background 0.2s, border-color 0.2s;
       z-index: 2;
     }
-    .carousel-btn:hover { background: #fff; }
+    .carousel-btn:hover { background: #f5f5f5; border-color: #bbb; }
     .carousel-btn.prev { left: 12px; }
     .carousel-btn.next { right: 12px; }
     .carousel-dots {
