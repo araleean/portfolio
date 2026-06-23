@@ -1,34 +1,22 @@
-<svg viewBox="0 0 222 58" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 116 58" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
 
   <!-- A -->
   <g transform="translate(0,1)">
     <path d="M20.865 1L21.0398 1.78223L32.488 53.0459L32.7595 54.2637H23.3445L23.1863 53.4561L21.1843 43.248H12.823L10.821 53.4561L10.6628 54.2637H1.2478L1.52026 53.0459L12.9675 1.78223L13.1423 1H20.865ZM14.5076 34.3359H19.4275L16.9675 21.6436L14.5076 34.3359Z"
-      stroke="#252525" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+      stroke="#252525" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
   </g>
 
   <!-- R -->
   <g transform="translate(40,1)">
     <path d="M1 1H19C26.5 1 31 5.5 31 13C31 18.5 28 23 22.5 25.5L32 54.26H23L14.5 27.5H9V54.26H1V1Z
              M9 8V21H18C22 21 23.5 18.5 23.5 14.5C23.5 10.5 21.5 8 17.5 8H9Z"
-      stroke="#252525" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+      stroke="#252525" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
   </g>
 
   <!-- A -->
   <g transform="translate(80,1)">
     <path d="M20.865 1L21.0398 1.78223L32.488 53.0459L32.7595 54.2637H23.3445L23.1863 53.4561L21.1843 43.248H12.823L10.821 53.4561L10.6628 54.2637H1.2478L1.52026 53.0459L12.9675 1.78223L13.1423 1H20.865ZM14.5076 34.3359H19.4275L16.9675 21.6436L14.5076 34.3359Z"
-      stroke="#252525" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-  </g>
-
-  <!-- A (second word) -->
-  <g transform="translate(128,1)">
-    <path d="M20.865 1L21.0398 1.78223L32.488 53.0459L32.7595 54.2637H23.3445L23.1863 53.4561L21.1843 43.248H12.823L10.821 53.4561L10.6628 54.2637H1.2478L1.52026 53.0459L12.9675 1.78223L13.1423 1H20.865ZM14.5076 34.3359H19.4275L16.9675 21.6436L14.5076 34.3359Z"
-      stroke="#252525" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-  </g>
-
-  <!-- N -->
-  <g transform="translate(168,1)">
-    <path d="M1 1H9.5L24.5 38V1H32V54.26H23.5L8.5 17.5V54.26H1V1Z"
-      stroke="#252525" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+      stroke="#252525" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
   </g>
 
 </svg>
