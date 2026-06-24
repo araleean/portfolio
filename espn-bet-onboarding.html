@@ -174,71 +174,7 @@
       .phone-row { gap: 12px; }
       .phone { width: 140px; }
 
-    }
-
-    /* ── Funnel Chart ── */
-    .funnel-chart {
-      position: relative;
-      margin-top: 32px;
-      padding: 24px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fafafa;
-    }
-    .funnel-label-y {
-      font-size: 12px;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-      margin-bottom: 8px;
-    }
-    .funnel-bars {
-      display: flex;
-      align-items: flex-end;
-      gap: 6px;
-      height: 200px;
-      border-bottom: 1px solid var(--line);
-      overflow: visible;
-    }
-    .funnel-bar-wrap {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-      position: relative;
-    }
-    .funnel-bar {
-      width: 100%;
-      background: #d4d4d4;
-      border-radius: 2px 2px 0 0;
-      transition: opacity 0.2s;
-    }
-    .funnel-bar--highlight { background: #02856A; }
-    .funnel-callout {
-      position: absolute;
-      bottom: calc(100% + 6px);
-      left: 50%;
-      transform: translateX(-50%);
-      white-space: nowrap;
-      font-size: 11px;
-      font-weight: 500;
-      color: #252525;
-      background: #fff;
-      border: 1px solid #e0e0e0;
-      border-radius: 6px;
-      padding: 4px 8px;
-      pointer-events: none;
-    }
-    .funnel-bar-label {
-      font-size: 10px;
-      color: var(--muted);
-      text-align: center;
-      margin-top: 6px;
-      line-height: 1.3;
-      word-break: break-word;
-      hyphens: auto;
-    }
-  </style>
+    }  </style>
 </head>
 <body>
 
@@ -282,63 +218,7 @@
       <div class="cs-section-content">
         <h4>Research</h4>
         <p>We ran a funnel analysis to pinpoint where users were dropping off, a user survey to understand why, and a competitive audit to benchmark against other regulated products.</p>
-
-        <div class="funnel-chart">
-          <div class="funnel-label-y">Completion rate</div>
-          <div class="funnel-bars">
-            <div class="funnel-bar-wrap">
-              <div class="funnel-bar" style="height:160px"></div>
-              <div class="funnel-bar-label">Sign-Up Start</div>
-            </div>
-            <div class="funnel-bar-wrap">
-              <div class="funnel-bar" style="height:152px"></div>
-              <div class="funnel-bar-label">Enter Email</div>
-            </div>
-            <div class="funnel-bar-wrap">
-              <div class="funnel-bar" style="height:149px"></div>
-              <div class="funnel-bar-label">Enter Phone</div>
-            </div>
-            <div class="funnel-bar-wrap">
-              <div class="funnel-bar" style="height:146px"></div>
-              <div class="funnel-bar-label">Create Username</div>
-            </div>
-            <div class="funnel-bar-wrap">
-              <div class="funnel-bar" style="height:142px"></div>
-              <div class="funnel-bar-label">Create Password</div>
-            </div>
-            <div class="funnel-bar-wrap">
-              <div class="funnel-bar funnel-bar--highlight" style="height:120px"></div>
-              <div class="funnel-callout">11.5% drop-off</div>
-              <div class="funnel-bar-label">Verify Email</div>
-            </div>
-            <div class="funnel-bar-wrap">
-              <div class="funnel-bar" style="height:117px"></div>
-              <div class="funnel-bar-label">Enter SSN</div>
-            </div>
-            <div class="funnel-bar-wrap">
-              <div class="funnel-bar" style="height:114px"></div>
-              <div class="funnel-bar-label">Set RG Limits</div>
-            </div>
-            <div class="funnel-bar-wrap">
-              <div class="funnel-bar" style="height:114px"></div>
-              <div class="funnel-bar-label">Accept Terms</div>
-            </div>
-            <div class="funnel-bar-wrap">
-              <div class="funnel-bar funnel-bar--highlight" style="height:102px"></div>
-              <div class="funnel-callout">6.7% drop-off</div>
-              <div class="funnel-bar-label">Verify ID Start</div>
-            </div>
-            <div class="funnel-bar-wrap">
-              <div class="funnel-bar funnel-bar--highlight" style="height:77px"></div>
-              <div class="funnel-callout">15% drop-off</div>
-              <div class="funnel-bar-label">Verify ID Complete</div>
-            </div>
-            <div class="funnel-bar-wrap">
-              <div class="funnel-bar" style="height:74px"></div>
-              <div class="funnel-bar-label">Log In Complete</div>
-            </div>
-          </div>
-        </div>
+        <img class="cs-img" style="margin-top:24px;" src="images/espnbet-funnel.png" alt="Sign-up funnel analysis">
         <h4>Workshops</h4>
         <p>We brought the cross-functional team together to dig into the findings and align on direction. A key part of that was working closely with legal and compliance to understand what the requirements actually were and where there was room for flexibility.</p>
         <h4>Testing</h4>
