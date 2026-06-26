@@ -166,6 +166,37 @@
       max-width: 560px;
     }
 
+    /* ── Photo grid ── */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 12px;
+      width: 100%;
+    }
+    .photo-grid-left {
+      grid-row: 1;
+      grid-column: 1;
+    }
+    .photo-grid-right {
+      grid-row: 1;
+      grid-column: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .photo-placeholder {
+      background: #f0ede8;
+      border-radius: 8px;
+      width: 100%;
+    }
+    .photo-tall { aspect-ratio: 3/4; }
+    .photo-short { aspect-ratio: 4/3; flex: 1; }
+    .photo-wide {
+      grid-column: 1 / -1;
+      aspect-ratio: 16/7;
+    }
+
     @media (max-width: 768px) {
       .layout { padding: 0 24px; flex-direction: column; }
       .sidebar {
@@ -212,8 +243,20 @@
 
     <div class="about-section">
       <h2>About me</h2>
-      <p>I'm a product design leader who has helped launch products and build teams. I started my career in PR before switching to UX design, a move that shaped how I think about users and the story a product tells. I've worked across a range of clients and industries including e-commerce, sports, and gaming.</p>
-      <p style="margin-top: 16px;">When I'm not designing, I'm travelling, or trying to, now that I have a toddler who makes every trip feel like an adventure. Seeing the world through their eyes has made me a better observer, and I think a better designer.</p>
+      <p>I'm a product design leader with experience launching products and building teams across sports, gaming, and e-commerce. I started my career in PR before switching to UX design, a move that shaped how I think about users and the story a product tells. I've spent the past 7 years at theScore leading design across a sports betting and casino product used by millions.</p>
+    </div>
+
+    <div class="about-section photo-grid-section" style="border-bottom: none;">
+      <div class="photo-grid">
+        <div class="photo-grid-left">
+          <div class="photo-placeholder photo-tall"></div>
+        </div>
+        <div class="photo-grid-right">
+          <div class="photo-placeholder photo-short"></div>
+          <div class="photo-placeholder photo-short"></div>
+        </div>
+        <div class="photo-placeholder photo-wide"></div>
+      </div>
     </div>
 
     <div class="exp-group">
