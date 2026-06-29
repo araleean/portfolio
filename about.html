@@ -254,10 +254,12 @@
       flex-direction: column;
       gap: 8px;
     }
-    .photo-placeholder {
-      background: #f0ede8;
-      border-radius: 8px;
+    .photo-tall,
+    .photo-short {
       width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+      display: block;
     }
     .photo-tall { aspect-ratio: 3/4; }
     .photo-short { aspect-ratio: 4/3; }
@@ -314,10 +316,10 @@
     <div class="photo-section">
       <h2>When I'm not designing</h2>
       <div class="photo-grid">
-        <div class="photo-placeholder photo-tall"></div>
+        <img src="images/about1.jpg" alt="Personal moment" class="photo-tall">
         <div class="photo-stack">
-          <div class="photo-placeholder photo-short"></div>
-          <div class="photo-placeholder photo-short"></div>
+          <img src="images/about2.jpg" alt="Personal moment" class="photo-short">
+          <img src="images/about3.jpg" alt="Personal moment" class="photo-short">
         </div>
       </div>
     </div>
