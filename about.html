@@ -255,7 +255,8 @@
       gap: 8px;
     }
     .photo-tall,
-    .photo-short {
+    .photo-short,
+    .photo-wide {
       width: 100%;
       border-radius: 8px;
       object-fit: cover;
@@ -263,6 +264,7 @@
     }
     .photo-tall { aspect-ratio: 3/4; }
     .photo-short { aspect-ratio: 4/3; }
+    .photo-wide { aspect-ratio: 16/6; margin-top: 8px; }
 
     @media (max-width: 768px) {
       .layout { padding: 0 24px; flex-direction: column; }
@@ -322,6 +324,7 @@
           <img src="images/about3.jpeg" alt="Personal moment" class="photo-short">
         </div>
       </div>
+      <img src="images/about4.jpeg" alt="Personal moment" class="photo-wide">
     </div>
 
   </main>
