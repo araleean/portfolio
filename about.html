@@ -105,11 +105,11 @@
     .about-section:first-child { padding-top: 16px; }
     .about-section h2 {
       font-size: 13px;
-      font-weight: 500;
+      font-weight: 400;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--muted);
-      margin: 0 0 16px;
+      margin: 0 0 8px;
     }
     .about-section p {
       font-size: 15px;
@@ -202,7 +202,7 @@
     }
     .exp-section h2 {
       font-size: 13px;
-      font-weight: 500;
+      font-weight: 400;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--muted);
@@ -214,20 +214,25 @@
     .exp-item:last-child { margin-bottom: 0; }
     .exp-company {
       font-size: 15px;
-      font-weight: 500;
+      font-weight: 400;
       color: var(--ink);
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
-    .exp-role {
+    .exp-roles { display: flex; flex-direction: column; gap: 8px; }
+    .exp-role-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
       font-size: 15px;
       color: var(--body);
-      margin-bottom: 6px;
-      line-height: 1.5;
     }
-    .exp-role:last-child { margin-bottom: 0; }
-    .exp-sep {
+    .exp-role { flex: 1; }
+    .exp-year {
+      font-size: 15px;
       color: var(--muted);
-      margin: 0 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     @media (max-width: 768px) {
@@ -284,20 +289,44 @@
 
       <div class="exp-item">
         <div class="exp-company">theScore (Acquired by PENN Entertainment)</div>
-        <div class="exp-role">Senior Manager, Product Design <span class="exp-sep">·</span> 2024 – 2026</div>
-        <div class="exp-role">Manager, Product Design <span class="exp-sep">·</span> 2022 – 2024</div>
-        <div class="exp-role">Senior Product Designer <span class="exp-sep">·</span> 2020 – 2022</div>
-        <div class="exp-role">Product Designer <span class="exp-sep">·</span> 2019 – 2020</div>
+        <div class="exp-roles">
+          <div class="exp-role-row">
+            <span class="exp-role">Senior Manager, Product Design</span>
+            <span class="exp-year">2024 – 2026</span>
+          </div>
+          <div class="exp-role-row">
+            <span class="exp-role">Manager, Product Design</span>
+            <span class="exp-year">2022 – 2024</span>
+          </div>
+          <div class="exp-role-row">
+            <span class="exp-role">Senior Product Designer</span>
+            <span class="exp-year">2020 – 2022</span>
+          </div>
+          <div class="exp-role-row">
+            <span class="exp-role">Product Designer</span>
+            <span class="exp-year">2019 – 2020</span>
+          </div>
+        </div>
       </div>
 
       <div class="exp-item">
         <div class="exp-company">Kinetic Commerce</div>
-        <div class="exp-role">Product Designer <span class="exp-sep">·</span> 2018 – 2019</div>
+        <div class="exp-roles">
+          <div class="exp-role-row">
+            <span class="exp-role">Product Designer</span>
+            <span class="exp-year">2018 – 2019</span>
+          </div>
+        </div>
       </div>
 
       <div class="exp-item">
         <div class="exp-company">Nascent Digital</div>
-        <div class="exp-role">Product Designer <span class="exp-sep">·</span> 2017 – 2018</div>
+        <div class="exp-roles">
+          <div class="exp-role-row">
+            <span class="exp-role">Product Designer</span>
+            <span class="exp-year">2017 – 2018</span>
+          </div>
+        </div>
       </div>
     </div>
 
