@@ -233,6 +233,35 @@
       flex-shrink: 0;
     }
 
+    /* ── Photo section ── */
+    .photo-section {
+      padding: 40px 0 0;
+      margin-top: 40px;
+    }
+    .photo-section h2 {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--ink);
+      margin: 0 0 24px;
+    }
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .photo-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .photo-placeholder {
+      background: #f0ede8;
+      border-radius: 8px;
+      width: 100%;
+    }
+    .photo-tall { aspect-ratio: 3/4; }
+    .photo-short { aspect-ratio: 4/3; }
+
     @media (max-width: 768px) {
       .layout { padding: 0 24px; flex-direction: column; }
       .sidebar {
@@ -280,6 +309,17 @@
     <div class="about-section">
       <h1>About me</h1>
       <p>I'm a product design leader with experience launching products and building teams across sports, gaming, and e-commerce. I started my career in PR before switching to UX design, a move that shaped how I think about users and the story a product tells. Most recently I was at theScore, leading design across a sports betting and casino product used by millions.</p>
+    </div>
+
+    <div class="photo-section">
+      <h2>When I'm not designing</h2>
+      <div class="photo-grid">
+        <div class="photo-placeholder photo-tall"></div>
+        <div class="photo-stack">
+          <div class="photo-placeholder photo-short"></div>
+          <div class="photo-placeholder photo-short"></div>
+        </div>
+      </div>
     </div>
 
   </main>
