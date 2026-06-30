@@ -41,7 +41,7 @@ window.addEventListener('scroll', () => {
 
 // ── Other Projects ──
 const PROJECTS = [
-  { slug: 'promo-engine',        company: 'theScore Bet',           label: 'Promotion Engine',                          href: 'promo-engine.html',        bg: '#2d3e5f', thumb: 'images/promo-engine-thumb.png' },
+  { slug: 'promo-engine',        company: 'theScore Bet',           label: 'Promotion Engine',                          href: 'promo-engine.html',        bg: '#2d3e5f', thumb: 'images/promoengine-thumbnail.png' },
   { slug: 'hollywood-casino',    company: 'Hollywood Casino',       label: 'Standalone Casino',                          href: 'hollywood-casino.html',    bg: '#1a0a2e', thumb: 'images/hwcasino-thumbnail.png' },
   { slug: 'espn-bet-onboarding', company: 'theScore Bet & ESPN Bet', label: 'Sign Up Optimization',               href: 'espn-bet-onboarding.html', bg: '#2D387F', thumb: 'images/espnbet-thumbnail.png' },
   { slug: 'thescore-bet',        company: 'theScore Bet',           label: 'Launching theScore Bet', href: 'thescore-bet.html',        bg: '#71AFF5', thumb: 'images/tsblaunch-thumbnail.png' },
