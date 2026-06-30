@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ara An — Promotion Engine</title>
+  <link rel="stylesheet" href="global.css">
+  <style>
+    :root {
+      --ink: #252525;
+      --muted: #9a9890;
+      --body: #555555;
+      --line: #e8e8e8;
+      --dark: #1b2238;
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html, body { overflow-x: clip; }
+    body {
+      background: #ffffff;
+      color: var(--ink);
+      font-family: 'Karla', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      opacity: 0;
+      transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    body.loaded { opacity: 1; }
+
+    .cs-hero-wrap {
+      max-width: 1100px;
+      margin: 40px auto 0;
+      padding: 0 60px;
+    }
+    .cs-hero {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 16/8;
+      background: #2d3e5f;
+    }
+    .cs-hero img,
+    .cs-hero video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .cs-hero-wrap { padding: 0 16px; margin-top: 24px; }
+      .cs-hero { aspect-ratio: 4/3; border-radius: 8px; }
+    }
+
+    .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
+
+    /* ── Header ── */
+    .cs-header { padding: 48px 0 40px; border-bottom: 0.5px solid var(--line); }
+    .cs-eyebrow {
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #9b9b9b;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .cs-title {
+      font-family: 'Karla', sans-serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 500;
+      line-height: 1;
+      color: var(--ink);
+      margin: 0 0 40px;
+    }
+    .cs-subtitle {
+      font-size: 16px;
+      color: var(--body);
+      font-style: italic;
+      font-weight: 400;
+      margin: 0px 0px 40px;
+      line-height: 1.5;
+    }
+
+    .cs-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 40px; }
+    .summary-item { display: flex; flex-direction: column; }
+    .summary-label {
+      font-family: 'Karla', sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .summary-val { font-size: 15px; color: var(--body); font-weight: 400; line-height: 1.5; }
+
+    /* ── Content ── */
+    .cs-intro {
+      padding: 48px 0;
+      border-bottom: 0.5px solid var(--line);
+    }
+    .cs-intro p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--body);
+      max-width: 560px;
+      margin: 0;
+    }
+
+    .cs-images {
+      padding: 48px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .cs-img {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+    }
+    .img-placeholder {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #f0ede8;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(0,0,0,0.2);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .cs-closing {
+      padding: 48px 0;
+      border-top: 0.5px solid var(--line);
+    }
+    .cs-closing p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0;
+    }
+
+    /* ── Reveal ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      .page-wrap { padding: 0 16px; }
+      .cs-summary { grid-template-columns: 1fr; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cs-hero-wrap">
+    <div class="cs-hero" style="background:#2d3e5f;">
+      <img src="images/promo-engine-hero.png" alt="Promotion Engine">
+    </div>
+  </div>
+
+  <div class="page-wrap">
+
+    <div class="cs-header reveal">
+      <div class="cs-eyebrow">theScore Bet</div>
+      <h1 class="cs-title">Promotion Engine</h1>
+      <div class="cs-summary">
+        <div class="summary-item">
+          <div class="summary-label">Role</div>
+          <div class="summary-val">Senior Product Designer</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Platform</div>
+          <div class="summary-val">Web</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Year</div>
+          <div class="summary-val">2024</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-intro reveal">
+      <p>A rules-based back office system for creating and managing sportsbook promotions — built so non-technical teams could launch targeted offers without engineering support. I designed the full admin experience: promotion creation, audience targeting, and reporting.</p>
+    </div>
+
+    <div class="cs-images">
+      <img src="images/promo-engine-1.png" alt="Promotion detail view" class="cs-img reveal">
+      <img src="images/promo-engine-2.png" alt="Create promotion wizard" class="cs-img reveal">
+      <img src="images/promo-engine-3.png" alt="Design system components" class="cs-img reveal">
+    </div>
+
+    <div class="cs-closing reveal">
+      <p>More to come — I'm continuing to document this project, including the design system work and testing process behind it.</p>
+    </div>
+
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+  <script src="components.js"></script>
+</body>
+</html>
