@@ -1,4 +1,4 @@
-# Trip Planner
+# Travel App
 
 Small practice app: generate and edit a day-by-day itinerary from
 destination, number of days, and trip type.
