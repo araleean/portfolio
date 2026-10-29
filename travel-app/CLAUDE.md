@@ -1,6 +1,6 @@
-# Travel App
+# flock
 
-Small practice app: generate and edit a day-by-day itinerary from
+The app is named **flock**, always written in lower case. Small practice app: generate and edit a day-by-day itinerary from
 destination, number of days, and trip type. Runs in Expo Go on a phone
 and in the browser.
 
