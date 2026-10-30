@@ -65,7 +65,14 @@ export function slotForTime(hhmm: string): Slot {
   return 'evening';
 }
 
-// Whole days from `todayIso` until `startIso`.
-export function daysUntil(todayIso: string, startIso: string): number {
-  return dayIndex(todayIso, startIso);
+// Whole days from `fromIso` until `startIso`.
+export function daysUntil(fromIso: string, startIso: string): number {
+  return dayIndex(fromIso, startIso);
+}
+
+// Today's date on the phone, as YYYY-MM-DD.
+export function todayIso(now: Date = new Date()): string {
+  const m = String(now.getMonth() + 1).padStart(2, '0');
+  const d = String(now.getDate()).padStart(2, '0');
+  return `${now.getFullYear()}-${m}-${d}`;
 }
