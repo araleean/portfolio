@@ -33,7 +33,7 @@ export interface Member {
 
 export interface Flight {
   id: string;
-  label: string; // e.g. "Outbound"
+  label: string; // e.g. "Flight there"
   flightNumber: string;
   from: string;
   to: string;

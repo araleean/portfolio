@@ -21,8 +21,8 @@ export function sampleTrip(now: number = Date.now()): Trip {
     endDate: '2026-12-24',
     members: MEMBERS,
     flights: [
-      { id: 'f1', label: 'Outbound', flightNumber: 'HA 11', from: 'LAX', to: 'HNL', departDate: '2026-12-18', departTime: '08:05', arriveDate: '2026-12-18', arriveTime: '11:10', confirmation: 'K7PQ2M', addedBy: 'sam' },
-      { id: 'f2', label: 'Return', flightNumber: 'HA 10', from: 'HNL', to: 'LAX', departDate: '2026-12-24', departTime: '13:30', arriveDate: '2026-12-24', arriveTime: '21:45', confirmation: 'K7PQ2M', addedBy: 'sam' },
+      { id: 'f1', label: 'Flight there', flightNumber: 'HA 11', from: 'LAX', to: 'HNL', departDate: '2026-12-18', departTime: '08:05', arriveDate: '2026-12-18', arriveTime: '11:10', confirmation: 'K7PQ2M', addedBy: 'sam' },
+      { id: 'f2', label: 'Flight home', flightNumber: 'HA 10', from: 'HNL', to: 'LAX', departDate: '2026-12-24', departTime: '13:30', arriveDate: '2026-12-24', arriveTime: '21:45', confirmation: 'K7PQ2M', addedBy: 'sam' },
     ],
     stays: [
       { id: 's1', name: 'Beachfront condo', address: '[Address from booking]', checkInDate: '2026-12-18', checkInTime: '15:00', checkOutDate: '2026-12-24', checkOutTime: '11:00', confirmation: '88213', addedBy: 'mom' },
