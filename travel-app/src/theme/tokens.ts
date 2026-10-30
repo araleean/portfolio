@@ -1,4 +1,4 @@
-// Colour tokens from the flock design system (style B). Light first, dark mirrors every key.
+// Colour tokens from the outbound design system (style B). Light first, dark mirrors every key.
 export const lightColors = {
   bg: '#FFFFFF',
   surface: '#F6F4EF',

@@ -1,6 +1,6 @@
-# flock
+# outbound
 
-The app is named **flock**, always written in lower case. A shared trip planner
+The app is named **outbound**, always written in lower case. A shared trip planner
 for families: one place for flights, stays, the itinerary and spending, where
 everyone can edit and every change shows who made it. Runs in Expo Go on a
 phone and in the browser.
@@ -16,7 +16,7 @@ phone and in the browser.
 - No Expo Router yet: App.tsx switches screens with state
 
 ## Design
-- Style B ("Sunny") from the flock design system: sunflower highlight,
+- Style B ("Sunny") from the outbound design system: sunflower highlight,
   sky / mint / peach tiles for flights / stays / spending, floating tab bar
 - Colour tokens in src/theme/tokens.ts, light and dark; the app follows the
   phone's setting

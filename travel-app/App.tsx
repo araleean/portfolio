@@ -28,12 +28,12 @@ export default function App() {
   const [fontsLoaded] = useFonts(FONT_FILES);
   return (
     <SafeAreaProvider>
-      {fontsLoaded ? <Flock /> : null}
+      {fontsLoaded ? <Outbound /> : null}
     </SafeAreaProvider>
   );
 }
 
-function Flock() {
+function Outbound() {
   const { colors, dark } = useTheme();
   const insets = useSafeAreaInsets();
   const [trip, setTrip] = useState<Trip>(() => sampleTrip());
