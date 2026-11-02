@@ -39,7 +39,7 @@ export function TripScreen({ trip, me, today, now, section, dayIndex, onScroll, 
         onBack={onBack}
         onInvite={() => onSection('family')}
       />
-      <View style={{ paddingVertical: 12, backgroundColor: colors.bg }}>
+      <View style={{ paddingTop: 8, paddingBottom: 14, backgroundColor: colors.bg }}>
         <SectionTabs active={section} onChange={onSection} />
       </View>
       <View style={{ paddingTop: 4 }}>
