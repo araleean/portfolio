@@ -8,16 +8,19 @@ phone and in the browser.
 ## Stack
 - Expo SDK 58 (React Native) + TypeScript
 - Styling with inline React Native styles from the theme (src/theme)
-- Font: Figtree via @expo-google-fonts; chosen in one place, src/theme/fonts.ts
+- Fonts: Figtree for titles, Nunito for body text, via @expo-google-fonts;
+  chosen in one place, src/theme/fonts.ts (AppText `heading` picks the face)
 - Icons drawn with react-native-svg (src/components/Icon.tsx)
 - State in React, starting from sample data (src/data/sampleTrip.ts); no
   saving or sharing backend yet
 - Jest (`jest-expo` preset) for tests
 - No Expo Router yet: App.tsx switches screens with state
+- Navigation: Home · Explore · Trips · Profile tab bar (white, collapses to
+  icons while scrolling down); a trip has Plan · Bookings · Money · Family
 
 ## Design
 - Style B ("Sunny") from the Outbound design system: sunflower highlight,
-  sky / mint / peach tiles for flights / stays / spending, floating tab bar
+  sky / mint / peach tiles for flights / stays / spending
 - Colour tokens in src/theme/tokens.ts, light and dark; the app follows the
   phone's setting
 - Every plan shows who added it ("Added by Mom", "Sample suggestion")

@@ -67,7 +67,7 @@ export function PreferencesScreen({ prefs, onChange, onClose, onDraft }: Props) 
       </ScrollView>
       <View style={{ paddingHorizontal: 20, paddingTop: 12, paddingBottom: Math.max(insets.bottom, 16), borderTopWidth: 1, borderTopColor: colors.line, gap: 8 }}>
         {prefs.styles.length === 0 ? <AppText size={14} color={colors.inkMuted} style={{ textAlign: 'center' }}>Pick at least one trip style.</AppText> : null}
-        <Button label="Make a draft" icon="spark" disabled={prefs.styles.length === 0} onPress={onDraft} />
+        <Button label="Make a draft" disabled={prefs.styles.length === 0} onPress={onDraft} />
       </View>
     </View>
   );

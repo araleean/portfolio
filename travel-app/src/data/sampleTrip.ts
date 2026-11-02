@@ -41,3 +41,18 @@ export function sampleTrip(now: number = Date.now()): Trip {
     ],
   };
 }
+
+// Other trips shown on Home and in Trips. Display-only until trips can be created.
+export interface TripSummary {
+  id: string;
+  name: string;
+  dates: string;
+  status: string;
+  detail: string;
+  memberIds: string[];
+}
+
+export const OTHER_TRIPS: TripSummary[] = [
+  { id: 'tokyo', name: 'Tokyo → Kyoto', dates: 'Mar 2 – 12, 2027 · 11 days', status: 'Planning', detail: '3 plans · no bookings yet', memberIds: ['sam', 'dad'] },
+  { id: 'vancouver', name: 'Grandma’s 80th · Vancouver', dates: 'Dates not set', status: 'Idea', detail: 'Invite family to pick dates', memberIds: ['sam', 'mom', 'dad', 'alex'] },
+];
