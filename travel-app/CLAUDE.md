@@ -19,7 +19,7 @@ phone and in the browser.
   icons while scrolling down); a trip has Plan · Bookings · Money · Family
 
 ## Design
-- Style B ("Sunny") from the Outbound design system: sunflower highlight,
+- Style B ("Sunny") from the Outbound design system: butter (#FFE29A) highlight,
   sky / mint / peach tiles for flights / stays / spending
 - Colour tokens in src/theme/tokens.ts, light and dark; the app follows the
   phone's setting
