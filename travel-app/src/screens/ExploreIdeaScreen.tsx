@@ -4,7 +4,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { AppText } from '../components/AppText';
 import { Button } from '../components/Button';
 import { Icon } from '../components/Icon';
-import { IconButton } from '../components/IconButton';
 import type { ExploreIdea } from '../data/exploreIdeas';
 import { SLOT_LABELS, SLOTS } from '../lib/tripOptions';
 import { radius } from '../theme/tokens';
@@ -12,13 +11,11 @@ import { useTheme } from '../theme/useTheme';
 
 interface Props {
   idea: ExploreIdea;
-  tripName: string;
   onBack: () => void;
-  onSave: () => void;
   onUse: () => void;
 }
 
-export function ExploreIdeaScreen({ idea, tripName, onBack, onSave, onUse }: Props) {
+export function ExploreIdeaScreen({ idea, onBack, onUse }: Props) {
   const { colors } = useTheme();
   const insets = useSafeAreaInsets();
   return (
@@ -59,8 +56,7 @@ export function ExploreIdeaScreen({ idea, tripName, onBack, onSave, onUse }: Pro
         </View>
       </ScrollView>
       <View style={{ flexDirection: 'row', gap: 10, paddingHorizontal: 20, paddingTop: 12, paddingBottom: Math.max(insets.bottom, 16), borderTopWidth: 1, borderTopColor: colors.line }}>
-        <IconButton icon="bookmark" label="Save idea" onPress={onSave} />
-        <View style={{ flex: 1 }}><Button label={`Use for my ${tripName} trip`} icon="plus" onPress={onUse} /></View>
+        <View style={{ flex: 1 }}><Button label="Add To Trip" icon="plus" onPress={onUse} /></View>
       </View>
     </View>
   );

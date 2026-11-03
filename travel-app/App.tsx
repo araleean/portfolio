@@ -143,8 +143,7 @@ function Outbound() {
 
       {idea ? (
         <ExploreIdeaScreen
-          idea={idea} tripName={trip.destination} onBack={() => switchTab('explore')}
-          onSave={() => setToast('Saved to your ideas.')} onUse={() => useIdea(idea)}
+          idea={idea} onBack={() => switchTab('explore')} onUse={() => useIdea(idea)}
         />
       ) : null}
 

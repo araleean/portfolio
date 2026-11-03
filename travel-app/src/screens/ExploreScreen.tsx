@@ -52,19 +52,15 @@ export function ExploreScreen({ destination, onScroll, onOpenIdea, onSoon }: Pro
         ))}
       </ScrollView>
 
-      <View style={{ gap: 2, paddingTop: 8 }}>
-        <AppText size={19} weight="bold" accessibilityRole="header">{`Ideas for your ${destination} trip`}</AppText>
-        <AppText size={14} color={colors.inkMuted}>Sample itineraries you can copy into your plan</AppText>
-      </View>
+      <AppText size={19} weight="bold" accessibilityRole="header" style={{ paddingTop: 8 }}>{`Ideas for your ${destination} trip`}</AppText>
       <View style={{ flexDirection: 'row', gap: 14 }}>
         {ideas.length === 0 ? <AppText size={15} color={colors.inkMuted}>No ideas match that search yet.</AppText> : null}
         {ideas.map((idea) => (
           <Pressable key={idea.id} accessibilityRole="button" accessibilityLabel={`${idea.title}, ${idea.meta}`} onPress={() => onOpenIdea(idea)} style={{ flex: 1, gap: 10 }}>
-            <View style={{ height: 92, borderRadius: 18, backgroundColor: colors[idea.tint], padding: 12, flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+            <View style={{ height: 92, borderRadius: 18, backgroundColor: colors[idea.tint], padding: 12, flexDirection: 'row', alignItems: 'flex-end' }}>
               <View style={{ height: 24, paddingHorizontal: 10, borderRadius: 12, backgroundColor: colors.tileIcon, justifyContent: 'center' }}>
                 <AppText size={12} weight="bold">{idea.tags[0]}</AppText>
               </View>
-              <Icon name="spark" size={28} color={colors.ink} />
             </View>
             <View style={{ paddingHorizontal: 4, gap: 2 }}>
               <AppText size={17} weight="bold">{idea.title}</AppText>
@@ -74,10 +70,7 @@ export function ExploreScreen({ destination, onScroll, onOpenIdea, onSoon }: Pro
         ))}
       </View>
 
-      <View style={{ gap: 2, paddingTop: 8 }}>
-        <AppText size={19} weight="bold" accessibilityRole="header">Popular this winter</AppText>
-        <AppText size={14} color={colors.inkMuted}>Where families are heading</AppText>
-      </View>
+      <AppText size={19} weight="bold" accessibilityRole="header" style={{ paddingTop: 8 }}>Popular this winter</AppText>
       <View style={{ flexDirection: 'row', gap: 10 }}>
         {POPULAR_PLACES.map((p) => (
           <Pressable key={p.name} accessibilityRole="button" onPress={() => onSoon(`Ideas for ${p.name}`)} style={{ flex: 1, minHeight: 84, borderRadius: radius.md, backgroundColor: colors[p.tint], padding: 14, justifyContent: 'flex-end', gap: 2 }}>

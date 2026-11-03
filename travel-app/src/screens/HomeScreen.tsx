@@ -34,11 +34,6 @@ interface Props {
   onNotify: () => void;
 }
 
-function greeting(now: number): string {
-  const h = new Date(now).getHours();
-  return h < 12 ? 'Good morning' : h < 18 ? 'Good afternoon' : 'Good evening';
-}
-
 function SectionHeading({ title, action, onAction }: { title: string; action?: string; onAction?: () => void }) {
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -57,7 +52,6 @@ export function HomeScreen({ trip, me, today, now, onScroll, onOpenTrip, onPlan,
   const insets = useSafeAreaInsets();
   const planned = trip.days.length > 0;
   const days = tripLength(trip.startDate, trip.endDate);
-  const meName = trip.members.find((m) => m.id === me)?.name ?? '';
 
   // First day: the itinerary once there is one, otherwise the bookings on day one.
   const firstUp = planned
@@ -67,10 +61,7 @@ export function HomeScreen({ trip, me, today, now, onScroll, onOpenTrip, onPlan,
   return (
     <ScrollView onScroll={onScroll} scrollEventThrottle={16} contentContainerStyle={{ paddingTop: insets.top + 12 }}>
       <View style={{ paddingLeft: 20, paddingRight: 16, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-        <View style={{ gap: 2 }}>
-          <AppText size={26} weight="bold" accessibilityRole="header">Outbound</AppText>
-          <AppText size={14} color={colors.inkMuted}>{`${greeting(now)}, ${meName}`}</AppText>
-        </View>
+        <AppText size={26} weight="bold" accessibilityRole="header">Outbound</AppText>
         <IconButton icon="bell" label="Notifications, 2 new" dot onPress={onNotify} />
       </View>
 

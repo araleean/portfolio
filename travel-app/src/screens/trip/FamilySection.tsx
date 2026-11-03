@@ -14,15 +14,15 @@ export function FamilySection({ trip, me, now, onInvite }: { trip: Trip; me: str
   const counts = contributions(trip);
   return (
     <View style={{ paddingHorizontal: 16, gap: 14 }}>
-      <Pressable accessibilityRole="button" onPress={onInvite} style={{ backgroundColor: colors.highlight, borderRadius: 22, paddingVertical: 14, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-        <View style={{ width: 40, height: 40, borderRadius: 14, backgroundColor: 'rgba(255,255,255,0.7)', alignItems: 'center', justifyContent: 'center' }}>
-          <Icon name="invite" color="#1B1B1F" />
+      <Pressable accessibilityRole="button" onPress={onInvite} style={{ borderWidth: 1, borderColor: colors.ink, borderRadius: 22, paddingVertical: 14, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+        <View style={{ width: 40, height: 40, borderRadius: 14, backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center' }}>
+          <Icon name="invite" color={colors.ink} />
         </View>
         <View style={{ flex: 1 }}>
-          <AppText size={17} weight="bold" color={colors.onHighlight}>Invite family</AppText>
-          <AppText size={13} color={colors.onHighlight}>Everyone you invite can view and edit</AppText>
+          <AppText size={17} weight="bold" color={colors.ink}>Invite family</AppText>
+          <AppText size={13} color={colors.ink}>Everyone you invite can view and edit</AppText>
         </View>
-        <Icon name="chevron" size={20} color={colors.onHighlight} />
+        <Icon name="chevron" size={20} color={colors.ink} />
       </Pressable>
       <View>
         {trip.members.map((m) => {

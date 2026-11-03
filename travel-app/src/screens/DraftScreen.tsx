@@ -88,7 +88,7 @@ export function DraftScreen({ days, startDate, prefs, onBack, onShuffle, onAdd }
         ))}
       </ScrollView>
       <View style={{ flexDirection: 'row', gap: 10, paddingHorizontal: 20, paddingTop: 12, paddingBottom: Math.max(insets.bottom, 16), borderTopWidth: 1, borderTopColor: colors.line }}>
-        <View style={{ flex: 1 }}><Button label="Shuffle" icon="shuffle" variant="outline" onPress={onShuffle} /></View>
+        <View style={{ flex: 1 }}><Button label="Shuffle" variant="outline" onPress={onShuffle} /></View>
         <View style={{ flex: 1.4 }}><Button label="Add to trip" onPress={onAdd} /></View>
       </View>
     </View>
