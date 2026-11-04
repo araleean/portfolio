@@ -6,7 +6,7 @@ import { Icon } from './Icon';
 import { IconButton } from './IconButton';
 import { useTheme } from '../theme/useTheme';
 
-export function TripDetailHeader({ title, subtitle, onBack, onInvite }: { title: string; subtitle: string; onBack: () => void; onInvite: () => void }) {
+export function TripDetailHeader({ title, subtitle, onBack, onShare }: { title: string; subtitle: string; onBack: () => void; onShare: () => void }) {
   const { colors } = useTheme();
   const insets = useSafeAreaInsets();
   return (
@@ -18,7 +18,7 @@ export function TripDetailHeader({ title, subtitle, onBack, onInvite }: { title:
         <AppText size={24} weight="bold" accessibilityRole="header">{title}</AppText>
         <AppText size={14} color={colors.inkMuted}>{subtitle}</AppText>
       </View>
-      <IconButton icon="invite" label="Invite family" onPress={onInvite} />
+      <IconButton icon="share" label="Share trip" onPress={onShare} />
     </View>
   );
 }

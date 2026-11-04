@@ -1,4 +1,4 @@
-import { ScrollView, View } from 'react-native';
+import { ScrollView, Share, View } from 'react-native';
 
 import { TabBarSpacer } from '../components/AppTabBar';
 import { SectionTabs, type TripSection } from '../components/SectionTabs';
@@ -29,6 +29,15 @@ interface Props {
   onSoon: (what: string) => void;
 }
 
+// Opens the phone's share sheet with an invite to the trip. Browsers without it get the coming-later note.
+async function shareTrip(destination: string, onSoon: (what: string) => void) {
+  try {
+    await Share.share({ message: `Join our ${destination} trip on Outbound so you can see the plans and add your own.` });
+  } catch {
+    onSoon('Sharing from the browser');
+  }
+}
+
 export function TripScreen({ trip, me, today, now, section, dayIndex, onScroll, onBack, onSection, onSelectDay, onPlan, onOpenPlan, onSoon }: Props) {
   const { colors } = useTheme();
   return (
@@ -37,7 +46,7 @@ export function TripScreen({ trip, me, today, now, section, dayIndex, onScroll, 
         title={trip.destination}
         subtitle={`${formatRange(trip.startDate, trip.endDate)} · ${countdownText(daysUntil(today, trip.startDate))}`}
         onBack={onBack}
-        onInvite={() => onSection('family')}
+        onShare={() => shareTrip(trip.destination, onSoon)}
       />
       <View style={{ paddingTop: 8, paddingBottom: 14, backgroundColor: colors.bg }}>
         <SectionTabs active={section} onChange={onSection} />
