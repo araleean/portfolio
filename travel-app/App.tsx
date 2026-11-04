@@ -117,10 +117,9 @@ function Outbound() {
 
       {route.name === 'tabs' && tab === 'home' ? (
         <HomeScreen
-          trip={trip} me={ME} today={today} now={now} onScroll={tabBar.onScroll}
-          onOpenTrip={() => openTrip('plan')} onPlan={() => setStartSheet(true)}
-          onOpenIdea={(i) => go({ name: 'idea', id: i.id })} onOpenTrips={() => switchTab('trips')}
-          onOpenExplore={() => switchTab('explore')} onNotify={() => soon('Notifications')}
+          trip={trip} today={today} onScroll={tabBar.onScroll}
+          onOpenTrip={() => openTrip('plan')} onOpenTrips={() => switchTab('trips')}
+          onOpenExplore={() => switchTab('explore')} onNewTrip={() => soon('New trips')} onNotify={() => soon('Notifications')}
         />
       ) : null}
       {route.name === 'tabs' && tab === 'explore' ? (
