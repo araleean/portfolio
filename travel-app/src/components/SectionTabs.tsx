@@ -8,7 +8,7 @@ export type TripSection = 'plan' | 'bookings' | 'money' | 'family';
 const SECTIONS: { id: TripSection; label: string }[] = [
   { id: 'plan', label: 'Plan' },
   { id: 'bookings', label: 'Bookings' },
-  { id: 'money', label: 'Money' },
+  { id: 'money', label: 'Expenses' },
   { id: 'family', label: 'Family' },
 ];
 

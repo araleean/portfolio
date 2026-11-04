@@ -16,7 +16,7 @@ phone and in the browser.
 - Jest (`jest-expo` preset) for tests
 - No Expo Router yet: App.tsx switches screens with state
 - Navigation: Home · Explore · Trips · Profile tab bar (white, collapses to
-  icons while scrolling down); a trip has Plan · Bookings · Money · Family
+  icons while scrolling down); a trip has Plan · Bookings · Expenses · Family
 
 ## Design
 - Style B ("Sunny") from the Outbound design system: butter (#FFE29A) highlight,
