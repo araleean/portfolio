@@ -10,9 +10,7 @@ import { SectionLabel } from '../components/SectionLabel';
 import { POPULAR_PLACES } from '../data/exploreIdeas';
 import { OTHER_TRIPS } from '../data/sampleTrip';
 import { bookingTimeline } from '../lib/bookings';
-import { countdownText } from '../lib/countdown';
-import { daysUntil, formatDay, tripLength } from '../lib/dates';
-import { countPlans } from '../lib/draftItinerary';
+import { formatDay, tripLength } from '../lib/dates';
 import { radius } from '../theme/tokens';
 import { useTheme } from '../theme/useTheme';
 import type { Trip } from '../types';
@@ -45,18 +43,13 @@ function SectionHeading({ title, action, onAction }: { title: string; action?: s
 export function HomeScreen({ trip, today, onScroll, onOpenTrip, onOpenTrips, onOpenExplore, onNewTrip, onNotify }: Props) {
   const { colors } = useTheme();
   const insets = useSafeAreaInsets();
-  const planned = trip.days.length > 0;
   const days = tripLength(trip.startDate, trip.endDate);
   const comingUp = bookingTimeline(trip).slice(0, 2);
 
   return (
     <ScrollView onScroll={onScroll} scrollEventThrottle={16} contentContainerStyle={{ paddingTop: insets.top + 12 }}>
       <View style={{ paddingLeft: 20, paddingRight: 16, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
-        <AppText size={26} weight="bold" accessibilityRole="header" style={{ flex: 1 }}>Outbound</AppText>
-        <Pressable accessibilityRole="button" onPress={onNewTrip} style={{ height: 44, paddingLeft: 12, paddingRight: 16, borderRadius: 22, backgroundColor: colors.primary, flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-          <Icon name="plus" size={18} color={colors.onPrimary} strokeWidth={2.4} />
-          <AppText size={15} weight="semibold" heading color={colors.onPrimary}>New trip</AppText>
-        </Pressable>
+        <AppText size={30} weight="bold" accessibilityRole="header" style={{ flex: 1 }}>Outbound</AppText>
         <IconButton icon="bell" label="Notifications, 2 new" dot onPress={onNotify} />
       </View>
 
@@ -73,17 +66,9 @@ export function HomeScreen({ trip, today, onScroll, onOpenTrip, onOpenTrips, onO
               <AppText size={32} weight="bold" color={colors.onHighlight}>{trip.destination}</AppText>
               <AppText size={15} weight="medium" color={colors.onHighlight}>{`${formatDay(trip.startDate)} – ${formatDay(trip.endDate)} · ${days} days`}</AppText>
             </View>
-            <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
-              <View style={{ height: 34, paddingHorizontal: 14, borderRadius: 17, backgroundColor: '#FFFFFF', justifyContent: 'center' }}>
-                <AppText size={15} weight="bold" heading color="#1B1B1F">{countdownText(daysUntil(today, trip.startDate))}</AppText>
-              </View>
-              <View style={{ height: 34, paddingHorizontal: 14, borderRadius: 17, backgroundColor: 'rgba(255,255,255,0.55)', justifyContent: 'center' }}>
-                <AppText size={14} weight="semibold" color="#1B1B1F">{`${planned ? `${countPlans(trip.days)} plans` : 'No plans yet'} · ${trip.flights.length} flights · ${trip.stays.length} stay`}</AppText>
-              </View>
-            </View>
           </Pressable>
 
-          {OTHER_TRIPS.map((t) => (
+          {OTHER_TRIPS.slice(0, 1).map((t) => (
             <Pressable key={t.id} accessibilityRole="button" onPress={onOpenTrips} style={{ backgroundColor: colors.surface, borderRadius: 22, paddingVertical: 14, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
               <View style={{ flex: 1, gap: 2 }}>
                 <AppText size={17} weight="bold">{t.name}</AppText>
