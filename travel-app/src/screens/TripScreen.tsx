@@ -41,15 +41,18 @@ async function shareTrip(destination: string, onSoon: (what: string) => void) {
 export function TripScreen({ trip, me, today, now, section, dayIndex, onScroll, onBack, onSection, onSelectDay, onPlan, onOpenPlan, onSoon }: Props) {
   const { colors } = useTheme();
   return (
-    <ScrollView onScroll={onScroll} scrollEventThrottle={16} stickyHeaderIndices={[1]}>
-      <TripDetailHeader
-        title={trip.destination}
-        subtitle={`${formatRange(trip.startDate, trip.endDate)} · ${countdownText(daysUntil(today, trip.startDate))}`}
-        onBack={onBack}
-        onShare={() => shareTrip(trip.destination, onSoon)}
-      />
-      <View style={{ paddingTop: 8, paddingBottom: 14, backgroundColor: colors.bg }}>
-        <SectionTabs active={section} onChange={onSection} />
+    <ScrollView onScroll={onScroll} scrollEventThrottle={16} stickyHeaderIndices={[0]}>
+      {/* The trip title and the section tabs stay pinned together while the content scrolls. */}
+      <View style={{ backgroundColor: colors.bg }}>
+        <TripDetailHeader
+          title={trip.destination}
+          subtitle={`${formatRange(trip.startDate, trip.endDate)} · ${countdownText(daysUntil(today, trip.startDate))}`}
+          onBack={onBack}
+          onShare={() => shareTrip(trip.destination, onSoon)}
+        />
+        <View style={{ paddingTop: 8, paddingBottom: 14 }}>
+          <SectionTabs active={section} onChange={onSection} />
+        </View>
       </View>
       <View style={{ paddingTop: 4 }}>
         {section === 'plan' ? <PlanSection trip={trip} me={me} dayIndex={dayIndex} onSelectDay={onSelectDay} onPlan={onPlan} onOpenPlan={onOpenPlan} /> : null}
